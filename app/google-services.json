@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "870687122345",
+    "project_id": "b07-project-ac4e3",
+    "storage_bucket": "b07-project-ac4e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870687122345:android:584461434e3aba030b5ab8",
+        "android_client_info": {
+          "package_name": "example.com.cmsandroidsimulation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGHBSYT_Cd1b06W2FFqS2GrWCcHw0lfQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
