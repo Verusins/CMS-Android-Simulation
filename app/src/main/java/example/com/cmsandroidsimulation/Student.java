@@ -7,8 +7,7 @@ public class Student {
     String firstName = "Con";
     String lastName = "Rad";
 
-    public static CompletableFuture<Student> Login(String username, String password)
-    {
+    public static CompletableFuture<Student> Login(String username, String password) {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
             try {
@@ -24,5 +23,10 @@ public class Student {
 
             return new Student();
         });
+    }
+
+    public static Student GetInstance()
+    {
+        return instance;
     }
 }
