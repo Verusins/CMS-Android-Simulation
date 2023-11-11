@@ -25,4 +25,8 @@ public class Admin {
             return new Admin();
         });
     }
+    public static Admin GetInstance()
+    {
+        return instance;
+    }
 }
