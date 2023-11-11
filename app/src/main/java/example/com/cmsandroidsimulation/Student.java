@@ -2,12 +2,12 @@ package example.com.cmsandroidsimulation;
 
 import java.util.concurrent.CompletableFuture;
 
-public class StudentInfo{
-    private static StudentInfo instance;
+public class Student {
+    private static Student instance;
     String firstName = "Con";
     String lastName = "Rad";
 
-    public static CompletableFuture<StudentInfo> Login(String username, String password)
+    public static CompletableFuture<Student> Login(String username, String password)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -20,7 +20,7 @@ public class StudentInfo{
             // Simulated data retrieval
             System.out.println("Student info fetched from API");
 
-            return new StudentInfo();
+            return new Student();
         });
     }
 }

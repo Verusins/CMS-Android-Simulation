@@ -22,6 +22,5 @@ public final class StudentFragment extends Fragment {
 
         binding = FragmentStudentBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 }

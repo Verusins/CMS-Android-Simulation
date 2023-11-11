@@ -11,7 +11,7 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_adminFragment2"
+            android:id="@+id/action_loginFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
         <action
             android:id="@+id/action_loginFragment_to_studentFragment"
