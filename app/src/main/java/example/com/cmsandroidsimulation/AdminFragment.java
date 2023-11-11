@@ -20,6 +20,5 @@ public final class AdminFragment extends Fragment {
     ) {
         binding = FragmentAdminBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 }

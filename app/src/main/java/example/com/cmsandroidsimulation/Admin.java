@@ -20,6 +20,8 @@ public class Admin {
             // Simulated data retrieval
             System.out.println("Admin info fetched from API");
 
+            // throw new FailedLoginException();
+
             return new Admin();
         });
     }

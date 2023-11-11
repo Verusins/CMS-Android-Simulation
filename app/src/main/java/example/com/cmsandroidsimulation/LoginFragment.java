@@ -2,6 +2,7 @@ package example.com.cmsandroidsimulation;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.databinding.FragmentLoginBinding;
 
@@ -33,11 +36,25 @@ public final class LoginFragment extends Fragment{
                 String username = binding.studentLoginUsernameEdit.getText().toString();
                 String password = binding.studentLoginPasswordEdit.getText().toString();
 
+
                 Student.Login(username, password).thenAccept(
                         student -> {
-                            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_studentFragment);
+                            requireActivity().runOnUiThread(() -> {
+                                NavHostFragment.findNavController(LoginFragment.this).
+                                        navigate(R.id.action_loginFragment_to_studentFragment);
+                            });
                         }
-                );
+                ).exceptionally(throwable -> {
+                    if(throwable instanceof FailedLoginException)
+                    {
+                        // show error message somewhere on the screen
+                        return null;
+                    }
+
+                    Log.e("Login Error", throwable.toString());
+
+                    return null;
+                });
             }
         });
 
@@ -49,9 +66,21 @@ public final class LoginFragment extends Fragment{
 
                 Admin.Login(username, password).thenAccept(
                         admin -> {
-                            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_adminFragment);
+                            requireActivity().runOnUiThread(() -> {
+                                NavHostFragment.findNavController(LoginFragment.this).
+                                        navigate(R.id.action_loginFragment_to_adminFragment);
+                            });
                         }
-                );
+                ).exceptionally(throwable -> {
+                    if(throwable instanceof FailedLoginException)
+                    {
+                        // show error message somewhere on the screen
+                        return null;
+                    }
+
+                    Log.e("Login Error", throwable.toString());
+                    return null;
+                });
             }
         });
     }

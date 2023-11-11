@@ -20,6 +20,8 @@ public class Student {
             // Simulated data retrieval
             System.out.println("Student info fetched from API");
 
+            // throw new FailedLoginException();
+
             return new Student();
         });
     }
