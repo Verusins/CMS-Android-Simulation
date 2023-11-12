@@ -22,7 +22,7 @@ public abstract class User {
             throw new UnsupportedOperationException();
         });
     }
-    public static ArrayList<EventInfo> generateTestEventInfoList() {
+    private static ArrayList<EventInfo> generateTestEventInfoList() {
         ArrayList<EventInfo> eventInfoList = new ArrayList<>();
 
         // Event 1
