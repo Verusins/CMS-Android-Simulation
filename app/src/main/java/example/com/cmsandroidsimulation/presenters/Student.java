@@ -30,7 +30,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Void> postComment(EventInfo eventInfo, String content)
+    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -43,7 +43,7 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Void> postRating(EventInfo eventInfo, int rating)
+    public CompletableFuture<Void> postEventRating(EventInfo eventInfo, int rating)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -56,7 +56,7 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Boolean> getHasRated(EventInfo eventInfo)
+    public CompletableFuture<Boolean> getEventHasRated(EventInfo eventInfo)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -70,7 +70,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Boolean> submitRSVP()
+    public CompletableFuture<Boolean> submitEventRSVP()
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -83,7 +83,7 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Boolean> getHasRSVPd(EventInfo eventInfo)
+    public CompletableFuture<Boolean> getEventHasRSVPd(EventInfo eventInfo)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
