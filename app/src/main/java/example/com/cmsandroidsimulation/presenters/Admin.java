@@ -1,7 +1,5 @@
 package example.com.cmsandroidsimulation.presenters;
 
-import android.media.metrics.Event;
-
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
