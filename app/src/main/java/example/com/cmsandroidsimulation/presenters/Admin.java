@@ -1,8 +1,11 @@
 package example.com.cmsandroidsimulation.presenters;
 
+import android.media.metrics.Event;
+
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
+import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.EventInfo;
 
@@ -43,6 +46,22 @@ public class Admin extends User{
             return generateTestComplaintList();
         });
     }
+
+    // TODO: implement API calls
+    public CompletableFuture<Void> postEvent(EventInfo eventInfo)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+    }
+
+
 
     private static ArrayList<Complaint> generateTestComplaintList() {
         ArrayList<Complaint> complaintList = new ArrayList<>();
