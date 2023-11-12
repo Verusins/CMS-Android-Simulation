@@ -2,11 +2,8 @@ package example.com.cmsandroidsimulation;
 
 import java.util.concurrent.CompletableFuture;
 
-public class Student {
+public class Student extends User {
     private static Student instance;
-    String firstName = "Con";
-    String lastName = "Rad";
-
     public static CompletableFuture<Student> Login(String username, String password)
     {
         return CompletableFuture.supplyAsync(() -> {
@@ -21,13 +18,13 @@ public class Student {
             System.out.println("Student info fetched from API");
 
             // throw new FailedLoginException();
-
-            return new Student();
+            instance = new Student();
+            return instance;
         });
     }
-    
     public static Student getInstance()
     {
         return instance;
     }
+
 }
