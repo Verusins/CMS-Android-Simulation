@@ -28,7 +28,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Void> postComment(EventInfo eventInfo, String content)
+    public CompletableFuture<Void> postComment(EventInfo eventInfo, EventComment comment)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -67,7 +67,7 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Void> postComplaint(String content)
+    public CompletableFuture<Void> postComplaint(Complaint complaint)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
