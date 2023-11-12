@@ -68,6 +68,34 @@ public class Student extends User {
             return false;
         });
     }
+
+    // TODO: implement api calls
+    public CompletableFuture<Boolean> submitRSVP()
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return false;
+        });
+    }
+    // TODO: implement api calls
+    public CompletableFuture<Boolean> getHasRSVPd(EventInfo eventInfo)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return false;
+        });
+    }
+
     // TODO: implement api calls
     public CompletableFuture<Void> postComplaint(String content)
     {
