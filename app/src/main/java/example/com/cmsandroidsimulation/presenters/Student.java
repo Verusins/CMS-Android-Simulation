@@ -70,7 +70,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Boolean> submitEventRSVP(EventInfo eventInfo)
+    public CompletableFuture<Void> submitEventRSVP(EventInfo eventInfo)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -79,7 +79,7 @@ public class Student extends User {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return false;
+            return null;
         });
     }
     // TODO: implement api calls
