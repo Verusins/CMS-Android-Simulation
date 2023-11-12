@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.EventInfo;
+import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
     private static Admin instance;
@@ -42,7 +43,7 @@ public class Admin extends User{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return generateTestComplaintList();
+            return PlaceholderValues.generateTestComplaintList();
         });
     }
 
@@ -72,23 +73,5 @@ public class Admin extends User{
             }
             return null;
         });
-    }
-
-
-
-    private static ArrayList<Complaint> generateTestComplaintList() {
-        ArrayList<Complaint> complaintList = new ArrayList<>();
-
-        // Complaint 1
-        Complaint complaint1 = new Complaint("User1", "This is not working properly.");
-        complaintList.add(complaint1);
-
-        // Complaint 2
-        Complaint complaint2 = new Complaint("User2", "I am facing issues with the system.");
-        complaintList.add(complaint2);
-
-        // Add more complaints as needed
-
-        return complaintList;
     }
 }

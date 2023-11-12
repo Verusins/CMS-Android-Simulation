@@ -17,4 +17,6 @@ public class Announcement {
     public String getContent() {
         return content;
     }
+
+
 }

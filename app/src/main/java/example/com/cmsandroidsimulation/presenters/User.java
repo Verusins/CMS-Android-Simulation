@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
+import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public abstract class User {
     String firstName = "Con";
@@ -22,7 +23,7 @@ public abstract class User {
                 e.printStackTrace();
             }
 
-            return generateTestEventInfoList();
+            return PlaceholderValues.generateTestEventInfoList();
         });
     }
 
@@ -37,47 +38,8 @@ public abstract class User {
                 e.printStackTrace();
             }
 
-            throw new UnsupportedOperationException();
+            return PlaceholderValues.generateTestAnnouncementList();
         });
-    }
-    private static ArrayList<EventInfo> generateTestEventInfoList() {
-        ArrayList<EventInfo> eventInfoList = new ArrayList<>();
-
-        // Event 1
-        EventInfo event1 = new EventInfo(
-                1,
-                "School Fair",
-                "Annual school fair featuring various activities.",
-                4.5f,
-                generateTestComments());
-        eventInfoList.add(event1);
-
-        EventInfo event2 = new EventInfo(
-                2,
-                "Science Exhibition",
-                "Showcasing student projects and experiments.",
-                3.8f,
-                generateTestComments());
-        eventInfoList.add(event2);
-
-        // Add more events as needed
-
-        return eventInfoList;
-    }
-
-
-    private static ArrayList<EventComment> generateTestComments() {
-        ArrayList<EventComment> comments = new ArrayList<>();
-
-        EventComment comment1 = new EventComment("User1", "Great event!");
-        EventComment comment2 = new EventComment("User2", "Enjoyed it a lot!");
-
-        comments.add(comment1);
-        comments.add(comment2);
-
-        // Add more comments as needed
-
-        return comments;
     }
 
 }
