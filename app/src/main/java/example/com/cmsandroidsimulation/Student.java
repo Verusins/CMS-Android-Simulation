@@ -2,6 +2,8 @@ package example.com.cmsandroidsimulation;
 
 import java.util.concurrent.CompletableFuture;
 
+import example.com.cmsandroidsimulation.models.EventInfo;
+
 public class Student extends User {
     private static Student instance;
     public static CompletableFuture<Student> Login(String username, String password)

@@ -1,8 +1,8 @@
-package example.com.cmsandroidsimulation;
+package example.com.cmsandroidsimulation.models;
 
 public class Complaint{
-    String username;
-    String content;
+    public String username;
+    public String content;
     public Complaint(String username, String content)
     {
         this.username = username;

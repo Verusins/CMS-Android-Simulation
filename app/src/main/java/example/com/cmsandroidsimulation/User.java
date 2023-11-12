@@ -1,9 +1,10 @@
 package example.com.cmsandroidsimulation;
 
-import android.media.metrics.Event;
-
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
+
+import example.com.cmsandroidsimulation.models.EventComment;
+import example.com.cmsandroidsimulation.models.EventInfo;
 
 public abstract class User {
     String firstName = "Con";

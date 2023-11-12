@@ -3,6 +3,9 @@ package example.com.cmsandroidsimulation;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
+import example.com.cmsandroidsimulation.models.Complaint;
+import example.com.cmsandroidsimulation.models.EventInfo;
+
 public class Admin extends User{
     private static Admin instance;
     public static CompletableFuture<Admin> Login(String username, String password)

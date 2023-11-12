@@ -1,8 +1,8 @@
-package example.com.cmsandroidsimulation;
+package example.com.cmsandroidsimulation.models;
 
 public class EventComment {
-    String username;
-    String content;
+    public String username;
+    public String content;
 
     public EventComment(String username, String content) {
         this.username = username;
