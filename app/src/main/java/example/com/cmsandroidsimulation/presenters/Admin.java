@@ -9,6 +9,7 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 
 public class Admin extends User{
     private static Admin instance;
+    // TODO: implement api calls
     public static CompletableFuture<Admin> Login(String username, String password)
     {
         return CompletableFuture.supplyAsync(() -> {

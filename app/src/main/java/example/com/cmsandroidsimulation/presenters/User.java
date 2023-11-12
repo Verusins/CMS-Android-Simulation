@@ -3,6 +3,7 @@ package example.com.cmsandroidsimulation.presenters;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
+import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 
@@ -21,6 +22,21 @@ public abstract class User {
                 e.printStackTrace();
             }
 
+            return generateTestEventInfoList();
+        });
+    }
+
+    // TODO: implement api calls
+    public CompletableFuture<ArrayList<Announcement>> getAnnouncements()
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             throw new UnsupportedOperationException();
         });
     }
@@ -28,21 +44,20 @@ public abstract class User {
         ArrayList<EventInfo> eventInfoList = new ArrayList<>();
 
         // Event 1
-        EventInfo event1 = new EventInfo();
-        event1.id = 1;
-        event1.title = "School Fair";
-        event1.details = "Annual school fair featuring various activities.";
-        event1.rating = 4.5f; // Example rating
-        event1.comments = generateTestComments();
+        EventInfo event1 = new EventInfo(
+                1,
+                "School Fair",
+                "Annual school fair featuring various activities.",
+                4.5f,
+                generateTestComments());
         eventInfoList.add(event1);
 
-        // Event 2
-        EventInfo event2 = new EventInfo();
-        event2.id = 2;
-        event2.title = "Science Exhibition";
-        event2.details = "Showcasing student projects and experiments.";
-        event2.rating = 3.8f; // Example rating
-        event2.comments = generateTestComments();
+        EventInfo event2 = new EventInfo(
+                2,
+                "Science Exhibition",
+                "Showcasing student projects and experiments.",
+                3.8f,
+                generateTestComments());
         eventInfoList.add(event2);
 
         // Add more events as needed
