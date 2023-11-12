@@ -61,6 +61,20 @@ public class Admin extends User{
         });
     }
 
+    // TODO: implement API calls
+    public CompletableFuture<Void> postAnnouncement(String content)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+    }
+
 
 
     private static ArrayList<Complaint> generateTestComplaintList() {
