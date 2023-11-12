@@ -25,4 +25,9 @@ public class Student {
             return new Student();
         });
     }
+    
+    public static Student getInstance()
+    {
+        return instance;
+    }
 }
