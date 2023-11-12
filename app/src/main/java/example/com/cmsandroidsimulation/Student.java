@@ -26,4 +26,30 @@ public class Student extends User {
     {
         return instance;
     }
+
+    public CompletableFuture<Void> postComment(EventInfo eventInfo, String content)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+    }
+    public CompletableFuture<Void> postRating(EventInfo eventInfo, int rating)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+    }
+
 }
