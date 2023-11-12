@@ -70,7 +70,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Boolean> submitEventRSVP()
+    public CompletableFuture<Boolean> submitEventRSVP(EventInfo eventInfo)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
