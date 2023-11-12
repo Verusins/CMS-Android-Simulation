@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 
 import androidx.core.view.WindowCompat;
@@ -35,6 +36,13 @@ public final class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         instance = this;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.fragment_navigation_bar, menu);
+        return true;
     }
 
     public MainActivity getInstance() {
