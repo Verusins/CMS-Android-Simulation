@@ -27,6 +27,7 @@ public class Student extends User {
         return instance;
     }
 
+    // TODO: implement api calls
     public CompletableFuture<Void> postComment(EventInfo eventInfo, String content)
     {
         return CompletableFuture.supplyAsync(() -> {
@@ -39,6 +40,7 @@ public class Student extends User {
             return null;
         });
     }
+    // TODO: implement api calls
     public CompletableFuture<Void> postRating(EventInfo eventInfo, int rating)
     {
         return CompletableFuture.supplyAsync(() -> {
@@ -51,6 +53,20 @@ public class Student extends User {
             return null;
         });
     }
+    // TODO: implement api calls
+    public CompletableFuture<Boolean> getHasRated(EventInfo eventInfo)
+    {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate an asynchronous API call
+            try {
+                Thread.sleep(2000); // Simulating a delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return false;
+        });
+    }
+    // TODO: implement api calls
     public CompletableFuture<Void> postComplaint(String content)
     {
         return CompletableFuture.supplyAsync(() -> {

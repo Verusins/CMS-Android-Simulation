@@ -9,6 +9,7 @@ public abstract class User {
     String firstName = "Con";
     String lastName = "Rad";
 
+    // TODO: implement api calls
     public CompletableFuture<ArrayList<EventInfo>> getEvents()
     {
         return CompletableFuture.supplyAsync(() -> {

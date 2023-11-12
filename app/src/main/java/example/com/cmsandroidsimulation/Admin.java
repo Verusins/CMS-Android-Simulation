@@ -27,6 +27,7 @@ public class Admin extends User{
     {
         return instance;
     }
+    // TODO: implement api calls
     public CompletableFuture<ArrayList<Complaint>> getComplaints(EventInfo eventInfo, int rating)
     {
         return CompletableFuture.supplyAsync(() -> {
