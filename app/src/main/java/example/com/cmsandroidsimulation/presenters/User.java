@@ -9,8 +9,8 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public abstract class User {
-    String firstName = "Con";
-    String lastName = "Rad";
+    String firstName = "Conrad";
+    String lastName = "Mo";
 
     // TODO: implement api calls
     public CompletableFuture<ArrayList<EventInfo>> getEvents()
