@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import java.util.concurrent.CompletableFuture;
-
 import example.com.cmsandroidsimulation.databinding.FragmentLoginBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public final class LoginFragment extends Fragment{
 
