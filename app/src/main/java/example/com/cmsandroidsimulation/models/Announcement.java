@@ -1,22 +1,26 @@
 package example.com.cmsandroidsimulation.models;
 
-import androidx.annotation.Nullable;
+import java.util.Date;
 
 public class Announcement {
-    private final String announcer;
-    private final String content;
-    public Announcement(String announcer, String content)
+    private final String author;
+    private final String title;
+    private final String details;
+    public Announcement(String author, String title, String details)
     {
-        this.announcer = announcer;
-        this.content = content;
+        this.author = author;
+        this.details = details;
+        this.title = title;
     }
 
-    public String getAnnouncer() {
-        return announcer;
+    public String getAuthor() {
+        return author;
     }
-    public String getContent() {
-        return content;
+    public String getDetails() {
+        return details;
     }
 
-
+    public String getTitle() {
+        return title;
+    }
 }

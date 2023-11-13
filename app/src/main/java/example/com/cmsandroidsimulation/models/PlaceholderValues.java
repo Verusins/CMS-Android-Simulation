@@ -1,6 +1,8 @@
 package example.com.cmsandroidsimulation.models;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlaceholderValues {
 
@@ -12,7 +14,10 @@ public class PlaceholderValues {
                 1,
                 "School Fair",
                 "Annual school fair featuring various activities.",
+                "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
                 4.5f,
+                new Date(),
+                new Date(),
                 generateTestComments());
         eventInfoList.add(event1);
 
@@ -20,7 +25,10 @@ public class PlaceholderValues {
                 2,
                 "Science Exhibition",
                 "Showcasing student projects and experiments.",
+                "Poo poo poo poo poo poo poo poo poo poo poo poo poo 2 ",
                 3.8f,
+                new Date(),
+                new Date(),
                 generateTestComments());
         eventInfoList.add(event2);
 
@@ -48,11 +56,13 @@ public class PlaceholderValues {
         ArrayList<Announcement> announcementList = new ArrayList<>();
 
         // Announcement 1
-        Announcement announcement1 = new Announcement("John Doe", "Important announcement!");
+        Announcement announcement1 = new Announcement("John Doe", "Important announcement!",
+                "We are eating donuts.");
         announcementList.add(announcement1);
 
         // Announcement 2
-        Announcement announcement2 = new Announcement("Jane Smith", "Reminder: Event tomorrow.");
+        Announcement announcement2 = new Announcement("Jane Smith", "Reminder: Event tomorrow.",
+                "We are kicking random people.");
         announcementList.add(announcement2);
 
         // Add more announcements as needed

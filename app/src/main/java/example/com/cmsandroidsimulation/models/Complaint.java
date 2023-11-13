@@ -1,5 +1,7 @@
 package example.com.cmsandroidsimulation.models;
 
+import java.util.Date;
+
 public class Complaint{
     private final String username;
     private final String content;

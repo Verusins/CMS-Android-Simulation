@@ -1,6 +1,7 @@
 package example.com.cmsandroidsimulation.presenters;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.models.Announcement;
@@ -48,7 +49,8 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postEvent(EventInfo eventInfo)
+    public CompletableFuture<Void> postEvent(String title, String details, Date startDateTime,
+                                             Date endDateTime)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
@@ -62,7 +64,7 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postAnnouncement(String content)
+    public CompletableFuture<Void> postAnnouncement(String details)
     {
         return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
