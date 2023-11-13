@@ -1,19 +1,9 @@
 package example.com.cmsandroidsimulation.models;
 
-public class EventComment {
-    private final String author;
-    private final String details;
+import example.com.cmsandroidsimulation.presenters.User;
 
-    public EventComment(String username, String content) {
-        this.author = username;
-        this.details = content;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public String getAuthor() {
-        return author;
+public class EventComment extends UserPost {
+    public EventComment(String author, String details) {
+        super(author, null, details);
     }
 }
