@@ -6,6 +6,7 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 
 public class Student extends User {
     private static Student instance;
+
     // TODO: implement api calls
     public static CompletableFuture<Student> Login(String username, String password)
     {
