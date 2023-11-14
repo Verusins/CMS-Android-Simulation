@@ -26,6 +26,8 @@ public class Admin extends User{
     private static FirebaseAuth mAuth = FirebaseAuth.getInstance();;
     private static FirebaseUser user = null;
     private static String udid;
+    private static String admin_username;
+    private static String admin_email;
     private static Admin instance;
     // TODO: implement api calls
 
@@ -64,6 +66,8 @@ public class Admin extends User{
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", true);
+                    admin_username = username;
+                    admin_email = email;
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
