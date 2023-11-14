@@ -68,7 +68,7 @@ public final class LoginFragment extends Fragment{
                 String username = binding.adminLoginUsernameEdit.getText().toString();
                 String password = binding.adminLoginPasswordEdit.getText().toString();
 
-                Admin.SignUp(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                Admin.SignUp("Conrad", username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
