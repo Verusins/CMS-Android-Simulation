@@ -1,34 +1,46 @@
 package example.com.cmsandroidsimulation.presenters;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import example.com.cmsandroidsimulation.models.Announcement;
+import example.com.cmsandroidsimulation.FailedLoginException;
 import example.com.cmsandroidsimulation.models.Complaint;
-import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
+    private static FirebaseAuth mAuth;
+    private static FirebaseUser user;
     private static Admin instance;
     // TODO: implement api calls
-    public static CompletableFuture<Admin> Login(String username, String password)
+
+    public static Task<AuthResult> Login(String username, String password) throws FailedLoginException
     {
-        return CompletableFuture.supplyAsync(() -> {
             // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(username, password);
+        authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    instance = new Admin();
+
+                    user = mAuth.getCurrentUser();
+                } else {
+                    // If sign in fails, display a message to the user.
+                    throw new FailedLoginException();
+                }
             }
-
-            // Simulated data retrieval
-            System.out.println("Admin info fetched from API");
-
-            // throw new FailedLoginException();
-            instance = new Admin();
-            return instance;
         });
+
+        return authResult;
     }
     public static Admin getInstance()
     {

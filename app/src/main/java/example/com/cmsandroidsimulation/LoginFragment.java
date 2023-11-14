@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+
 import example.com.cmsandroidsimulation.databinding.FragmentLoginBinding;
 import example.com.cmsandroidsimulation.presenters.Admin;
 import example.com.cmsandroidsimulation.presenters.Student;
@@ -64,22 +68,20 @@ public final class LoginFragment extends Fragment{
                 String username = binding.adminLoginUsernameEdit.getText().toString();
                 String password = binding.adminLoginPasswordEdit.getText().toString();
 
-                Admin.Login(username, password).thenAccept(
-                        admin -> {
+                Admin.Login(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
                             requireActivity().runOnUiThread(() -> {
                                 NavHostFragment.findNavController(LoginFragment.this).
                                         navigate(R.id.action_loginFragment_to_adminFragment);
                             });
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.e("LOGIN ERROR", "ERROR LOGIN PISS WIPE");
                         }
-                ).exceptionally(throwable -> {
-                    if(throwable instanceof FailedLoginException)
-                    {
-                        // show error message somewhere on the screen
-                        return null;
                     }
-
-                    Log.e("Login Error", throwable.toString());
-                    return null;
                 });
             }
         });
