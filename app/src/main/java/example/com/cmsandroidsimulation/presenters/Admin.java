@@ -16,7 +16,7 @@ import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
-    private static FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();;
     private static FirebaseUser user;
     private static Admin instance;
     // TODO: implement api calls
@@ -32,6 +32,26 @@ public class Admin extends User{
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
 
+                    user = mAuth.getCurrentUser();
+                } else {
+                    // If sign in fails, display a message to the user.
+                    throw new FailedLoginException();
+                }
+            }
+        });
+
+        return authResult;
+    }
+    public static Task<AuthResult> SignUp(String username, String password) throws FailedLoginException
+    {
+        // Simulate an asynchronous API call
+        Task<AuthResult> authResult = mAuth.createUserWithEmailAndPassword(username, password);
+        authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    instance = new Admin();
                     user = mAuth.getCurrentUser();
                 } else {
                     // If sign in fails, display a message to the user.
