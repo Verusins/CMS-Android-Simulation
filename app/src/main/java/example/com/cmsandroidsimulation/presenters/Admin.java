@@ -29,7 +29,7 @@ public class Admin extends User{
     private static Admin instance;
     // TODO: implement api calls
 
-    public static Task<AuthResult> Login(String conrad, String username, String password) throws FailedLoginException
+    public static Task<AuthResult> Login(String email, String username, String password) throws FailedLoginException
     {
             // Simulate an asynchronous API call
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(username, password);
@@ -39,7 +39,6 @@ public class Admin extends User{
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
-
                     user = mAuth.getCurrentUser();
                 } else {
                     // If sign in fails, display a message to the user.
