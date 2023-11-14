@@ -23,7 +23,7 @@ import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
-    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static String udid;
     private static String admin_username;
@@ -42,6 +42,8 @@ public class Admin extends User{
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
                     user = mAuth.getCurrentUser();
+                    admin_username = username;
+                    admin_email = email;
                 } else {
                     // If sign in fails, display a message to the user.
                     throw new FailedLoginException();

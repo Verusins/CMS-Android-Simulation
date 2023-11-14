@@ -37,27 +37,24 @@ public final class LoginFragment extends Fragment{
         binding.studentLoginConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = binding.studentLoginUsernameEdit.getText().toString();
+                String email = binding.studentLoginUsernameEdit.getText().toString();
                 String password = binding.studentLoginPasswordEdit.getText().toString();
 
 
-                Student.Login(username, password).thenAccept(
-                        student -> {
+                Student.SignUp("Conrad", email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
                             requireActivity().runOnUiThread(() -> {
                                 NavHostFragment.findNavController(LoginFragment.this).
                                         navigate(R.id.action_loginFragment_to_studentFragment);
                             });
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.e("LOGIN ERROR", "ERROR LOGIN PISS WIPE");
                         }
-                ).exceptionally(throwable -> {
-                    if(throwable instanceof FailedLoginException)
-                    {
-                        // show error message somewhere on the screen
-                        return null;
                     }
-
-                    Log.e("Login Error", throwable.toString());
-
-                    return null;
                 });
             }
         });
