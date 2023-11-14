@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
-        android:elevation="4dp" />
-
+        android:elevation="4dp"
+        tools:ignore="MissingConstraints" />
+<!---->
 <!--    <TextView-->
 <!--        android:id="@+id/textView"-->
 <!--        android:layout_width="350dp"-->
@@ -38,14 +39,36 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="77dp">
 
-        <TextView
-            android:id="@+id/announcementTitle"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="Announcement Title!"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:layout_gravity="center_vertical">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/ic_info" />
+            <TextView
+                android:id="@+id/announcementTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:includeFontPadding="false"
+                android:text="Announcement Title!"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/closeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="-5dp"
+                android:translationY="-5dp"
+                android:src="@drawable/ic_close"
+                android:clickable="true"
+                android:onClick="onCloseIconClick" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/announcementContent"
             android:layout_width="wrap_content"
@@ -54,23 +77,7 @@
             android:text="This is some random announcement text"
             android:textColor="@color/black"
             android:textSize="12sp" />
-        <!-- Add your content here -->
-
-        <!--        <FrameLayout-->
-        <!--            android:layout_width="199dp"-->
-        <!--            android:layout_height="299dp"-->
-        <!--            android:layout_gravity="center">-->
-
-        <!--            &lt;!&ndash; Background &ndash;&gt;-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="Hello, Wrapper!"-->
-        <!--                android:textSize="18sp"-->
-        <!--                android:textColor="#FFFFFF" />-->
-    </FrameLayout>
-</LinearLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,24 @@
 package example.com.cmsandroidsimulation;
 
 public class Announcement {
-    private String name = "POSt update!";
+    private String title = "POSt update!";
     private String description = "We update some POSt requirement, please check the new POSt" +
             " requirements if you are a first year students and pursuing a degree in CMS.\nThe" +
             " CMS family welcomes everyone!";
 
-    public Announcement(String name, String description) {
-        this.name = name;
+    public Announcement() {}
+
+    public Announcement(String title, String description) {
+        this.title = title;
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
