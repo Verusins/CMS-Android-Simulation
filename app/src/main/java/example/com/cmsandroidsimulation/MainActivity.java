@@ -37,14 +37,6 @@ public final class MainActivity extends AppCompatActivity {
 
         instance = this;
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.fragment_navigation_bar, menu);
-        return true;
-    }
-
     public MainActivity getInstance() {
         return instance;
     };
