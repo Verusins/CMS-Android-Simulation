@@ -148,31 +148,35 @@ public class PostReqFragment extends Fragment {
         view.findViewById(R.id.post_quiz_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    EditText mata31_input = view.findViewById(R.id.post_quiz_q3_mata31_input);
+                    int mata31 = Integer.parseInt(mata31_input.getText().toString());
 
-                EditText mata31_input = view.findViewById(R.id.post_quiz_q3_mata31_input);
-                int mata31 = Integer.parseInt(mata31_input.getText().toString());
+                    EditText mata67_input = view.findViewById(R.id.post_quiz_q3_mata67_input);
+                    int mata67 = Integer.parseInt(mata67_input.getText().toString());
 
-                EditText mata67_input = view.findViewById(R.id.post_quiz_q3_mata67_input);
-                int mata67 = Integer.parseInt(mata67_input.getText().toString());
+                    EditText mata22_input = view.findViewById(R.id.post_quiz_q3_mata22_input);
+                    int mata22 = Integer.parseInt(mata22_input.getText().toString());
 
-                EditText mata22_input = view.findViewById(R.id.post_quiz_q3_mata22_input);
-                int mata22 = Integer.parseInt(mata22_input.getText().toString());
+                    EditText mata37_input = view.findViewById(R.id.post_quiz_q3_mata37_input);
+                    int mata37 = Integer.parseInt(mata37_input.getText().toString());
 
-                EditText mata37_input = view.findViewById(R.id.post_quiz_q3_mata37_input);
-                int mata37 = Integer.parseInt(mata37_input.getText().toString());
+                    EditText csca08_input = view.findViewById(R.id.post_quiz_q3_csca08_input);
+                    int csca08 = Integer.parseInt(csca08_input.getText().toString());
 
-                EditText csca08_input = view.findViewById(R.id.post_quiz_q3_csca08_input);
-                int csca08 = Integer.parseInt(csca08_input.getText().toString());
+                    EditText csca48_input = view.findViewById(R.id.post_quiz_q3_csca48_input);
+                    int csca48 = Integer.parseInt(csca48_input.getText().toString());
 
-                EditText csca48_input = view.findViewById(R.id.post_quiz_q3_csca48_input);
-                int csca48 = Integer.parseInt(csca48_input.getText().toString());
+                    Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
+                    req.setMarks(marks);
 
-                Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
-                req.setMarks(marks);
-
-                Log.i("", req.getTargetPost());
-                Log.i("", req.getAdmissionCategory());
-                Log.i("", req.getMarks().toString());
+                    Log.i("", req.getTargetPost());
+                    Log.i("", req.getAdmissionCategory());
+                    Log.i("", req.getMarks().toString());
+                }
+                catch (Exception e){
+                    Log.i("An error has occured:", e.toString());
+                }
             }
         });
     }
