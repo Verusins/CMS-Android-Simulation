@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+
 import example.com.cmsandroidsimulation.databinding.FragmentLoginStudentBinding;
 import example.com.cmsandroidsimulation.presenters.Student;
 
@@ -35,23 +39,19 @@ public final class LoginStudentFragment extends Fragment{
                 String password = binding.passwordEditText.getText().toString();
 
 
-                Student.Login(username, password).thenAccept(
-                        student -> {
+                Student.Login(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
                             requireActivity().runOnUiThread(() -> {
                                 NavHostFragment.findNavController(LoginStudentFragment.this).
                                         navigate(R.id.action_loginStudentFragment_to_studentFragment);
                             });
+                        } else {
+                            // show error message somewhere on the screen
+                            throw new FailedLoginException();
                         }
-                ).exceptionally(throwable -> {
-                    if(throwable instanceof FailedLoginException)
-                    {
-                        // show error message somewhere on the screen
-                        return null;
                     }
-
-                    Log.e("Login Error", throwable.toString());
-
-                    return null;
                 });
             }
         });
