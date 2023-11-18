@@ -65,7 +65,6 @@
         android:layout_marginTop="16dp"
         android:text="Are you an admin?"
         android:textColor="@color/primary"
-        android:onClick="onClick1"
         android:textSize="16sp"/>
 
     <TextView
