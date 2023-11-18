@@ -41,7 +41,7 @@ public final class LoginFragment extends Fragment{
                         student -> {
                             requireActivity().runOnUiThread(() -> {
                                 NavHostFragment.findNavController(LoginFragment.this).
-                                        navigate(R.id.action_loginFragment_to_studentFragment);
+                                        navigate(R.id.action_loginFragment_to_postReqFragment);
                             });
                         }
                 ).exceptionally(throwable -> {

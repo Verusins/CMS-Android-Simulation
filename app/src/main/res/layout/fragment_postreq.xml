@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20sp"
+            android:gravity="center"
+            android:text="@string/post_title"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/post_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/post_desc"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_title" />
+
+        <TextView
+            android:id="@+id/post_quiz_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20sp"
+            android:gravity="center"
+            android:text="@string/post_quiz_title"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_desc"/>
+
+<!--        Question 1-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_title">
+
+            <TextView
+                android:id="@+id/post_quiz_q1_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:gravity="center"
+                android:text="@string/post_quiz_q1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q1"/>
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/post_quiz_q1_title">
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_cs_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_specialist"/>
+                <RadioButton android:id="@+id/post_quiz_q1_cs_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_major"/>
+                <RadioButton android:id="@+id/post_quiz_q1_cs_minor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_minor"/>
+                <RadioButton android:id="@+id/post_quiz_q1_stats_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_specialist"/>
+                <RadioButton android:id="@+id/post_quiz_q1_stats_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_major"/>
+                <RadioButton android:id="@+id/post_quiz_q1_stats_minor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_minor"/>
+                <RadioButton android:id="@+id/post_quiz_q1_math_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_math_specialist"/>
+                <RadioButton android:id="@+id/post_quiz_q1_math_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_math_major"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+<!--        Question 2-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_q1">
+
+            <TextView
+                android:id="@+id/post_quiz_q2_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:gravity="center"
+                android:text="@string/post_quiz_q2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q2"/>
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/post_quiz_q2_title">
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_cs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_cs"/>
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_stats"/>
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_math"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_math"/>
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_other"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+<!--        Question 3-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_q2">
+
+            <TextView
+                android:id="@+id/post_quiz_q3_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:gravity="center"
+                android:text="@string/post_quiz_q3"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3"/>
+
+            <TextView
+                android:id="@+id/post_quiz_q3_mata31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_mata31"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_title"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_mata31_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/post_quiz_q3_mata67"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_mata67"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata31_input"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_mata67_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/post_quiz_q3_mata22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_mata22"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata67_input"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_mata22_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/post_quiz_q3_mata37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_mata37"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata22_input"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_mata37_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/post_quiz_q3_csca08"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_csca08"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata37_input"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_csca08_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/post_quiz_q3_csca48"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3_csca48"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-condensed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_csca08_input"/>
+
+            <EditText
+                android:id="@+id/post_quiz_q3_csca48_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:background="@drawable/border" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/post_quiz_q3"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:text="@string/submit"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

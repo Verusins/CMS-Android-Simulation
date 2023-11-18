@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_postReqFragment"
+            app:destination="@id/postReqFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -27,4 +30,9 @@
         android:name="example.com.cmsandroidsimulation.StudentFragment"
         android:label="fragment_student"
         tools:layout="@layout/fragment_student" />
+    <fragment
+        android:id="@+id/postReqFragment"
+        android:name="example.com.cmsandroidsimulation.PostReqFragment"
+        android:label="fragment_postreq"
+        tools:layout="@layout/fragment_postreq" />
 </navigation>
