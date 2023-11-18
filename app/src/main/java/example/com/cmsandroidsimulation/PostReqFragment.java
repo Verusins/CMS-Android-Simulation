@@ -152,19 +152,19 @@ public class PostReqFragment extends Fragment {
                     EditText mata31_input = (EditText) view.findViewById(R.id.post_quiz_q3_mata31_input);
                     int mata31 = Integer.parseInt(mata31_input.getText().toString());
 
-                    EditText mata67_input = view.findViewById(R.id.post_quiz_q3_mata67_input);
+                    EditText mata67_input = (EditText) view.findViewById(R.id.post_quiz_q3_mata67_input);
                     int mata67 = Integer.parseInt(mata67_input.getText().toString());
 
-                    EditText mata22_input = view.findViewById(R.id.post_quiz_q3_mata22_input);
+                    EditText mata22_input = (EditText) view.findViewById(R.id.post_quiz_q3_mata22_input);
                     int mata22 = Integer.parseInt(mata22_input.getText().toString());
 
-                    EditText mata37_input = view.findViewById(R.id.post_quiz_q3_mata37_input);
+                    EditText mata37_input = (EditText) view.findViewById(R.id.post_quiz_q3_mata37_input);
                     int mata37 = Integer.parseInt(mata37_input.getText().toString());
 
-                    EditText csca08_input = view.findViewById(R.id.post_quiz_q3_csca08_input);
+                    EditText csca08_input = (EditText) view.findViewById(R.id.post_quiz_q3_csca08_input);
                     int csca08 = Integer.parseInt(csca08_input.getText().toString());
 
-                    EditText csca48_input = view.findViewById(R.id.post_quiz_q3_csca48_input);
+                    EditText csca48_input = (EditText) view.findViewById(R.id.post_quiz_q3_csca48_input);
                     int csca48 = Integer.parseInt(csca48_input.getText().toString());
 
                     Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
