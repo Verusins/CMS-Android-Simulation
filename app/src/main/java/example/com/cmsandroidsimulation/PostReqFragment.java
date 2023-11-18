@@ -149,7 +149,7 @@ public class PostReqFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    EditText mata31_input = view.findViewById(R.id.post_quiz_q3_mata31_input);
+                    EditText mata31_input = (EditText) view.findViewById(R.id.post_quiz_q3_mata31_input);
                     int mata31 = Integer.parseInt(mata31_input.getText().toString());
 
                     EditText mata67_input = view.findViewById(R.id.post_quiz_q3_mata67_input);
@@ -175,7 +175,7 @@ public class PostReqFragment extends Fragment {
                     Log.i("", req.getMarks().toString());
                 }
                 catch (Exception e){
-                    Log.i("An error has occured:", e.toString());
+                    Log.i("An error has occurred:", e.toString());
                 }
             }
         });
