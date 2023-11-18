@@ -179,6 +179,12 @@ public class PostReqFragment extends Fragment {
 
                     post_results.setText(results);
 
+                    binding.postQuizQ2.setVisibility(View.GONE);
+                    binding.postQuizQ3.setVisibility(View.GONE);
+                    binding.postQuizSubmit.setVisibility(View.GONE);
+                    binding.postQuizResults.setVisibility(View.VISIBLE);
+
+
                 }
                 catch (Exception e){
                     Log.i("An error has occurred:", e.toString());
