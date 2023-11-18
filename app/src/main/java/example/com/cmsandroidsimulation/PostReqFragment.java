@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,8 +33,11 @@ public class PostReqFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.postQuizQ2.setVisibility(View.GONE);
         binding.postQuizQ3.setVisibility(View.GONE);
+        binding.postQuizSubmit.setVisibility(View.GONE);
 
         Requirements req = new Requirements();
+
+        // Question 1
         view.findViewById(R.id.post_quiz_q1_cs_specialist).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,12 +54,126 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.post_quiz_q1_cs_minor).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_cs_minor));
                 binding.postQuizQ2.setVisibility(View.VISIBLE);
             }
         });
 
+        view.findViewById(R.id.post_quiz_q1_stats_specialist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_stats_specialist));
+                binding.postQuizQ2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q1_stats_major).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_stats_major));
+                binding.postQuizQ2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q1_stats_minor).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_stats_minor));
+                binding.postQuizQ2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q1_math_specialist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_math_specialist));
+                binding.postQuizQ2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q1_math_major).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setTargetPost(getString(R.string.post_quiz_q1_math_major));
+                binding.postQuizQ2.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+
+        // Question 2
+
+        view.findViewById(R.id.post_quiz_q2_cs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setAdmissionCategory(getString(R.string.post_quiz_q2_cs));
+                binding.postQuizQ3.setVisibility(View.VISIBLE);
+                binding.postQuizSubmit.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q2_stats).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setAdmissionCategory(getString(R.string.post_quiz_q2_stats));
+                binding.postQuizQ3.setVisibility(View.VISIBLE);
+                binding.postQuizSubmit.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q2_math).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setAdmissionCategory(getString(R.string.post_quiz_q2_math));
+                binding.postQuizQ3.setVisibility(View.VISIBLE);
+                binding.postQuizSubmit.setVisibility(View.VISIBLE);
+            }
+        });
+
+        view.findViewById(R.id.post_quiz_q2_other).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                req.setAdmissionCategory(getString(R.string.post_quiz_q2_other));
+                binding.postQuizQ3.setVisibility(View.VISIBLE);
+                binding.postQuizSubmit.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        // Question 3
+
+        view.findViewById(R.id.post_quiz_submit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                EditText mata31_input = view.findViewById(R.id.post_quiz_q3_mata31_input);
+                int mata31 = Integer.parseInt(mata31_input.getText().toString());
+
+                EditText mata67_input = view.findViewById(R.id.post_quiz_q3_mata67_input);
+                int mata67 = Integer.parseInt(mata67_input.getText().toString());
+
+                EditText mata22_input = view.findViewById(R.id.post_quiz_q3_mata22_input);
+                int mata22 = Integer.parseInt(mata22_input.getText().toString());
+
+                EditText mata37_input = view.findViewById(R.id.post_quiz_q3_mata37_input);
+                int mata37 = Integer.parseInt(mata37_input.getText().toString());
+
+                EditText csca08_input = view.findViewById(R.id.post_quiz_q3_csca08_input);
+                int csca08 = Integer.parseInt(csca08_input.getText().toString());
+
+                EditText csca48_input = view.findViewById(R.id.post_quiz_q3_csca48_input);
+                int csca48 = Integer.parseInt(csca48_input.getText().toString());
+
+                Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
+                req.setMarks(marks);
+
+                Log.i("", req.getTargetPost());
+                Log.i("", req.getAdmissionCategory());
+                Log.i("", req.getMarks().toString());
+            }
+        });
     }
 }
