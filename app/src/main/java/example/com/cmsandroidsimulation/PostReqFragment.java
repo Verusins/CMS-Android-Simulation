@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import example.com.cmsandroidsimulation.databinding.FragmentPostreqBinding;
 
 public class PostReqFragment extends Fragment {
     private FragmentPostreqBinding binding;
+    private TextView post_results;
 
     @Override
     public View onCreateView(
@@ -23,6 +25,7 @@ public class PostReqFragment extends Fragment {
     ) {
 
         binding = FragmentPostreqBinding.inflate(inflater, container, false);
+        post_results = binding.postQuizResultsDesc;
         return binding.getRoot();
 
 
@@ -34,6 +37,7 @@ public class PostReqFragment extends Fragment {
         binding.postQuizQ2.setVisibility(View.GONE);
         binding.postQuizQ3.setVisibility(View.GONE);
         binding.postQuizSubmit.setVisibility(View.GONE);
+        binding.postQuizResults.setVisibility(View.GONE);
 
         Requirements req = new Requirements();
 
@@ -149,6 +153,7 @@ public class PostReqFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
+//                    binding.postQuizQ3Mata31Input.getText()
                     EditText mata31_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata31_input);
                     int mata31 = Integer.parseInt(mata31_input.getText().toString());
 
@@ -170,9 +175,10 @@ public class PostReqFragment extends Fragment {
                     Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
                     req.setMarks(marks);
 
-                    Log.i("", req.getTargetPost());
-                    Log.i("", req.getAdmissionCategory());
-                    Log.i("", req.getMarks().toString());
+                    String results = req.calculatePostResult(getContext());
+
+                    post_results.setText(results);
+
                 }
                 catch (Exception e){
                     Log.i("An error has occurred:", e.toString());

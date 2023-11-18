@@ -330,6 +330,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@id/post_quiz_submit_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -345,6 +346,40 @@
                 android:text="@string/submit"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/post_quiz_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_submit_layout">
+
+            <TextView
+                android:id="@+id/post_quiz_results_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:gravity="center"
+                android:text="@string/post_results_title"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-condensed">
+            </TextView>
+
+            <TextView
+                android:id="@+id/post_quiz_results_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/post_results"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

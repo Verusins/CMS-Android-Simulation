@@ -46,6 +46,8 @@
 
     <string name="submit">Submit</string>
 
+    <string name="post_results_title">Here Are Your Results</string>
+    <string name="post_results">placeholder</string>
     <string name="post_results_pass">Pass</string>
     <string name="post_results_fail">Fail</string>
     <string name="post_results_conditional_pass">Conditional Pass</string>
