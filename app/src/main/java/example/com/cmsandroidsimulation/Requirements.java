@@ -66,13 +66,13 @@ public class Requirements {
 
         double cGPA = marks.getCGPA();
 
-        if (!marks.passedAll()) return c.getString(R.string.post_results_fail);
-
         if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_minor))){
             if (marks.passedAllAndA08()) return c.getString(R.string.post_results_in_cms_condition);
         }
 
         if (targetPost.equals(c.getString(R.string.post_quiz_q1_stats_minor))) return c.getString(R.string.post_results_pass);
+
+        if (!marks.passedAll()) return c.getString(R.string.post_results_fail);
 
         if (sameAdmissionCategory()){
             if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_specialist)) || targetPost.equals(c.getString(R.string.post_quiz_q1_cs_major))){

@@ -155,41 +155,79 @@ public class PostReqFragment extends Fragment {
                 try {
 //                    binding.postQuizQ3Mata31Input.getText()
                     EditText mata31_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata31_input);
-                    int mata31 = Integer.parseInt(mata31_input.getText().toString());
-
                     EditText mata67_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata67_input);
-                    int mata67 = Integer.parseInt(mata67_input.getText().toString());
-
                     EditText mata22_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata22_input);
-                    int mata22 = Integer.parseInt(mata22_input.getText().toString());
-
                     EditText mata37_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata37_input);
-                    int mata37 = Integer.parseInt(mata37_input.getText().toString());
-
                     EditText csca08_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_csca08_input);
-                    int csca08 = Integer.parseInt(csca08_input.getText().toString());
-
                     EditText csca48_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_csca48_input);
-                    int csca48 = Integer.parseInt(csca48_input.getText().toString());
 
-                    Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
-                    req.setMarks(marks);
+                    if (mata31_input.getText().toString().equals("")
+                            || mata67_input.getText().toString().equals("")
+                            || mata22_input.getText().toString().equals("")
+                            || mata37_input.getText().toString().equals("")
+                            || csca08_input.getText().toString().equals("")
+                            || csca48_input.getText().toString().equals("")){
 
-                    String results = req.calculatePostResult(getContext());
+                        Toast myToast = Toast.makeText(getActivity(), getContext().getString(R.string.NaN_input_error), Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+                    else {
+                        int mata31 = Integer.parseInt(mata31_input.getText().toString());
+                        int mata67 = Integer.parseInt(mata67_input.getText().toString());
+                        int mata22 = Integer.parseInt(mata22_input.getText().toString());
+                        int mata37 = Integer.parseInt(mata37_input.getText().toString());
+                        int csca08 = Integer.parseInt(csca08_input.getText().toString());
+                        int csca48 = Integer.parseInt(csca48_input.getText().toString());
 
-                    post_results.setText(results);
+                        if (!(0 <= mata31 && mata31 <= 100
+                                && 0 <= mata67 && mata67 <= 100
+                                && 0 <= mata22 && mata22 <= 100
+                                && 0 <= mata37 && mata37 <= 100
+                                && 0 <= csca08 && csca08 <= 100
+                                && 0 <= csca48 && csca48 <= 100))
+                        {
+                            Toast myToast = Toast.makeText(getActivity(), getContext().getString(R.string.mark_input_out_of_bounds), Toast.LENGTH_SHORT);
+                            myToast.show();
+                        }
+                        else {
 
-                    binding.postQuizQ1.setVisibility(View.GONE);
-                    binding.postQuizQ2.setVisibility(View.GONE);
-                    binding.postQuizQ3.setVisibility(View.GONE);
-                    binding.postQuizSubmit.setVisibility(View.GONE);
-                    binding.postQuizResults.setVisibility(View.VISIBLE);
+                            Marks marks = new Marks(mata31, mata67, mata22, mata37, csca08, csca48);
+
+                            req.setMarks(marks);
+
+                            Log.i("check", marks.toString());
+
+                            String results = req.calculatePostResult(getContext());
+
+                            post_results.setText(results);
+
+                            binding.postQuizTitle.setVisibility(View.GONE);
+                            binding.postQuizQ1.setVisibility(View.GONE);
+                            binding.postQuizQ2.setVisibility(View.GONE);
+                            binding.postQuizQ3.setVisibility(View.GONE);
+                            binding.postQuizSubmit.setVisibility(View.GONE);
+                            binding.postQuizResults.setVisibility(View.VISIBLE);
+                        }
+                    }
 
 
                 }
                 catch (Exception e){
                     Log.i("An error has occurred:", e.toString());
                 }
+            }
+        });
+
+        view.findViewById(R.id.retake_post_quiz).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.postQuizTitle.setVisibility(View.VISIBLE);
+                binding.postQuizQ1.setVisibility(View.VISIBLE);
+                binding.postQuizResults.setVisibility(View.GONE);
+
+                req.setTargetPost(null);
+                req.setAdmissionCategory(null);
+                req.setMarks(null);
             }
         });
     }

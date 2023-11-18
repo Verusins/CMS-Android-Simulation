@@ -54,5 +54,9 @@
     <string name="post_results_stats_specialist_note">For the Machine Learning and Data Science stream only: a final grade of at least B in CSCA48H3</string>
     <string name="post_results_in_cms_condition">Admission will be based on academic performance in the required A-level courses, identified above. The admission requirements change each year depending on available spaces and the pool of eligible applicants, and students are cautioned that there is no guarantee of admission; as such, students are strongly advised to plan to enroll in backup programs.</string>
 
+    <string name="retake_post_quiz">Retake Quiz</string>
+
+    <string name="NaN_input_error">Please enter a mark for all the listed courses</string>
+    <string name="mark_input_out_of_bounds">Please enter a mark between 0 and 100</string>
 
 </resources>
