@@ -7,5 +7,6 @@
     tools:context=".StudentFragment">
 
 
-        <include layout="@layout/fragment_dashboard_student"/>
+        <include layout="@layout/fragment_dashboard_student"
+            android:id="@+id/dashboard_student"/>
 </androidx.core.widget.NestedScrollView>
