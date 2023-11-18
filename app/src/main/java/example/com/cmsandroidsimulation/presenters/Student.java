@@ -28,9 +28,9 @@ public class Student extends User {
     private static Student instance;
 
     // TODO: implement api calls
-    public static Task<AuthResult> Login(String email, String username, String password)
+    public static Task<AuthResult> Login(String email, String password)
     {
-        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(username, password);
+        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
         authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -38,7 +38,7 @@ public class Student extends User {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Student();
                     user = mAuth.getCurrentUser();
-                    student_username = username;
+                    // student_username = "";
                     student_email = email;
                 } else {
                     // If sign in fails, display a message to the user.
