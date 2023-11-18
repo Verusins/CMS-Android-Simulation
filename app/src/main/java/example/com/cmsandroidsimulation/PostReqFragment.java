@@ -179,6 +179,7 @@ public class PostReqFragment extends Fragment {
 
                     post_results.setText(results);
 
+                    binding.postQuizQ1.setVisibility(View.GONE);
                     binding.postQuizQ2.setVisibility(View.GONE);
                     binding.postQuizQ3.setVisibility(View.GONE);
                     binding.postQuizSubmit.setVisibility(View.GONE);
