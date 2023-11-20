@@ -132,8 +132,7 @@
                     android:text="Nov 18, 2023 by S"
                     android:layout_marginLeft="120dp"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 

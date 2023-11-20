@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".StudentFragment">
 
-
-        <include layout="@layout/fragment_dashboard_student"
-            android:id="@+id/dashboard_student"/>
+        <fragment
+            android:id="@+id/dashboard_board"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="example.com.cmsandroidsimulation.DashboardStudentFragment"
+            tools:layout="@layout/fragment_dashboard_student" />
 </androidx.core.widget.NestedScrollView>
