@@ -126,7 +126,7 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postAnnouncement(String details)
+    public FirebaseFirestore postAnnouncement(String details)
     {
         Map<String, Object> announcement = new HashMap<>();
         announcement.put("details", details);
