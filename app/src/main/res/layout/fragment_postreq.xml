@@ -20,13 +20,12 @@
             android:id="@+id/post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:paddingTop="20sp"
             android:text="@string/post_title"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:background="@color/primary"
+            android:background="@drawable/rounded_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
-            android:fontFamily="sans-serif-condensed"
             android:text="@string/post_desc"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
@@ -48,13 +46,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
-            android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:paddingTop="20sp"
             android:text="@string/post_quiz_title"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:background="@color/primary"
+            android:background="@drawable/rounded_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/post_desc" />
 
@@ -71,7 +68,6 @@
                 android:id="@+id/post_quiz_q1_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
                 android:paddingTop="20sp"
                 android:text="@string/post_quiz_q1"
                 android:textColor="@color/black"
@@ -160,7 +156,6 @@
                 android:id="@+id/post_quiz_q2_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
                 android:paddingTop="20sp"
                 android:text="@string/post_quiz_q2"
                 android:textColor="@color/black"
@@ -221,7 +216,6 @@
                 android:id="@+id/post_quiz_q3_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
                 android:paddingTop="20sp"
                 android:text="@string/post_quiz_q3"
                 android:textColor="@color/black"
@@ -229,126 +223,199 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/post_quiz_q3" />
 
-            <TextView
-                android:id="@+id/post_quiz_q3_mata31"
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata31_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_mata31"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_title" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_title">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_mata31_input"
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata31"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata31_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"
+                    android:layout_weight="2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata67_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/post_quiz_q3_mata67"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_mata67"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata31_input" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata31_layout">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_mata67_input"
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata67"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata67"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata67_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata22_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/post_quiz_q3_mata22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_mata22"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata67_input" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata67_layout">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_mata22_input"
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata22"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata22_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata37_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/post_quiz_q3_mata37"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_mata37"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata22_input" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata22_layout">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_mata37_input"
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata37"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata37"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata37_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_csca08_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/post_quiz_q3_csca08"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_csca08"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata37_input" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata37_layout">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_csca08_input"
+                <TextView
+                    android:id="@+id/post_quiz_q3_csca08"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_csca08"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_csca08_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_csca48_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/post_quiz_q3_csca48"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingTop="20sp"
-                android:text="@string/post_quiz_q3_csca48"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_csca08_input" />
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_csca08_layout">
 
-            <EditText
-                android:id="@+id/post_quiz_q3_csca48_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:inputType="number"
-                android:paddingBottom="5dp" />
+                <TextView
+                    android:id="@+id/post_quiz_q3_csca48"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_csca48"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_csca48_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -385,20 +452,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30sp"
-                android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
                 android:paddingTop="20sp"
                 android:text="@string/post_results_title"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:background="@color/primary"></TextView>
+                android:background="@drawable/rounded_border"></TextView>
 
             <TextView
                 android:id="@+id/post_quiz_results_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="@string/post_results"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
