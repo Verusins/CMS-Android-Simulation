@@ -51,7 +51,7 @@ public class DashboardStudentFragment extends Fragment {
         for(Announcement announcement: announcementsSource) {
             View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
             String title = announcement.getTitle(), content = announcement.getDetails();
-//            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) childView.getLayoutParams();
+//            LinearLayout .LayoutParams layoutParams = (LinearLayout.LayoutParams) childView.getLayoutParams();
 
             TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
             TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
@@ -59,7 +59,7 @@ public class DashboardStudentFragment extends Fragment {
             titleTextView.setText(title);
             contentTextView.setText(content);
 
-//            layoutParams.topMargin = 100*index + 20;
+//            Log.i("test", layoutParams.toString());
 
             childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,13 +73,14 @@ public class DashboardStudentFragment extends Fragment {
         }
 
 //        Event from db
-        //        List Announcements from database
+        //        List Events from database
         final RelativeLayout eventParentWrapper = binding.events;
         ArrayList<EventInfo> eventsSource = PlaceholderValues.generateTestEventInfoList();
+        int index2 = 0;
         for(EventInfo event: eventsSource) {
             View childView = getLayoutInflater().inflate(R.layout.event_item, null);
             String title = event.getTitle(), content = event.getDetails();
-//            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) childView.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) childView.getLayoutParams();
 
             TextView titleTextView = childView.findViewById(R.id.event_title);
             TextView contentTextView = childView.findViewById(R.id.event_content);
@@ -87,9 +88,14 @@ public class DashboardStudentFragment extends Fragment {
             titleTextView.setText(title);
             contentTextView.setText(content);
 
-//            layoutParams.topMargin = 100*index2 + 20;
+            if(layoutParams != null) {
+                layoutParams.topMargin = 200*index2 + 20;
+            }else{
+                Log.i("test", "bruh");
+            }
 
-            announcementParentWrapper.addView(childView);
+            eventParentWrapper.addView(childView);
+            index2 ++;
         }
 
 

@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/event_item"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:clipToPadding="false"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints" >
 
         <View
             android:layout_width="165dp"
@@ -23,6 +24,7 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:paddingLeft="20dp"
             android:text="This is an Event"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -33,9 +35,10 @@
             android:layout_width="165dp"
             android:layout_height="130dp"
             android:layout_alignParentRight="true"
+            android:paddingLeft="20dp"
             android:text="This is the description of the event"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:translationY="20dp"/>
+            android:translationY="20dp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
