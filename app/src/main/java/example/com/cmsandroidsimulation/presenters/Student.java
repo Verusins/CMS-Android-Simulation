@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -89,17 +91,24 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content)
+    public FirebaseFirestore postEventComment(EventInfo eventInfo, String content)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("events")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("YESSIR", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w("NOOOO", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        return db;
     }
     // TODO: implement api calls
     public CompletableFuture<Void> postEventRating(EventInfo eventInfo, int rating)

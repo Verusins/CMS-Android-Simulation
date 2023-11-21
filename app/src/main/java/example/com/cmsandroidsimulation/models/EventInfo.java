@@ -12,8 +12,9 @@ public class EventInfo extends UserPost{
     private final ArrayList<EventComment> comments;
     private final Date eventStartDateTime;
     private final Date eventEndDateTime;
+    private final String eventid;
 
-    public EventInfo(int id, String author, String title, String details, float rating,
+    public EventInfo(String eventid, int id, String author, String title, String details, float rating,
                      Date eventStartDateTime, Date eventEndDateTime,
                      ArrayList<EventComment> comments)
     {
@@ -23,10 +24,15 @@ public class EventInfo extends UserPost{
         this.comments = comments;
         this.eventStartDateTime = eventStartDateTime;
         this.eventEndDateTime = eventEndDateTime;
+        this.eventid = eventid;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getEventid(){
+        return eventid;
     }
 
     public float getRating() {
