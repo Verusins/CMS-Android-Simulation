@@ -1,5 +1,6 @@
 package example.com.cmsandroidsimulation;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ public class PostReqFragment extends Fragment {
     private FragmentPostreqBinding binding;
     private TextView post_results;
 
+    private TextView post_results_desc;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -25,7 +28,8 @@ public class PostReqFragment extends Fragment {
     ) {
 
         binding = FragmentPostreqBinding.inflate(inflater, container, false);
-        post_results = binding.postQuizResultsDesc;
+        post_results = binding.postQuizResultsBanner;
+        post_results_desc = binding.postQuizResultsDesc;
         return binding.getRoot();
 
 
@@ -153,31 +157,24 @@ public class PostReqFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-//                    binding.postQuizQ3Mata31Input.getText()
-                    EditText mata31_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata31_input);
-                    EditText mata67_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata67_input);
-                    EditText mata22_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata22_input);
-                    EditText mata37_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_mata37_input);
-                    EditText csca08_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_csca08_input);
-                    EditText csca48_input = (EditText) view.getRootView().findViewById(R.id.post_quiz_q3_csca48_input);
 
-                    if (mata31_input.getText().toString().equals("")
-                            || mata67_input.getText().toString().equals("")
-                            || mata22_input.getText().toString().equals("")
-                            || mata37_input.getText().toString().equals("")
-                            || csca08_input.getText().toString().equals("")
-                            || csca48_input.getText().toString().equals("")){
+                    if (binding.postQuizQ3Mata31Input.getText().toString().equals("")
+                            || binding.postQuizQ3Mata67Input.getText().toString().equals("")
+                            || binding.postQuizQ3Mata22Input.getText().toString().equals("")
+                            || binding.postQuizQ3Mata37Input.getText().toString().equals("")
+                            || binding.postQuizQ3Csca08Input.getText().toString().equals("")
+                            || binding.postQuizQ3Csca48Input.getText().toString().equals("")){
 
                         Toast myToast = Toast.makeText(getActivity(), getContext().getString(R.string.NaN_input_error), Toast.LENGTH_SHORT);
                         myToast.show();
                     }
                     else {
-                        int mata31 = Integer.parseInt(mata31_input.getText().toString());
-                        int mata67 = Integer.parseInt(mata67_input.getText().toString());
-                        int mata22 = Integer.parseInt(mata22_input.getText().toString());
-                        int mata37 = Integer.parseInt(mata37_input.getText().toString());
-                        int csca08 = Integer.parseInt(csca08_input.getText().toString());
-                        int csca48 = Integer.parseInt(csca48_input.getText().toString());
+                        int mata31 = Integer.parseInt(binding.postQuizQ3Mata31Input.getText().toString());
+                        int mata67 = Integer.parseInt(binding.postQuizQ3Mata67Input.getText().toString());
+                        int mata22 = Integer.parseInt(binding.postQuizQ3Mata22Input.getText().toString());
+                        int mata37 = Integer.parseInt(binding.postQuizQ3Mata37Input.getText().toString());
+                        int csca08 = Integer.parseInt(binding.postQuizQ3Csca08Input.getText().toString());
+                        int csca48 = Integer.parseInt(binding.postQuizQ3Csca48Input.getText().toString());
 
                         if (!(0 <= mata31 && mata31 <= 100
                                 && 0 <= mata67 && mata67 <= 100
@@ -197,9 +194,18 @@ public class PostReqFragment extends Fragment {
 
                             Log.i("check", marks.toString());
 
-                            String results = req.calculatePostResult(getContext());
+                            String[] results = req.calculatePostResult(getContext());
 
-                            post_results.setText(results);
+                            if (results[0].equals(getContext().getString(R.string.post_results_pass))){
+                                post_results.setBackgroundColor(getContext().getColor(R.color.accept));
+                            }else if (results[0].equals(getContext().getString(R.string.post_results_conditional_pass))){
+                                post_results.setBackgroundColor(getContext().getColor(R.color.yellow));
+                            }else{
+                                post_results.setBackgroundColor(getContext().getColor(R.color.warning));
+                            }
+
+                            post_results.setText(results[0]);
+                            post_results_desc.setText(results[1]);
 
                             binding.postQuizTitle.setVisibility(View.GONE);
                             binding.postQuizQ1.setVisibility(View.GONE);

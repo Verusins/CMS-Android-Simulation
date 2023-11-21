@@ -460,6 +460,18 @@
                 android:background="@drawable/rounded_border"></TextView>
 
             <TextView
+                android:id="@+id/post_quiz_results_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/post_results"
+                android:textColor="@color/black"
+                android:background="@color/yellow"
+                android:textSize="16sp" />
+
+            <TextView
                 android:id="@+id/post_quiz_results_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -473,6 +485,7 @@
                 android:id="@+id/retake_post_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/primary"
                 android:text="@string/retake_post_quiz" />
 
