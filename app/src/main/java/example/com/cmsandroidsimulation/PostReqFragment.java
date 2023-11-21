@@ -208,9 +208,11 @@ public class PostReqFragment extends Fragment {
                             post_results_desc.setText(results[1]);
 
                             binding.postQuizTitle.setVisibility(View.GONE);
+
                             binding.postQuizQ1.setVisibility(View.GONE);
                             binding.postQuizQ2.setVisibility(View.GONE);
                             binding.postQuizQ3.setVisibility(View.GONE);
+
                             binding.postQuizSubmit.setVisibility(View.GONE);
                             binding.postQuizResults.setVisibility(View.VISIBLE);
                         }
@@ -230,6 +232,17 @@ public class PostReqFragment extends Fragment {
                 binding.postQuizTitle.setVisibility(View.VISIBLE);
                 binding.postQuizQ1.setVisibility(View.VISIBLE);
                 binding.postQuizResults.setVisibility(View.GONE);
+
+
+                binding.postQuizQ1Options.clearCheck();
+                binding.postQuizQ2Options.clearCheck();
+
+                binding.postQuizQ3Mata31Input.setText(null);
+                binding.postQuizQ3Mata67Input.setText(null);
+                binding.postQuizQ3Mata22Input.setText(null);
+                binding.postQuizQ3Mata37Input.setText(null);
+                binding.postQuizQ3Csca08.setText(null);
+                binding.postQuizQ3Csca08.setText(null);
 
                 req.setTargetPost(null);
                 req.setAdmissionCategory(null);

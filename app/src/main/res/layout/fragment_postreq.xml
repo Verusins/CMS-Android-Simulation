@@ -77,6 +77,7 @@
 
 
             <RadioGroup
+                android:id="@+id/post_quiz_q1_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -165,6 +166,7 @@
 
 
             <RadioGroup
+                android:id="@+id/post_quiz_q2_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
