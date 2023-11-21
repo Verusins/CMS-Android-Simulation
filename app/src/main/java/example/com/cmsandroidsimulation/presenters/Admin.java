@@ -106,31 +106,39 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postEvent(String title, String details, Date startDateTime,
+    public FirebaseFirestore postEvent(String title, String details, Date startDateTime,
                                              Date endDateTime)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        Map<String, Object> event = new HashMap<>();
+        event.put("title", title);
+        event.put("details", details);
+        event.put("startDateTime", startDateTime);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("events")
+                .add(event)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                });
+        return db;
     }
 
     // TODO: implement API calls
     public CompletableFuture<Void> postAnnouncement(String details)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        Map<String, Object> announcement = new HashMap<>();
+        announcement.put("details", details);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("announcements")
+                .add(announcement)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                });
+        return db;
     }
 }
