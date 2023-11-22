@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/event_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="40dp"
+    android:layout_marginVertical="10dp"
+    android:clipToPadding="false"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/event_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints" >
-
-        <View
-            android:layout_width="165dp"
-            android:layout_height="150dp"
-            android:background="@color/primary" />
-
+    <View
+        android:layout_width="165dp"
+        android:layout_height="150dp"
+        android:background="@color/primary" />
+    <LinearLayout
+        android:layout_width="165dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
         <TextView
-            android:id="@id/event_title"
+            android:id="@+id/event_title"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:paddingLeft="20dp"
             android:text="This is an Event"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
-
         <TextView
             android:id="@+id/event_content"
             android:layout_width="165dp"
-            android:layout_height="130dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:paddingLeft="20dp"
             android:text="This is the description of the event"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:translationY="20dp" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_alignParentBottom="true"/>
+    </LinearLayout>
+</RelativeLayout>

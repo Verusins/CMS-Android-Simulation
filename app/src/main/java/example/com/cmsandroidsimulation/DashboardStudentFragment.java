@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.events.Event;
 
@@ -26,6 +28,9 @@ import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class DashboardStudentFragment extends Fragment {
     FragmentDashboardStudentBinding binding;
+    EventAdapter adapter;
+    ArrayList<EventInfo> eventList = PlaceholderValues.generateTestEventInfoList();
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -74,29 +79,33 @@ public class DashboardStudentFragment extends Fragment {
 
 //        Event from db
         //        List Events from database
-        final RelativeLayout eventParentWrapper = binding.events;
-        ArrayList<EventInfo> eventsSource = PlaceholderValues.generateTestEventInfoList();
-        int index2 = 0;
-        for(EventInfo event: eventsSource) {
-            View childView = getLayoutInflater().inflate(R.layout.event_item, null);
-            String title = event.getTitle(), content = event.getDetails();
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) childView.getLayoutParams();
-
-            TextView titleTextView = childView.findViewById(R.id.event_title);
-            TextView contentTextView = childView.findViewById(R.id.event_content);
-
-            titleTextView.setText(title);
-            contentTextView.setText(content);
-
-            if(layoutParams != null) {
-                layoutParams.topMargin = 200*index2 + 20;
-            }else{
-                Log.i("test", "bruh");
-            }
-
-            eventParentWrapper.addView(childView);
-            index2 ++;
-        }
+//        final RelativeLayout eventParentWrapper = binding.events;
+//        ArrayList<EventInfo> eventsSource = PlaceholderValues.generateTestEventInfoList();
+//        int index2 = 0;
+//        for(EventInfo event: eventsSource) {
+//            View childView = getLayoutInflater().inflate(R.layout.event_item, null);
+//            String title = event.getTitle(), content = event.getDetails();
+//            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) childView.getLayoutParams();
+//
+//            TextView titleTextView = childView.findViewById(R.id.event_title);
+//            TextView contentTextView = childView.findViewById(R.id.event_content);
+//
+//            titleTextView.setText(title);
+//            contentTextView.setText(content);
+//
+//            if(layoutParams != null) {
+//                layoutParams.topMargin = 200*index2 + 20;
+//            }else{
+//                Log.i("test", "bruh");
+//            }
+//
+//            eventParentWrapper.addView(childView);
+//            index2 ++;
+//        }
+        RecyclerView recyclerView = binding.RecyclerView;
+        adapter = new EventAdapter(eventList, getContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
 

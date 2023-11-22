@@ -239,51 +239,12 @@
 
 
     <!--    Event-->
-    <RelativeLayout
-        android:id="@+id/events"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/upcoming">
-        <RelativeLayout
-            android:id="@+id/event"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:clipToPadding="false"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="165dp"
-                android:layout_height="150dp"
-                android:background="@color/primary" />
-
-            <TextView
-                android:id="@id/event_title"
-                android:layout_width="165dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="This is an Event"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/event_content"
-                android:layout_width="165dp"
-                android:layout_height="130dp"
-                android:layout_alignParentRight="true"
-                android:text="This is the description of the event"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:translationY="20dp"
-                app:layout_constraintTop_toBottomOf="@id/event_title" />
-        </RelativeLayout>
-    </RelativeLayout>
-
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/upcoming"/>
 
     <!--    BottomLine-->
     <RelativeLayout
@@ -292,7 +253,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/events">
+        app:layout_constraintTop_toBottomOf="@id/RecyclerView">
 
         <View
             android:id="@+id/divider"
