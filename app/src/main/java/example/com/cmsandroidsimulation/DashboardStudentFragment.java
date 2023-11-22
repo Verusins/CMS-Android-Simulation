@@ -109,7 +109,6 @@ public class DashboardStudentFragment extends Fragment {
 
 
 
-
 //        Open Sidebar
         binding.menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override

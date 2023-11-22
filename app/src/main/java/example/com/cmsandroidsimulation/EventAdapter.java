@@ -46,13 +46,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
-//        TextView authorTextView;
+        TextView authorTextView;
         TextView contentTextView;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.event_title);
-//            authorTextView = itemView.findViewById(R.id.event_author);
+            authorTextView = itemView.findViewById(R.id.event_author);
             contentTextView = itemView.findViewById(R.id.event_content);
         }
     }
