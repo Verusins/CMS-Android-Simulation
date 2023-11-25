@@ -4,17 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-
 import example.com.cmsandroidsimulation.databinding.FragmentEventBinding;
-import example.com.cmsandroidsimulation.databinding.FragmentEventMainBinding;
+import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
@@ -36,7 +33,7 @@ public class EventFragment extends Fragment {
 //        Display Placeholder Event Details
         final RelativeLayout eventParentWrapper = binding.eventMain;
         final EventInfo eventSource = PlaceholderValues.generateTestEventInfoSingle();
-        View childView = getLayoutInflater().inflate(R.layout.fragment_event_main, null);
+        View childView = getLayoutInflater().inflate(R.layout.fragment_event_student, null);
         TextView titleTextView = childView.findViewById(R.id.event_title);
         TextView authorTextView = childView.findViewById(R.id.event_author);
         TextView contentTextView = childView.findViewById(R.id.event_content);

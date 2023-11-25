@@ -1,6 +1,8 @@
 package example.com.cmsandroidsimulation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         holder.titleTextView.setText(event.getTitle());
         holder.contentTextView.setText(event.getDetails());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("test","entered onClick");
+                // Navigate to another activity
+                Intent intent = new Intent(context, StudentEventActivity.class);
+                Log.i("test","created Intent");
+                // You can also pass data to the new activity using intent.putExtra()
+                context.startActivity(intent);
+                Log.i("test","started Activity");
+            }
+        });
     }
 
     @Override
