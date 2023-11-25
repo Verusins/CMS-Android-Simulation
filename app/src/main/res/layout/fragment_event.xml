@@ -51,7 +51,7 @@
      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
 
     <LinearLayout
-        android:id="@+id/sidebar_RSVP"
+        android:id="@+id/event_RSVP"
         android:layout_width="335dp"
         android:layout_height="35dp"
         android:layout_alignParentBottom="true"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/event_content">
 
         <TextView
-            android:id="@+id/sidebar_logout_content"
+            android:id="@+id/event_RSVP_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-3dp"
@@ -74,10 +74,87 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/event_registered_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is the bottom line"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="8sp"
+        app:layout_constraintTop_toBottomOf="@id/event_content" />
+
+    <LinearLayout
+        android:id="@+id/event_write_comment_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_registered_text">
+
+        <LinearLayout
+            android:id="@+id/comment_write_comment"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/rounded_background"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/comment_content_write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Write your comments here"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/comment_write_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="★★★★☆"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/comment_write_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:gravity="right"
+                    android:text="Post"
+                    android:background="@drawable/rounded_background_colored"
+                    android:layout_marginLeft="180dp"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp"
+                    android:translationY="-2dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
         android:id="@+id/comment_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sidebar_RSVP"
+        app:layout_constraintTop_toBottomOf="@+id/event_write_comment_wrapper"
         android:text="Comments"
         android:paddingLeft="40dp"
         android:textSize="20dp"

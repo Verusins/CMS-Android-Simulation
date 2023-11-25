@@ -42,13 +42,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("test","entered onClick");
                 // Navigate to another activity
                 Intent intent = new Intent(context, StudentEventActivity.class);
-                Log.i("test","created Intent");
                 // You can also pass data to the new activity using intent.putExtra()
                 context.startActivity(intent);
-                Log.i("test","started Activity");
             }
         });
     }

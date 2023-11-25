@@ -10,7 +10,7 @@ public class StudentEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("Test","The last Log");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_event_student);
+        setContentView(R.layout.fragment_event);
 
         // Add the fragment to the activity
 //        getSupportFragmentManager().beginTransaction()
