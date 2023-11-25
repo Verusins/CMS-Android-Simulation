@@ -31,10 +31,10 @@ public class Admin extends User{
     private static Admin instance;
     // TODO: implement api calls
 
-    public static Task<AuthResult> Login(String email, String username, String password) throws FailedLoginException
+    public static Task<AuthResult> Login(String email, String password) throws FailedLoginException
     {
             // Simulate an asynchronous API call
-        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(username, password);
+        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
         authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -42,18 +42,20 @@ public class Admin extends User{
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
                     user = mAuth.getCurrentUser();
-                    admin_username = username;
+                    // admin_username = username; // query from database
                     admin_email = email;
                 } else {
+
+                    Log.e("Master APP", "Login failed");
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    // throw new FailedLoginException();
                 }
             }
         });
 
         return authResult;
     }
-    public static Task<AuthResult> SignUp(String username, String email, String password) throws FailedLoginException
+    public static Task<AuthResult> Register(String username, String email, String password) throws FailedLoginException
     {
         // Simulate an asynchronous API call
         Task<AuthResult> authResult = mAuth.createUserWithEmailAndPassword(email, password);
@@ -81,7 +83,7 @@ public class Admin extends User{
                             });
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("Master APP", "Register failed");
                 }
             }
         });
@@ -106,31 +108,39 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postEvent(String title, String details, Date startDateTime,
+    public Task<DocumentReference> postEvent(String title, String details, Date startDateTime,
                                              Date endDateTime)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        Map<String, Object> event = new HashMap<>();
+        event.put("title", title);
+        event.put("details", details);
+        event.put("startDateTime", startDateTime);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<DocumentReference> task = db.collection("events")
+                .add(event);
+        task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                });
+        return task;
     }
 
     // TODO: implement API calls
-    public CompletableFuture<Void> postAnnouncement(String details)
+    public Task<DocumentReference> postAnnouncement(String details)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        Map<String, Object> announcement = new HashMap<>();
+        announcement.put("details", details);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<DocumentReference> task = db.collection("announcements")
+                .add(announcement);
+        task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                });
+        return task;
     }
 }

@@ -11,10 +11,10 @@ public class PlaceholderValues {
 
         // Event 1
         EventInfo event1 = new EventInfo(
-                1,
+                "1",
+                "Some Admin",
                 "School Fair",
                 "Annual school fair featuring various activities.",
-                "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
                 4.5f,
                 new Date(),
                 new Date(),
@@ -22,10 +22,10 @@ public class PlaceholderValues {
         eventInfoList.add(event1);
 
         EventInfo event2 = new EventInfo(
-                2,
+                "2",
+                "Some Admin 2",
                 "Science Exhibition",
                 "Showcasing student projects and experiments.",
-                "Poo poo poo poo poo poo poo poo poo poo poo poo poo 2 ",
                 3.8f,
                 new Date(),
                 new Date(),

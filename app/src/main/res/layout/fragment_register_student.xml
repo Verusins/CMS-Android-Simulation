@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/Welcome"
+        android:layout_marginTop="40dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/usernameEditText"
+        android:layout_marginTop="16dp"
+        android:hint="Email"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/signupPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/emailEditText"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <Button
+        android:id="@+id/signupButton"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/termsCheckBox"
+        android:text="Sign Up"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/primary"
+        app:cornerRadius="4dp"
+        tools:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/AlreadyHaveAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupButton"
+        android:layout_centerHorizontal="true"
+        android:padding="14dp"
+        android:text="Already have an account? Sign in"
+        android:textColor="@color/primary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="Welcome, New User!"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/changeInfoNotice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signupPasswordEditText"
+        android:layout_marginTop="8dp"
+        android:text="*You cannot change the name, Utorid, and password after signup"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <CheckBox
+        android:id="@+id/termsCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/changeInfoNotice"
+        android:layout_marginTop="32dp"
+        android:text="I accept the terms and conditions"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
