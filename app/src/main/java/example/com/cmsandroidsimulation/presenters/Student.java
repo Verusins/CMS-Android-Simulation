@@ -51,7 +51,7 @@ public class Student extends User {
 
         return authResult;
     }
-    public static Task<AuthResult> SignUp(String username, String email, String password) throws FailedLoginException
+    public static Task<AuthResult> Register(String username, String email, String password) throws FailedLoginException
     {
         // Simulate an asynchronous API call
         Task<AuthResult> authResult = mAuth.createUserWithEmailAndPassword(email, password);
