@@ -46,15 +46,14 @@ public class PostReqFragment extends Fragment {
         Requirements req = new Requirements();
 
         // Question 1
-        view.findViewById(R.id.post_quiz_q1_cs_specialist).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1CsSpecialist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_cs_specialist));
                 binding.postQuizQ2.setVisibility(View.VISIBLE);
             }
         });
-
-        view.findViewById(R.id.post_quiz_q1_cs_major).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1CsMajor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_cs_major));
@@ -62,7 +61,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_cs_minor).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1CsMinor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_cs_minor));
@@ -70,7 +69,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_stats_specialist).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1StatsSpecialist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_stats_specialist));
@@ -78,7 +77,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_stats_major).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1StatsMajor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_stats_major));
@@ -86,7 +85,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_stats_minor).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1StatsMinor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_stats_minor));
@@ -94,7 +93,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_math_specialist).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1MathSpecialist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_math_specialist));
@@ -102,7 +101,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q1_math_major).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ1MathMajor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setTargetPost(getString(R.string.post_quiz_q1_math_major));
@@ -111,10 +110,9 @@ public class PostReqFragment extends Fragment {
         });
 
 
-
         // Question 2
 
-        view.findViewById(R.id.post_quiz_q2_cs).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ2Cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setAdmissionCategory(getString(R.string.post_quiz_q2_cs));
@@ -123,7 +121,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q2_stats).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ2Stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setAdmissionCategory(getString(R.string.post_quiz_q2_stats));
@@ -132,7 +130,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q2_math).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ2Math.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setAdmissionCategory(getString(R.string.post_quiz_q2_math));
@@ -141,7 +139,7 @@ public class PostReqFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.post_quiz_q2_other).setOnClickListener(new View.OnClickListener() {
+        binding.postQuizQ2Other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 req.setAdmissionCategory(getString(R.string.post_quiz_q2_other));
@@ -165,7 +163,9 @@ public class PostReqFragment extends Fragment {
                             || binding.postQuizQ3Csca08Input.getText().toString().equals("")
                             || binding.postQuizQ3Csca48Input.getText().toString().equals("")){
 
-                        Toast myToast = Toast.makeText(getActivity(), getContext().getString(R.string.NaN_input_error), Toast.LENGTH_SHORT);
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.NaN_input_error),
+                                Toast.LENGTH_SHORT);
                         myToast.show();
                     }
                     else {
@@ -183,7 +183,9 @@ public class PostReqFragment extends Fragment {
                                 && 0 <= csca08 && csca08 <= 100
                                 && 0 <= csca48 && csca48 <= 100))
                         {
-                            Toast myToast = Toast.makeText(getActivity(), getContext().getString(R.string.mark_input_out_of_bounds), Toast.LENGTH_SHORT);
+                            Toast myToast = Toast.makeText(getActivity(),
+                                    getContext().getString(R.string.mark_input_out_of_bounds),
+                                    Toast.LENGTH_SHORT);
                             myToast.show();
                         }
                         else {
@@ -241,8 +243,8 @@ public class PostReqFragment extends Fragment {
                 binding.postQuizQ3Mata67Input.setText(null);
                 binding.postQuizQ3Mata22Input.setText(null);
                 binding.postQuizQ3Mata37Input.setText(null);
-                binding.postQuizQ3Csca08.setText(null);
-                binding.postQuizQ3Csca08.setText(null);
+                binding.postQuizQ3Csca08Input.setText(null);
+                binding.postQuizQ3Csca48Input.setText(null);
 
                 req.setTargetPost(null);
                 req.setAdmissionCategory(null);
@@ -251,3 +253,5 @@ public class PostReqFragment extends Fragment {
         });
     }
 }
+
+// check math bc don't need a48

@@ -117,7 +117,6 @@ public class Marks {
     }
 
     public boolean passedAllAndA08(){
-
         return passedAll() && csca08 >= 50;
     }
 

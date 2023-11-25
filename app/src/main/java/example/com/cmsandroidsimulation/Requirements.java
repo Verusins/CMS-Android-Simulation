@@ -68,15 +68,19 @@ public class Requirements {
             return result;
         }
 
-        if (!marks.passedAll()){
+        if (!marks.passedAll()
+                && !(targetPost.equals(c.getString(R.string.post_quiz_q1_math_specialist))
+                && admissionCategory.equals(c.getString(R.string.post_quiz_q2_math)))){
             result[0] = c.getString(R.string.post_results_fail);
             return result;
         }
 
         if (sameAdmissionCategory()){
-            if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_specialist)) || targetPost.equals(c.getString(R.string.post_quiz_q1_cs_major))){
+            if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_specialist))
+                    || targetPost.equals(c.getString(R.string.post_quiz_q1_cs_major))){
                 boolean bInCsca48 = marks.getCsca48() >= 73;
-                boolean cminusInA67A22A37 = !(marks.getMata67() < 60 && marks.getMata22() < 60 && marks.getMata37() < 60);
+                boolean cminusInA67A22A37 = !(marks.getMata67() < 60 && marks.getMata22() < 60
+                        && marks.getMata37() < 60);
 
                 if (cGPA >= 2.5 && bInCsca48 && cminusInA67A22A37){
                     result[0] = c.getString(R.string.post_results_pass);
@@ -91,7 +95,9 @@ public class Requirements {
                 }
             }
             else if (targetPost.equals(c.getString(R.string.post_quiz_q1_math_specialist))){
-                boolean bInA67A22A37 = !(marks.getMata67() < 73 && marks.getMata22() < 73 && marks.getMata37() < 73);
+                boolean bInA67A22A37 = !(marks.getMata67() < 73
+                        && marks.getMata22() < 73
+                        && marks.getMata37() < 73);
                 if (cGPA >= 2.5 && bInA67A22A37){
                     result[0] = c.getString(R.string.post_results_pass);
                     return result;
@@ -104,7 +110,9 @@ public class Requirements {
                 }
             }
             else if (targetPost.equals(c.getString(R.string.post_quiz_q1_math_major))) {
-                boolean bInA67A22A37 = marks.getMata67() < 73 || marks.getMata22() < 73 || marks.getMata37() < 73;
+                boolean bInA67A22A37 = marks.getMata67() < 73
+                        || marks.getMata22() < 73
+                        || marks.getMata37() < 73;
                 if (cGPA >= 2.3 && bInA67A22A37){
                     result[0] = c.getString(R.string.post_results_pass);
                     return result;
@@ -124,7 +132,8 @@ public class Requirements {
             }
         }
         else {
-            if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_specialist)) || targetPost.equals(c.getString(R.string.post_quiz_q1_cs_major))){
+            if (targetPost.equals(c.getString(R.string.post_quiz_q1_cs_specialist))
+                    || targetPost.equals(c.getString(R.string.post_quiz_q1_cs_major))){
                 if (marks.getMata67() >= 80 && marks.getMata31() >= 80){
                     result[0] = c.getString(R.string.post_results_conditional_pass);
                     result[1] = c.getString(R.string.post_results_in_cms_condition);

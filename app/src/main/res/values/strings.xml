@@ -14,13 +14,16 @@
 
 
     <!--    Strings for Post Requirement Page-->
-    <string name="post_title">What is PoSt?</string>
+    <string name="post_title">What is POSt?</string>
     <string name="post_desc">If you meet the grade requirements specific to your category, you’ll be allowed to enter your program of study in second year. We call that entering POSt (Program of Study).
         \n\nIf you make POSt, you will officially be in your desired program and will be allowed to continue until you graduate or elect to change programs.
         \n\nIf you do not meet minimum requirements in your first year, you will not be allowed to make POSt and will have to select a different program to switch to in your second year.</string>
-    <string name="post_quiz_title">Are You Eligible For PoSt?</string>
 
-    <string name="post_quiz_q1">Which PoSt Are You Trying to Make?</string>
+<!--    POSt Requirement Quiz-->
+    <string name="post_quiz_title">Are You Eligible For POSt?</string>
+
+<!--    Question 1-->
+    <string name="post_quiz_q1">Which POSt Are You Trying to Make?</string>
     <string name="post_quiz_q1_cs_specialist">Computer Science Specialist</string>
     <string name="post_quiz_q1_cs_major">Computer Science Major</string>
     <string name="post_quiz_q1_cs_minor">Computer Science Minor</string>
@@ -30,12 +33,14 @@
     <string name="post_quiz_q1_math_specialist">Math Specialist</string>
     <string name="post_quiz_q1_math_major">Math Major</string>
 
+<!--    Question 2-->
     <string name="post_quiz_q2">What Is Your Admission Category?</string>
     <string name="post_quiz_q2_cs">Computer Science</string>
     <string name="post_quiz_q2_stats">Statistics</string>
     <string name="post_quiz_q2_math">Math</string>
     <string name="post_quiz_q2_other">Other</string>
 
+<!--    Question 3-->
     <string name="post_quiz_q3">Please Enter Your Achieved/Expected Marks in the Following Courses:</string>
     <string name="post_quiz_q3_mata31">MATA31 - Calculus I for Mathematical Sciences</string>
     <string name="post_quiz_q3_mata67">CSC/MATA67 - Discrete Mathematics</string>
@@ -45,19 +50,23 @@
     <string name="post_quiz_q3_csca08">CSCA08 - Introduction to Computer Science I</string>
     <string name="post_quiz_placeholder">  eg. 99</string>
 
+<!--    Submit-->
     <string name="submit">Check</string>
 
+<!--    Results-->
     <string name="post_results_title">Here Are Your Results</string>
     <string name="post_results_banner">placeholder</string>
     <string name="post_results">placeholder</string>
-    <string name="post_results_pass">Congratulations, you have met POSt requirement!</string>
-    <string name="post_results_fail">Unfortunately, you do not meet POSt requirement</string>
+    <string name="post_results_pass">Congratulations, you have met the POSt requirement!</string>
+    <string name="post_results_fail">Unfortunately, you do not meet the POSt requirement</string>
     <string name="post_results_conditional_pass">POSt admission is conditional</string>
     <string name="post_results_stats_specialist_note">For the Machine Learning and Data Science stream only: a final grade of at least B in CSCA48H3</string>
     <string name="post_results_in_cms_condition">Admission will be based on academic performance in the required A-level courses. The admission requirements change each year depending on available spaces and the pool of eligible applicants, and students are cautioned that there is no guarantee of admission; as such, students are strongly advised to plan to enroll in backup programs.</string>
 
+<!--    Retake Quiz-->
     <string name="retake_post_quiz">Retake Quiz</string>
 
+<!--    Incorrect Input Messages-->
     <string name="NaN_input_error">Please enter a mark for all the listed courses</string>
     <string name="mark_input_out_of_bounds">Please enter a mark between 0 and 100</string>
 
