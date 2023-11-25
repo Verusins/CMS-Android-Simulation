@@ -61,7 +61,6 @@
         android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:onClick="onClick1"
         android:padding="14dp"
         android:text="Are you an admin?"
         android:textColor="@color/primary"

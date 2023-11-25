@@ -13,10 +13,30 @@
         <action
             android:id="@+id/action_loginStudentFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
+        <action
+            android:id="@+id/action_loginStudentFragment_to_loginAdminFragment"
+            app:destination="@id/loginAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentFragment"
         android:name="example.com.cmsandroidsimulation.StudentFragment"
         android:label="fragment_student"
         tools:layout="@layout/fragment_student" />
+    <fragment
+        android:id="@+id/loginAdminFragment"
+        android:name="example.com.cmsandroidsimulation.LoginAdminFragment"
+        android:label="LoginAdminFragment"
+        tools:layout="@layout/fragment_login_admin">
+        <action
+            android:id="@+id/action_loginAdminFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_loginAdminFragment_to_loginStudentFragment"
+            app:destination="@id/loginStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="example.com.cmsandroidsimulation.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>

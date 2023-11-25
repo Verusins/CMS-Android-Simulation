@@ -55,5 +55,12 @@ public final class LoginStudentFragment extends Fragment{
                 });
             }
         });
+        binding.ToAdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(LoginStudentFragment.this).
+                        navigate(R.id.action_loginStudentFragment_to_loginAdminFragment);
+            }
+        });
     }
 }
