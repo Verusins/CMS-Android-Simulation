@@ -34,8 +34,10 @@ public final class LoginStudentFragment extends Fragment{
         binding.CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(LoginStudentFragment.this).
-                        navigate(R.id.action_loginStudentFragment_to_studentRegisterFragment);
+                requireActivity().runOnUiThread(() -> {
+                    NavHostFragment.findNavController(LoginStudentFragment.this).
+                            navigate(R.id.action_loginStudentFragment_to_studentRegisterFragment);
+                });
             }
         });
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +66,10 @@ public final class LoginStudentFragment extends Fragment{
         binding.ToAdminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requireActivity().runOnUiThread(() -> {
                 NavHostFragment.findNavController(LoginStudentFragment.this).
                         navigate(R.id.action_loginStudentFragment_to_loginAdminFragment);
+                });
             }
         });
     }

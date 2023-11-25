@@ -28,8 +28,19 @@ public class StudentRegisterFragment extends Fragment {
         binding.AlreadyHaveAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(StudentRegisterFragment.this).
-                        navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
+                requireActivity().runOnUiThread(() -> {
+                    NavHostFragment.findNavController(StudentRegisterFragment.this).
+                            navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
+                });
+            }
+        });
+        binding.signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().runOnUiThread(() -> {
+                    NavHostFragment.findNavController(StudentRegisterFragment.this).
+                            navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
+                });
             }
         });
     }
