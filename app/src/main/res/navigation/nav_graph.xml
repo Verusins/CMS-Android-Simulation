@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginStudentFragment_to_loginAdminFragment"
             app:destination="@id/loginAdminFragment" />
+        <action
+            android:id="@+id/action_loginStudentFragment_to_studentRegisterFragment"
+            app:destination="@id/studentRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentFragment"
@@ -33,10 +36,18 @@
         <action
             android:id="@+id/action_loginAdminFragment_to_loginStudentFragment"
             app:destination="@id/loginStudentFragment" />
+        <action
+            android:id="@+id/action_loginAdminFragment_to_studentRegisterFragment"
+            app:destination="@id/studentRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
         android:name="example.com.cmsandroidsimulation.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" />
+    <fragment
+        android:id="@+id/studentRegisterFragment"
+        android:name="example.com.cmsandroidsimulation.StudentRegisterFragment"
+        android:label="StudentRegisterFragment"
+        tools:layout="@layout/fragment_register_student"/>
 </navigation>

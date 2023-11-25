@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import example.com.cmsandroidsimulation.databinding.StudentSignupBinding;
+import example.com.cmsandroidsimulation.databinding.FragmentRegisterStudentBinding;
 
 public class StudentRegisterFragment extends Fragment {
-    StudentSignupBinding binding;
+    FragmentRegisterStudentBinding binding;
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = StudentSignupBinding.inflate(inflater, container, false);
+        binding = FragmentRegisterStudentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

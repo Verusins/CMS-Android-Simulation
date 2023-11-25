@@ -31,6 +31,13 @@ public class LoginAdminFragment  extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.CreateAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(LoginAdminFragment.this).
+                        navigate(R.id.action_loginAdminFragment_to_studentRegisterFragment);
+            }
+        });
         binding.ToStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
