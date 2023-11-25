@@ -53,5 +53,8 @@
         <action
             android:id="@+id/action_studentRegisterFragment_to_loginStudentFragment"
             app:destination="@id/loginStudentFragment" />
+        <action
+            android:id="@+id/action_studentRegisterFragment_to_studentFragment"
+            app:destination="@id/studentFragment" />
     </fragment>
 </navigation>

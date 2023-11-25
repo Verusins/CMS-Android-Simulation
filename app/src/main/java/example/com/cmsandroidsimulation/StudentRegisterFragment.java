@@ -9,6 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+
 import example.com.cmsandroidsimulation.databinding.FragmentRegisterStudentBinding;
 import example.com.cmsandroidsimulation.presenters.Student;
 
@@ -37,11 +41,26 @@ public class StudentRegisterFragment extends Fragment {
         });
         binding.signupButton.setOnClickListener(new View.OnClickListener() {
 
-            String username = binding.getText().toString();
-            String password = binding.passwordEditText.getText().toString();
+
             @Override
             public void onClick(View view) {
-                Student.Register()
+                String username = binding.usernameEditText.getText().toString();
+                String email = binding.emailEditText.getText().toString();
+                String password = binding.signupPasswordEditText.getText().toString();
+                Student.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            requireActivity().runOnUiThread(() -> {
+                                NavHostFragment.findNavController(StudentRegisterFragment.this).
+                                        navigate(R.id.action_studentRegisterFragment_to_studentFragment);
+                            });
+                        } else {
+                            // show error message somewhere on the screen
+                            throw new FailedLoginException();
+                        }
+                    }
+                });
             }
         });
     }
