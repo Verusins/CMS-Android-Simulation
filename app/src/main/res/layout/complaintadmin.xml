@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingBottom="16dp">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/navbar"
@@ -49,22 +50,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navbar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/complaintTitle">
+        app:layout_constraintTop_toBottomOf="@id/complaintTitle"
+        app:layout_constraintVertical_bias="1.0">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:orientation="vertical">
 
-        </ScrollView>
-    </LinearLayout>
+            <include layout="@layout/complaintfragment" />
+
+            <include layout="@layout/complaintfragment" />
+
+            <include layout="@layout/complaintfragment" />
+
+            <include layout="@layout/complaintfragment" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
