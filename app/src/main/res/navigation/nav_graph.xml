@@ -49,5 +49,9 @@
         android:id="@+id/studentRegisterFragment"
         android:name="example.com.cmsandroidsimulation.StudentRegisterFragment"
         android:label="StudentRegisterFragment"
-        tools:layout="@layout/fragment_register_student"/>
+        tools:layout="@layout/fragment_register_student">
+        <action
+            android:id="@+id/action_studentRegisterFragment_to_loginStudentFragment"
+            app:destination="@id/loginStudentFragment" />
+    </fragment>
 </navigation>

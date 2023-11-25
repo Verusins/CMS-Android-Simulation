@@ -62,7 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/signupButton"
         android:layout_centerHorizontal="true"
-        android:onClick="onClick2"
         android:padding="14dp"
         android:text="Already have an account? Sign in"
         android:textColor="@color/primary"

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import example.com.cmsandroidsimulation.databinding.FragmentRegisterStudentBinding;
 
@@ -23,6 +24,14 @@ public class StudentRegisterFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.AlreadyHaveAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(StudentRegisterFragment.this).
+                        navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
+            }
+        });
     }
 
 }
