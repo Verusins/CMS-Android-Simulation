@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import example.com.cmsandroidsimulation.databinding.FragmentRegisterStudentBinding;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public class StudentRegisterFragment extends Fragment {
     FragmentRegisterStudentBinding binding;
@@ -35,12 +36,12 @@ public class StudentRegisterFragment extends Fragment {
             }
         });
         binding.signupButton.setOnClickListener(new View.OnClickListener() {
+
+            String username = binding.getText().toString();
+            String password = binding.passwordEditText.getText().toString();
             @Override
             public void onClick(View view) {
-                requireActivity().runOnUiThread(() -> {
-                    NavHostFragment.findNavController(StudentRegisterFragment.this).
-                            navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
-                });
+                Student.Register()
             }
         });
     }
