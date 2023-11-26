@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
-        android:name="example.com.cmsandroidsimulation.EventFragment"
+        android:name="example.com.cmsandroidsimulation.EventStudentFragment"
         android:label="EventFragment"
         tools:layout="@layout/fragment_event">
         <action
