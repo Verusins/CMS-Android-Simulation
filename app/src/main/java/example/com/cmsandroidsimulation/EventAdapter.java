@@ -2,6 +2,7 @@ package example.com.cmsandroidsimulation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,8 +45,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("eventTitle",event.getTitle());
+                bundle.putString("eventContent",event.getDetails());
+                bundle.putString("eventAuthor",event.getAuthor());
                 Navigation.findNavController((View) v.getParent()).
-                        navigate(R.id.eventFragment);
+                        navigate(R.id.eventFragment, bundle);
             }
         });
     }

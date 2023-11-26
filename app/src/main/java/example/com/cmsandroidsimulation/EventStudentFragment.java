@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
 import example.com.cmsandroidsimulation.models.EventInfo;
@@ -28,6 +29,10 @@ public class EventStudentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.eventTitle.setText(getArguments().getString("eventTitle"));
+        binding.eventContent.setText(getArguments().getString("eventContent"));
+        binding.eventAuthor.setText(getArguments().getString("eventAuthor"));
 
 //        final RelativeLayout eventParentWrapper = binding.eventMain;
 //        final EventInfo eventSource = PlaceholderValues.generateTestEventInfoSingle();
