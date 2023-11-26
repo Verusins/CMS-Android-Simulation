@@ -29,7 +29,6 @@ public class EventStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        Display Placeholder Event Details
 //        final RelativeLayout eventParentWrapper = binding.eventMain;
 //        final EventInfo eventSource = PlaceholderValues.generateTestEventInfoSingle();
 //        View childView = getLayoutInflater().inflate(R.layout.fragment_event_student, null);

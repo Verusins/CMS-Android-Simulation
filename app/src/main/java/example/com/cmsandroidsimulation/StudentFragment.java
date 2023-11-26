@@ -10,8 +10,12 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
+import example.com.cmsandroidsimulation.databinding.NavbarStudentBinding;
 
 public final class StudentFragment extends Fragment {
     FragmentStudentBinding binding;
@@ -27,6 +31,31 @@ public final class StudentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        NavbarStudentBinding studentNavbar = binding.studentNavbar;
+
+        studentNavbar.menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                studentNavbar.sidebarWrapper.setVisibility(View.VISIBLE);
+            }
+        });
+        studentNavbar.menuIconBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+        studentNavbar.navigationHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_student);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.dashboardStudentFragment);
+
+                studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
 
 //        ImageView navbarIcon = binding.dashboardStudent.menuIcon;
 //

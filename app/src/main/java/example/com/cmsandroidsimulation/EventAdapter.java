@@ -45,7 +45,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             @Override
             public void onClick(View v) {
                 Navigation.findNavController((View) v.getParent()).
-                        navigate(R.id.action_dashboardStudentFragment_to_eventFragment);
+                        navigate(R.id.eventFragment);
             }
         });
     }

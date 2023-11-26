@@ -44,10 +44,10 @@ public class DashboardStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RelativeLayout sidebar = binding.sidebarWrapper;
+//        RelativeLayout sidebar = binding.sidebarWrapper;
 
 //        Disable Sidebar on create
-        sidebar.setVisibility(View.GONE);
+//        sidebar.setVisibility(View.GONE);
 
 //        List Announcements from database
         final RelativeLayout announcementParentWrapper = binding.announcements;
@@ -110,26 +110,26 @@ public class DashboardStudentFragment extends Fragment {
 
 
 //        Open Sidebar
-        binding.menuIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sidebar.setVisibility(View.VISIBLE);
-            }
-        });
+//        binding.menuIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sidebar.setVisibility(View.VISIBLE);
+//            }
+//        });
 
 //        Close Sidebar
-        binding.menuIconBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sidebar.setVisibility(View.GONE);
-            }
-        });
-        binding.sidebarWrapperBackground.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sidebar.setVisibility(View.GONE);
-            }
-        });
+//        binding.menuIconBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sidebar.setVisibility(View.GONE);
+//            }
+//        });
+//        binding.sidebarWrapperBackground.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sidebar.setVisibility(View.GONE);
+//            }
+//        });
 
 //        Close Announcement
         binding.closeAnnouncement.setOnClickListener(new View.OnClickListener() {

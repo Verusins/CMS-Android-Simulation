@@ -18,7 +18,7 @@
         android:id="@+id/eventFragment"
         android:name="example.com.cmsandroidsimulation.EventStudentFragment"
         android:label="EventFragment"
-        tools:layout="@layout/fragment_event">
+        tools:layout="@layout/fragment_event_student">
         <action
             android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
             app:destination="@id/dashboardStudentFragment" />
