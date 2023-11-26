@@ -39,7 +39,7 @@ public class PlaceholderValues {
 
     public static EventInfo generateTestEventInfoSingle() {
         EventInfo event = new EventInfo(
-                1,
+                "1",
                 "School Fair",
                 "Annual school fair featuring various activities.",
                 "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_student"
+    app:startDestination="@id/dashboardStudentFragment">
+
+    <fragment
+        android:id="@+id/dashboardStudentFragment"
+        android:name="example.com.cmsandroidsimulation.DashboardStudentFragment"
+        android:label="fragment_dashboard_student"
+        tools:layout="@layout/fragment_dashboard_student" />
+</navigation>

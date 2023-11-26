@@ -7,9 +7,14 @@
     tools:context=".StudentFragment">
 
         <fragment
-            android:id="@+id/dashboard_board"
+            android:id="@+id/nav_host_fragment_content_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="example.com.cmsandroidsimulation.DashboardStudentFragment"
-            tools:layout="@layout/fragment_dashboard_student" />
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_graph" />
 </androidx.core.widget.NestedScrollView>
