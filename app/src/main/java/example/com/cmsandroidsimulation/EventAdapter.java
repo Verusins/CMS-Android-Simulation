@@ -46,7 +46,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("selectedEventIndex", position);
+                bundle.putInt("selectedEventIndex", holder.getAdapterPosition());
                 Navigation.findNavController((View) v.getParent()).
                         navigate(R.id.eventFragment, bundle);
             }
