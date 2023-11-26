@@ -34,6 +34,13 @@ public final class StudentFragment extends Fragment {
 
         NavbarStudentBinding studentNavbar = binding.studentNavbar;
 
+        studentNavbar.sidebarWrapperBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+
         studentNavbar.menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +59,16 @@ public final class StudentFragment extends Fragment {
                 NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_student);
                 NavController navController = navHostFragment.getNavController();
                 navController.navigate(R.id.dashboardStudentFragment);
+
+                studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+        studentNavbar.navigationPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_student);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.postReqFragment);
 
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
