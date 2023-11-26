@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -42,10 +44,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to another activity
-                Intent intent = new Intent(context, StudentEventActivity.class);
-                // You can also pass data to the new activity using intent.putExtra()
-                context.startActivity(intent);
+                Navigation.findNavController((View) v.getParent()).
+                        navigate(R.id.action_dashboardStudentFragment_to_eventFragment);
             }
         });
     }

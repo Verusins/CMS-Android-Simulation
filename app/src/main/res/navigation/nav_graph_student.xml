@@ -9,5 +9,18 @@
         android:id="@+id/dashboardStudentFragment"
         android:name="example.com.cmsandroidsimulation.DashboardStudentFragment"
         android:label="fragment_dashboard_student"
-        tools:layout="@layout/fragment_dashboard_student" />
+        tools:layout="@layout/fragment_dashboard_student" >
+        <action
+            android:id="@+id/action_dashboardStudentFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="example.com.cmsandroidsimulation.EventFragment"
+        android:label="EventFragment"
+        tools:layout="@layout/fragment_event">
+        <action
+            android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
+            app:destination="@id/dashboardStudentFragment" />
+    </fragment>
 </navigation>
