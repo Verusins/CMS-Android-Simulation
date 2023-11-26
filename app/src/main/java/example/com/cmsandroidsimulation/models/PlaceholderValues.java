@@ -37,6 +37,20 @@ public class PlaceholderValues {
         return eventInfoList;
     }
 
+    public static EventInfo generateTestEventInfoSingle() {
+        EventInfo event = new EventInfo(
+                "1",
+                "School Fair",
+                "Annual school fair featuring various activities.",
+                "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
+                4.5f,
+                new Date(),
+                new Date(),
+                generateTestComments());
+
+        return event;
+    }
+
 
     public static ArrayList<EventComment> generateTestComments() {
         ArrayList<EventComment> comments = new ArrayList<>();

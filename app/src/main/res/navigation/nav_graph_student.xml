@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_student"
+    app:startDestination="@id/dashboardStudentFragment">
+
+    <fragment
+        android:id="@+id/dashboardStudentFragment"
+        android:name="example.com.cmsandroidsimulation.DashboardStudentFragment"
+        android:label="fragment_dashboard_student"
+        tools:layout="@layout/fragment_dashboard_student" >
+        <action
+            android:id="@+id/action_dashboardStudentFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_dashboardStudentFragment_to_postReqFragment"
+            app:destination="@id/postReqFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="example.com.cmsandroidsimulation.EventStudentFragment"
+        android:label="EventFragment"
+        tools:layout="@layout/fragment_event_student">
+        <action
+            android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
+            app:destination="@id/dashboardStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postReqFragment"
+        android:name="example.com.cmsandroidsimulation.PostReqFragment"
+        android:label="PostReqFragment"
+        tools:layout="@layout/fragment_postreq"/>
+</navigation>

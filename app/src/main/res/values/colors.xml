@@ -8,4 +8,7 @@
     <color name="accept">#FF5DFDCB</color>
     <color name="warning">#FFF92C45</color>
     <color name="gray">#FF6C737A</color>
+    <color name="transparent_black">#55000010</color>
+    <color name="yellow">#F1E46F</color>
+
 </resources>
