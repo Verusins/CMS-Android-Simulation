@@ -108,12 +108,5 @@ public class DashboardStudentFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-//        Close Announcement
-        binding.closeAnnouncement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.announcement.setVisibility(View.GONE);
-            }
-        });
     }
 }
