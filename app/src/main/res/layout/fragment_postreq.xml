@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60sp"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:paddingBottom="30dp">
+
+
+<!--        Post Quiz Title-->
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20sp"
+            android:text="@string/post_title"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:background="@drawable/rounded_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        Post Description-->
+        <TextView
+            android:id="@+id/post_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text="@string/post_desc"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_title" />
+
+<!--        Post Quiz Title-->
+        <TextView
+            android:id="@+id/post_quiz_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:paddingTop="20sp"
+            android:text="@string/post_quiz_title"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:background="@drawable/rounded_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_desc" />
+
+<!--        Question 1: Which POSt are you trying to make?-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_title">
+
+            <TextView
+                android:id="@+id/post_quiz_q1_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q1" />
+
+            <RadioGroup
+                android:id="@+id/post_quiz_q1_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:backgroundTint="@color/primary"
+                app:layout_constraintTop_toBottomOf="@+id/post_quiz_q1_title">
+
+<!--                Option 1: CS Specialist-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_cs_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_specialist" />
+
+<!--                Option 2: CS Major-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_cs_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_major" />
+
+<!--                Option 3: CS Minor-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_cs_minor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_cs_minor" />
+
+<!--                Option 4: Stats Specialist-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_stats_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_specialist" />
+
+<!--                Option 5: Stats Major-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_stats_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_major" />
+
+<!--                Option 6: Stats Minor-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_stats_minor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_stats_minor" />
+
+<!--                Option 7: Math Specialist-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_math_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_math_specialist" />
+
+<!--                Option 8: Math Major-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q1_math_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q1_math_major" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+<!--        Question 2: What is your admission category?-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_q1">
+
+            <TextView
+                android:id="@+id/post_quiz_q2_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q2" />
+
+            <RadioGroup
+                android:id="@+id/post_quiz_q2_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/post_quiz_q2_title">
+
+<!--                Option 1: CS-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_cs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_cs" />
+
+<!--                Option 2: Stats-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_stats" />
+
+<!--                Option 3: Math-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_math"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_math" />
+
+<!--                Option 4: Other-->
+                <RadioButton
+                    android:id="@+id/post_quiz_q2_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/primary"
+                    android:text="@string/post_quiz_q2_other" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+<!--        Question 3: Enter your marks-->
+        <LinearLayout
+            android:id="@+id/post_quiz_q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_q2">
+
+            <TextView
+                android:id="@+id/post_quiz_q3_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="@string/post_quiz_q3"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3" />
+
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata31_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_title">
+
+<!--                Input 1: MATA31-->
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata31"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata31_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+<!--            Input 2: MATA67-->
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata67_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata31_layout">
+
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata67"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata67"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata67_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+<!--            Input 3: MATA22-->
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata22_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata67_layout">
+
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata22"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata22_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+<!--            Input 4: MATA37-->
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_mata37_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata22_layout">
+
+                <TextView
+                    android:id="@+id/post_quiz_q3_mata37"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_mata37"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_mata37_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+<!--            Input 5: CSCA08-->
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_csca08_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_mata37_layout">
+
+                <TextView
+                    android:id="@+id/post_quiz_q3_csca08"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_csca08"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_csca08_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+
+<!--            Input 6: CSC48-->
+            <LinearLayout
+                android:id="@+id/post_quiz_q3_csca48_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/post_quiz_q3_csca08_layout">
+
+                <TextView
+                    android:id="@+id/post_quiz_q3_csca48"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="20sp"
+                    android:text="@string/post_quiz_q3_csca48"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/post_quiz_q3_csca48_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    android:paddingBottom="5dp"
+                    android:autofillHints="0"
+                    android:hint="@string/post_quiz_placeholder"/>
+            </LinearLayout>
+        </LinearLayout>
+
+<!--        Submit Button-->
+        <LinearLayout
+            android:id="@id/post_quiz_submit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_quiz_q3">
+
+            <Button
+                android:id="@+id/post_quiz_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:text="@string/submit" />
+        </LinearLayout>
+
+<!--        POSt Quiz Results-->
+        <LinearLayout
+            android:id="@+id/post_quiz_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_quiz_submit_layout">
+
+            <TextView
+                android:id="@+id/post_quiz_results_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:gravity="center"
+                android:paddingTop="20sp"
+                android:text="@string/post_results_title"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:background="@drawable/rounded_border"></TextView>
+
+<!--            Pass/Conditional Pass/Fail POSt-->
+            <TextView
+                android:id="@+id/post_quiz_results_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/post_results"
+                android:textColor="@color/black"
+                android:background="@color/yellow"
+                android:textSize="16sp" />
+
+<!--            Extra description on results-->
+            <TextView
+                android:id="@+id/post_quiz_results_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:text="@string/post_results"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+<!--            Retake Quiz-->
+            <Button
+                android:id="@+id/retake_post_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/retake_post_quiz" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
