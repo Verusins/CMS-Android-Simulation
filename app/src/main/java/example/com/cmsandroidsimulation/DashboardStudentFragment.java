@@ -108,29 +108,6 @@ public class DashboardStudentFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-//        Open Sidebar
-//        binding.menuIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sidebar.setVisibility(View.VISIBLE);
-//            }
-//        });
-
-//        Close Sidebar
-//        binding.menuIconBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sidebar.setVisibility(View.GONE);
-//            }
-//        });
-//        binding.sidebarWrapperBackground.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sidebar.setVisibility(View.GONE);
-//            }
-//        });
-
 //        Close Announcement
         binding.closeAnnouncement.setOnClickListener(new View.OnClickListener() {
             @Override

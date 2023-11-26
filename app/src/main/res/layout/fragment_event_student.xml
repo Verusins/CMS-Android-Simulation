@@ -76,21 +76,11 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/event_registered_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="This is the bottom line"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="8sp"
-        app:layout_constraintTop_toBottomOf="@id/event_content" />
-
     <LinearLayout
         android:id="@+id/event_write_comment_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/event_registered_text">
+        app:layout_constraintTop_toBottomOf="@id/event_RSVP">
 
         <LinearLayout
             android:id="@+id/comment_write_comment"
@@ -107,12 +97,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/comment_content_write"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Write your comments here"
+                android:hint="Write your comments here"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -122,11 +112,47 @@
                 android:layout_gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/comment_write_rating"
+                    android:id="@+id/comment_write_rating1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:text="★★★★☆"
+                    android:text="☆"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/comment_write_rating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="☆"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/comment_write_rating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="☆"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/comment_write_rating4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="☆"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/comment_write_rating5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="☆"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
