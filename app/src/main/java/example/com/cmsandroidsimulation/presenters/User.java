@@ -41,6 +41,7 @@ public abstract class User {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    Log.i("MASTER APP", "Successful events query");
                     for (QueryDocumentSnapshot document : task.getResult()) {
 
                         EventInfo eventinfo = new EventInfo(
@@ -54,7 +55,6 @@ public abstract class User {
                                 (ArrayList<EventComment>) document.get("comments")
                         );
                         eventslist.add(eventinfo);
-                        return;
                     }
                     asynclist.complete(eventslist);
                 } else {
