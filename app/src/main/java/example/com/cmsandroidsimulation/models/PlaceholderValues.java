@@ -15,7 +15,7 @@ public class PlaceholderValues {
                 "Some Admin",
                 "School Fair",
                 "Annual school fair featuring various activities.",
-                4.5f,
+                4f,
                 new Date(),
                 new Date(),
                 generateTestComments());
@@ -26,7 +26,7 @@ public class PlaceholderValues {
                 "Some Admin 2",
                 "Science Exhibition",
                 "Showcasing student projects and experiments.",
-                3.8f,
+                2f,
                 new Date(),
                 new Date(),
                 generateTestComments());
@@ -55,8 +55,8 @@ public class PlaceholderValues {
     public static ArrayList<EventComment> generateTestComments() {
         ArrayList<EventComment> comments = new ArrayList<>();
 
-        EventComment comment1 = new EventComment("User1", "Great event!");
-        EventComment comment2 = new EventComment("User2", "Enjoyed it a lot!");
+        EventComment comment1 = new EventComment("User1", "Great event!", 3, new Date());
+        EventComment comment2 = new EventComment("User2", "Enjoyed it a lot!", 5, new Date());
 
         comments.add(comment1);
         comments.add(comment2);

@@ -1,5 +1,6 @@
 package example.com.cmsandroidsimulation;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class EventStudentFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -131,7 +133,7 @@ public class EventStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String commentContent = String.valueOf(binding.commentContentWrite.getText());
-                Log.i("Send", commentContent);
+                // Log.i("Send", commentContent);
                 // TODO: send commentContent (content) and rating[0] (rating(int)) to database
             }
         });
@@ -145,7 +147,15 @@ public class EventStudentFragment extends Fragment {
         // TODO: Implement other event details.
         for(EventComment eventComment: eventComments) {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout);
+            int commentRating = eventComment.getRating();
             ((TextView)childView.findViewById(R.id.comment_content)).setText(eventComment.getDetails());
+//            Log.i("Comment Month", String.valueOf(eventComment.getDate().getMonth()));
+
+            if(commentRating == 1) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★☆☆☆☆");
+            if(commentRating == 2) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★☆☆☆");
+            if(commentRating == 3) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★☆☆");
+            if(commentRating == 4) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★☆");
+            if(commentRating == 5) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★★");
         }
 
 
