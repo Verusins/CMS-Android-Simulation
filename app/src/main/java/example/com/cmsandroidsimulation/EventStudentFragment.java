@@ -162,12 +162,10 @@ public class EventStudentFragment extends Fragment {
 
         // Comments loading
         LinearLayout commentsLayout = binding.comments;
-        ArrayList<EventComment> eventComments = eventInfo.getComments();
-        int index = 0;
         // TODO: Implement other event details.
-        for(EventComment eventComment: PlaceholderValues.generateTestComments()) {
+        for(EventComment eventComment: eventInfo.getComments()) {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
-            Log.i("MASTER APP", childView.toString());
+            Log.i("MASTER APP", "RENDER EVENT COMMENT");
             int commentRating = eventComment.getRating();
             String[] month = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
             String day = String.valueOf(eventComment.getDate().getDay());

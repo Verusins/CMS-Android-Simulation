@@ -27,8 +27,7 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public abstract class User {
-    String firstName = "Ark";
-    String lastName = "Conrad";
+    protected String email;
 
     // TODO: implement api calls
     public CompletableFuture<ArrayList<EventInfo>> getEvents()
@@ -43,7 +42,7 @@ public abstract class User {
                 if (task.isSuccessful()) {
                     Log.i("MASTER APP", "Successful events query");
                     for (QueryDocumentSnapshot document : task.getResult()) {
-
+                        Log.i("MASTER APP",  document.get("comments") + " comments");
                         EventInfo eventinfo = new EventInfo(
                                 document.getId(),
                                 document.getString("author"),
@@ -100,5 +99,25 @@ public abstract class User {
         });
         return isAdmin;
     }
-
+    public CompletableFuture<String> getName(String email)
+    {
+        CompletableFuture<String> name = new CompletableFuture<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("users").whereEqualTo("email", email).get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        name.complete(document.getString("name"));
+                        return;
+                    }
+                    name.completeExceptionally(task.getException());
+                } else {
+                    name.completeExceptionally(task.getException());
+                }
+            }
+        });
+        return name;
+    }
 }
