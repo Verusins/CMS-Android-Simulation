@@ -65,9 +65,11 @@ public class Student extends User {
                     instance.email = email;
                     user = mAuth.getCurrentUser();
                     Map<String, Object> user = new HashMap<>();
+                    ArrayList<String> events = new ArrayList<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", false);
+                    user.put("events", events);
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
@@ -147,7 +149,7 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo)
+    public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo, boolean setTrue)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<QuerySnapshot> task = db.collection("users").whereEqualTo("email", email).get();
@@ -157,40 +159,43 @@ public class Student extends User {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         ArrayList<String> events = (ArrayList<String>) document.get("events");
-                        if (events.indexOf(eventInfo.getEventid()) != -1){
+                        if (!setTrue && events.indexOf(eventInfo.getEventid()) != -1){
                             events.remove(eventInfo.getEventid());
                         }
-                        else{
+                        else if (setTrue && events.indexOf(eventInfo.getEventid()) == -1){
                             events.add(eventInfo.getEventid());
                         }
-                        return;
+                        DocumentReference eventref = db.collection("users").document(document.getId());
+                        eventref.update("events", events);
                     }
-                    Log.e("MASTER APP", "No such document");
+//                    Log.e("MASTER APP", "No such document USER");
                 } else {
                     Log.e("MASTER APP", "Error getting document: ", task.getException());
                 }
             }
         });
         Task<QuerySnapshot> eventtask = db.collection("events").get();
-        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        eventtask.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
+            public void onComplete(@NonNull Task<QuerySnapshot> eventtask) {
+                if (eventtask.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : eventtask.getResult()) {
+                        Log.i("MASTERP APP", document.getId() + " " + eventInfo.getEventid());
                         if (document.getId().equals(eventInfo.getEventid())){
                             ArrayList<String> attendees = (ArrayList<String>) document.get("attendees");
-                            if (attendees.indexOf(email) != -1){
+                            if (!setTrue && attendees.indexOf(email) != -1){
                                 attendees.remove(email);
                             }
-                            else{
+                            else if (setTrue && attendees.indexOf(email) == -1){
                                 attendees.add(email);
                             }
-                            return;
+                            DocumentReference eventref = db.collection("events").document(eventInfo.getEventid());
+                            eventref.update("attendees", attendees);
                         }
                     }
-                    Log.e("MASTER APP", "No such document");
+//                    Log.e("MASTER APP", "No such document EVENTS");
                 } else {
-                    Log.e("MASTER APP", "Error getting document: ", task.getException());
+                    Log.e("MASTER APP", "Error getting document: ", eventtask.getException());
                 }
             }
         });

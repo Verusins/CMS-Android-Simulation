@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -55,14 +56,15 @@ public abstract class User {
                             ));
                         }
                         EventInfo eventinfo = new EventInfo(
-                                document.getId(),
-                                document.getString("author"),
-                                document.getString("title"),
-                                document.getString("details"),
-                                (Date) document.get("eventStartDateTime"),
-                                (Date) document.get("eventEndDateTime"),
-                                eventComments,
-                                document.getDouble("maxppl").intValue()
+                            document.getId(),
+                            document.getString("author"),
+                            document.getString("title"),
+                            document.getString("details"),
+                            (Date) document.get("eventStartDateTime"),
+                            (Date) document.get("eventEndDateTime"),
+                            eventComments,
+                            document.getDouble("maxppl").intValue(),
+                            (ArrayList<String>)document.get("attendees")
                         );
                         eventslist.add(eventinfo);
                     }

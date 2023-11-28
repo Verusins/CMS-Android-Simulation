@@ -65,10 +65,12 @@ public class Admin extends User{
                     instance = new Admin();
                     instance.email = email;
                     user = mAuth.getCurrentUser();
+                    ArrayList<String> events = new ArrayList<>();
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", true);
+                    user.put("events", events);
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
@@ -108,7 +110,7 @@ public class Admin extends User{
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
                                              Date endDateTime, int maxppl)
     {
-        ArrayList<Double> rating = new ArrayList<>();
+        ArrayList<String> attendees = new ArrayList<>();
         ArrayList<EventComment> comments = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
         event.put("author", author);
@@ -118,6 +120,7 @@ public class Admin extends User{
         event.put("endDateTime", endDateTime);
         event.put("comments", comments);
         event.put("maxppl", maxppl);
+        event.put("attendees", attendees);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);

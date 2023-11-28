@@ -67,6 +67,8 @@ public class EventStudentFragment extends Fragment {
                 binding.eventWriteCommentWrapper.setVisibility(View.VISIBLE);
                 binding.eventRSVPed.setVisibility(View.VISIBLE);
                 binding.eventRSVP.setVisibility(View.GONE);
+
+                Student.getInstance().setEventHasRSVPd(eventInfo, true);
             }
         });
         // Un-RSVP
@@ -76,6 +78,8 @@ public class EventStudentFragment extends Fragment {
                 binding.eventWriteCommentWrapper.setVisibility(View.GONE);
                 binding.eventRSVPed.setVisibility(View.GONE);
                 binding.eventRSVP.setVisibility(View.VISIBLE);
+
+                Student.getInstance().setEventHasRSVPd(eventInfo, false);
             }
         });
 
