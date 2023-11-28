@@ -2,6 +2,8 @@ package example.com.cmsandroidsimulation.models;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 public class PlaceholderValues {
@@ -15,7 +17,7 @@ public class PlaceholderValues {
                 "Some Admin",
                 "School Fair",
                 "Annual school fair featuring various activities.",
-                4.5f,
+                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
                 new Date(),
                 new Date(),
                 generateTestComments());
@@ -26,7 +28,7 @@ public class PlaceholderValues {
                 "Some Admin 2",
                 "Science Exhibition",
                 "Showcasing student projects and experiments.",
-                3.8f,
+                new ArrayList<Double>(Arrays.asList(2.0, 4.0, 3.0)),
                 new Date(),
                 new Date(),
                 generateTestComments());
@@ -43,7 +45,7 @@ public class PlaceholderValues {
                 "School Fair",
                 "Annual school fair featuring various activities.",
                 "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
-                4.5f,
+                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
                 new Date(),
                 new Date(),
                 generateTestComments());
