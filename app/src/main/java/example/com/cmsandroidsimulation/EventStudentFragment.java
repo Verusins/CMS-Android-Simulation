@@ -133,8 +133,17 @@ public class EventStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String commentContent = String.valueOf(binding.commentContentWrite.getText());
+                // Empty input field
+                binding.commentWriteRating1.setText("☆");
+                binding.commentWriteRating2.setText("☆");
+                binding.commentWriteRating3.setText("☆");
+                binding.commentWriteRating4.setText("☆");
+                binding.commentWriteRating5.setText("☆");
+                binding.commentContentWrite.setText("");
                 // Log.i("Send", commentContent);
                 // TODO: send commentContent (content) and rating[0] (rating(int)) to database
+
+                rating[0] = -1;
             }
         });
 
@@ -148,14 +157,23 @@ public class EventStudentFragment extends Fragment {
         for(EventComment eventComment: eventComments) {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout);
             int commentRating = eventComment.getRating();
+            String[] month = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            String day = String.valueOf(eventComment.getDate().getDay());
+            String year = String.valueOf(eventComment.getDate().getYear());
+            String commentAuthor = String.valueOf(eventComment.getAuthor());
+            String commentInfo = month[eventComment.getDate().getMonth()] + " " + day + ", " + year + " by " + commentAuthor.charAt(0);
+
+
             ((TextView)childView.findViewById(R.id.comment_content)).setText(eventComment.getDetails());
-//            Log.i("Comment Month", String.valueOf(eventComment.getDate().getMonth()));
 
             if(commentRating == 1) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★☆☆☆☆");
             if(commentRating == 2) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★☆☆☆");
             if(commentRating == 3) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★☆☆");
             if(commentRating == 4) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★☆");
             if(commentRating == 5) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★★");
+
+            ((TextView)childView.findViewById(R.id.comment_date_and_time)).setText(commentInfo);
+
         }
 
 
