@@ -7,13 +7,13 @@ public class EventInfo extends UserPost{
 
     // Might change to builder pattern later.
 
-    private final float rating;
+    private final double rating;
     private final ArrayList<EventComment> comments;
     private final Date eventStartDateTime;
     private final Date eventEndDateTime;
     private final String eventid;
 
-    public EventInfo(String eventid, String author, String title, String details, float rating,
+    public EventInfo(String eventid, String author, String title, String details, double rating,
                      Date eventStartDateTime, Date eventEndDateTime,
                      ArrayList<EventComment> comments)
     {
@@ -30,7 +30,7 @@ public class EventInfo extends UserPost{
         return eventid;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
