@@ -27,8 +27,6 @@ public class Admin extends User{
     private final static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static String udid;
-    private static String admin_username;
-    private static String admin_email;
     private static Admin instance;
     // TODO: implement api calls
 
@@ -42,9 +40,8 @@ public class Admin extends User{
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
-                    // admin_username = username; // query from database
-                    admin_email = email;
                 } else {
 
                     Log.e("MASTER APP", "Login failed");
@@ -66,13 +63,12 @@ public class Admin extends User{
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", true);
-                    admin_username = username;
-                    admin_email = email;
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
@@ -110,7 +106,7 @@ public class Admin extends User{
 
     // TODO: implement API calls
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
-                                             Date endDateTime)
+                                             Date endDateTime, int maxppl)
     {
         ArrayList<Double> rating = new ArrayList<>();
         ArrayList<EventComment> comments = new ArrayList<>();
@@ -119,9 +115,9 @@ public class Admin extends User{
         event.put("title", title);
         event.put("details", details);
         event.put("startDateTime", startDateTime);
-        event.put("rating", rating);
         event.put("endDateTime", endDateTime);
         event.put("comments", comments);
+        event.put("maxppl", maxppl);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);

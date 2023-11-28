@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginHorizontal="40dp"
+    android:layout_marginHorizontal="35dp"
     android:layout_marginVertical="10dp"
     android:background="@drawable/rounded_background"
     android:clipToPadding="false"
@@ -27,7 +27,7 @@
         android:layout_gravity="center_vertical">
 
         <TextView
-            android:id="@+id/comment_rating"
+            android:id="@+id/comments_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"

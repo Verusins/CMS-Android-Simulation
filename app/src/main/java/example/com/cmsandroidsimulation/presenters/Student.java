@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -28,8 +29,6 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 public class Student extends User {
     private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
-    private static String student_username;
-    private static String student_email;
     private static Student instance;
 
     // TODO: implement api calls
@@ -42,9 +41,8 @@ public class Student extends User {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Student();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
-                    // student_username = "";
-                    student_email = email;
                 } else {
                     // If sign in fails, display a message to the user.
                     throw new FailedLoginException();
@@ -64,13 +62,12 @@ public class Student extends User {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Student();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", false);
-                    student_username = username;
-                    student_email = email;
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
@@ -94,7 +91,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content)
+    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
     {
         String eventid = eventInfo.getEventid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -105,39 +102,15 @@ public class Student extends User {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                ArrayList<EventComment> temp = (ArrayList<EventComment>) document.get("comments");
-                                EventComment eventComment = new EventComment(student_username, content);
-                                temp.add(eventComment);
-                                DocumentReference eventref = db.collection("events").document(eventid);
-                                eventref.update("comments", temp);
+                                getName(email).thenAccept((String username) -> {
+                                    ArrayList<EventComment> temp = (ArrayList<EventComment>) document.get("comments");
+                                    EventComment eventComment = new EventComment(username, content, rating, new Date());
+                                    temp.add(eventComment);
+                                    DocumentReference eventref = db.collection("events").document(eventid);
+                                    eventref.update("comments", temp);
+                                });
                             } else {
                                 Log.e("MASTER APP", "No such document");
-                            }
-                        } else {
-                            Log.e("MASTER APP", "Error getting document: ", task.getException());
-                        }
-                    }
-                });
-        return CompletableFuture.completedFuture(null);
-    }
-    // TODO: implement api calls
-    public CompletableFuture<Void> postEventRating(EventInfo eventInfo, int rating)
-    {
-        String eventid = eventInfo.getEventid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("events").document(eventid).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                ArrayList<Double> temp = (ArrayList<Double>) document.get("rating");
-                                temp.add((double) rating);
-                                DocumentReference eventref = db.collection("events").document(eventid);
-                                eventref.update("rating", temp);
-                            } else {
-                                Log.d("MASTER APP", "No such document");
                             }
                         } else {
                             Log.e("MASTER APP", "Error getting document: ", task.getException());

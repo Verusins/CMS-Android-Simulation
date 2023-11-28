@@ -1,5 +1,6 @@
 package example.com.cmsandroidsimulation;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public class EventStudentFragment extends Fragment {
     FragmentEventStudentBinding binding;
@@ -32,39 +35,157 @@ public class EventStudentFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-         int eventIndex = getArguments().getInt("selectedEventIndex");
+        // Load Content from db
+        int eventIndex = getArguments().getInt("selectedEventIndex");
         // TODO: replace with fetch from backend/stashed event
-         EventInfo eventInfo = PlaceholderValues.generateTestEventInfoList().get(eventIndex);
-         binding.eventTitle.setText(eventInfo.getTitle());
-         binding.eventContent.setText(eventInfo.getDetails());
-         binding.eventAuthor.setText(eventInfo.getAuthor());
+
+        Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> events) -> {
+            afterFetchEventInfo(events.get(eventIndex));
+        });
 
 
+    }
+    private void afterFetchEventInfo(EventInfo eventInfo)
+    {
+        binding.eventTitle.setText(eventInfo.getTitle());
+        binding.eventContent.setText(eventInfo.getDetails());
+        binding.eventAuthor.setText(eventInfo.getAuthor());
+
+        // Disable the comment section / RSVP clicking
+        binding.eventWriteCommentWrapper.setVisibility(View.GONE);
+        binding.eventRSVPed.setVisibility(View.GONE);
+        binding.eventRSVP.setVisibility(View.VISIBLE);
+        // RSVP
+        binding.eventRSVP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.eventWriteCommentWrapper.setVisibility(View.VISIBLE);
+                binding.eventRSVPed.setVisibility(View.VISIBLE);
+                binding.eventRSVP.setVisibility(View.GONE);
+            }
+        });
+        // Un-RSVP
+        binding.eventRSVPed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.eventWriteCommentWrapper.setVisibility(View.GONE);
+                binding.eventRSVPed.setVisibility(View.GONE);
+                binding.eventRSVP.setVisibility(View.VISIBLE);
+            }
+        });
+
+        // Click rating and change rating
+        final int[] rating = {-1};
+        binding.commentWriteRating1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rating[0] = 1;
+                binding.commentWriteRating1.setText("★");
+                binding.commentWriteRating2.setText("☆");
+                binding.commentWriteRating3.setText("☆");
+                binding.commentWriteRating4.setText("☆");
+                binding.commentWriteRating5.setText("☆");
+            }
+        });
+        binding.commentWriteRating2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rating[0] = 2;
+                binding.commentWriteRating1.setText("★");
+                binding.commentWriteRating2.setText("★");
+                binding.commentWriteRating3.setText("☆");
+                binding.commentWriteRating4.setText("☆");
+                binding.commentWriteRating5.setText("☆");
+            }
+        });
+        binding.commentWriteRating3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rating[0] = 3;
+                binding.commentWriteRating1.setText("★");
+                binding.commentWriteRating2.setText("★");
+                binding.commentWriteRating3.setText("★");
+                binding.commentWriteRating4.setText("☆");
+                binding.commentWriteRating5.setText("☆");
+            }
+        });
+        binding.commentWriteRating4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rating[0] = 4;
+                binding.commentWriteRating1.setText("★");
+                binding.commentWriteRating2.setText("★");
+                binding.commentWriteRating3.setText("★");
+                binding.commentWriteRating4.setText("★");
+                binding.commentWriteRating5.setText("☆");
+            }
+        });
+        binding.commentWriteRating5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rating[0] = 5;
+                binding.commentWriteRating1.setText("★");
+                binding.commentWriteRating2.setText("★");
+                binding.commentWriteRating3.setText("★");
+                binding.commentWriteRating4.setText("★");
+                binding.commentWriteRating5.setText("★");
+            }
+        });
+
+
+        // Submit Comment
+        binding.commentWritePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String commentContent = String.valueOf(binding.commentContentWrite.getText());
+                Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
+                // Empty input field
+                binding.commentWriteRating1.setText("☆");
+                binding.commentWriteRating2.setText("☆");
+                binding.commentWriteRating3.setText("☆");
+                binding.commentWriteRating4.setText("☆");
+                binding.commentWriteRating5.setText("☆");
+                binding.commentContentWrite.setText("");
+                // Log.i("Send", commentContent);
+                // TODO: send commentContent (content) and rating[0] (rating(int)) to database
+
+                rating[0] = -1;
+            }
+        });
+
+
+
+        // Comments loading
         LinearLayout commentsLayout = binding.comments;
-        ArrayList<EventComment> eventComments = eventInfo.getComments();
-        int index = 0;
         // TODO: Implement other event details.
-        for(EventComment eventComment: eventComments) {
-            View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout);
+        for(EventComment eventComment: eventInfo.getComments()) {
+            View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
+            Log.i("MASTER APP", "RENDER EVENT COMMENT");
+            int commentRating = eventComment.getRating();
+            String[] month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            String day = String.valueOf(eventComment.getDate().getDay());
+            String year = String.valueOf(eventComment.getDate().getYear()+ 1900) ;
+            String commentAuthor = String.valueOf(eventComment.getAuthor());
+            String commentInfo = month[eventComment.getDate().getMonth()] + " " + day + ", " + year + " by " + commentAuthor.charAt(0);
+
+
             ((TextView)childView.findViewById(R.id.comment_content)).setText(eventComment.getDetails());
+
+            if(commentRating == 1) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★☆☆☆☆");
+            if(commentRating == 2) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★☆☆☆");
+            if(commentRating == 3) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★☆☆");
+            if(commentRating == 4) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★☆");
+            if(commentRating == 5) ((TextView)childView.findViewById(R.id.comments_rating)).setText("★★★★★");
+
+            ((TextView)childView.findViewById(R.id.comment_date_and_time)).setText(commentInfo);
+
+            commentsLayout.addView(childView);
+
         }
-
-//        final RelativeLayout eventParentWrapper = binding.eventMain;
-//        final EventInfo eventSource = PlaceholderValues.generateTestEventInfoSingle();
-//        View childView = getLayoutInflater().inflate(R.layout.fragment_event_student, null);
-//        TextView titleTextView = childView.findViewById(R.id.event_title);
-//        TextView authorTextView = childView.findViewById(R.id.event_author);
-//        TextView contentTextView = childView.findViewById(R.id.event_content);
-//        titleTextView.setText(eventSource.getTitle());
-//        authorTextView.setText(eventSource.getAuthor());
-//        contentTextView.setText(eventSource.getDetails());
-//
-//        eventParentWrapper.addView(childView);
-
-//        Display Comments
     }
 }
