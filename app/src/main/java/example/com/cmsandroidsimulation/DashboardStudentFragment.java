@@ -102,6 +102,7 @@ public class DashboardStudentFragment extends Fragment {
 //            eventParentWrapper.addView(childView);
 //            index2 ++;
 //        }
+        EventAdapter.isAdmin = false;
         RecyclerView recyclerView = binding.RecyclerView;
         adapter = new EventAdapter(eventList, getContext());
         recyclerView.setAdapter(adapter);

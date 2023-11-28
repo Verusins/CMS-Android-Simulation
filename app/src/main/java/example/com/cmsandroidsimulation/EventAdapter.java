@@ -23,6 +23,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private ArrayList<EventInfo> eventList;
     private Context context;
+    public static boolean isAdmin = false;
 
     public EventAdapter(ArrayList<EventInfo> eventList, Context context) {
         this.eventList = PlaceholderValues.generateTestEventInfoList();
@@ -47,8 +48,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("selectedEventIndex", holder.getAdapterPosition());
-                Navigation.findNavController((View) v.getParent()).
-                        navigate(R.id.eventFragment, bundle);
+                if(isAdmin) {
+                    Navigation.findNavController((View) v.getParent()).
+                            navigate(R.id.eventAdminFragment, bundle);
+                } else {
+                    Navigation.findNavController((View) v.getParent()).
+                            navigate(R.id.eventFragment, bundle);
+                }
             }
         });
     }

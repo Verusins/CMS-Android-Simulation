@@ -39,15 +39,15 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         holder.titleTextView.setText(announcement.getTitle());
         holder.contentTextView.setText(announcement.getDetails());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("selectedEventIndex", holder.getAdapterPosition());
-                Navigation.findNavController((View) v.getParent()).
-                        navigate(R.id.eventFragment, bundle);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("selectedEventIndex", holder.getAdapterPosition());
+//                Navigation.findNavController((View) v.getParent()).
+//                        navigate(R.id.eventFragment, bundle);
+//            }
+//        });
     }
 
     @Override

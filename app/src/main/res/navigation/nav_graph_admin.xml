@@ -8,5 +8,15 @@
     <fragment
         android:id="@+id/dashboardAdminFragment"
         android:name="example.com.cmsandroidsimulation.DashboardAdminFragment"
-        android:label="DashboardAdminFragment" />
+        android:label="DashboardAdminFragment"
+        tools:layout="@layout/fragment_dashboard_admin">
+        <action
+            android:id="@+id/action_dashboardAdminFragment_to_eventAdminFragment"
+            app:destination="@id/eventAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventAdminFragment"
+        android:name="example.com.cmsandroidsimulation.EventAdminFragment"
+        android:label="EventAdminFragment"
+        tools:layout="@layout/fragment_event_admin"/>
 </navigation>

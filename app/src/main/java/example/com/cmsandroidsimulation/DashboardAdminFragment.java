@@ -53,6 +53,7 @@ public class DashboardAdminFragment extends Fragment {
         recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
 
 //        Event from db
+        EventAdapter.isAdmin = true;
         RecyclerView recyclerViewEvent = binding.RecyclerViewEvent;
         eventAdapter = new EventAdapter(eventList, getContext());
         recyclerViewEvent.setAdapter(eventAdapter);
