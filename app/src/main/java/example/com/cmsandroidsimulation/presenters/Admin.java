@@ -23,7 +23,7 @@ import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
-    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static String udid;
     private static String admin_username;
@@ -111,11 +111,13 @@ public class Admin extends User{
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
                                              Date endDateTime)
     {
+        ArrayList<Double> rating = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
         event.put("author", author);
         event.put("title", title);
         event.put("details", details);
         event.put("startDateTime", startDateTime);
+        event.put("rating", rating);
         event.put("endDateTime", endDateTime);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")

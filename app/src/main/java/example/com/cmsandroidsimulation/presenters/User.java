@@ -49,8 +49,6 @@ public abstract class User {
                         commentsCollection.get().addOnCompleteListener(commentsTask -> {
                             if (commentsTask.isSuccessful()) {
                                 for (QueryDocumentSnapshot commentDocument : commentsTask.getResult()) {
-                                    // Process each comment and add it to your eventInfo
-                                    // For example, you can create a Comment class and add comments to an ArrayList
                                     EventComment eventComment = new EventComment(
                                             commentDocument.getString("author"),
                                             commentDocument.getString("details")
@@ -66,7 +64,7 @@ public abstract class User {
                                 document.getString("author"),
                                 document.getString("title"),
                                 document.getString("details"),
-                                document.getDouble("rating"),
+                                (ArrayList<Double>) document.get("rating"),
                                 (Date) document.get("eventStartDateTime"),
                                 (Date) document.get("eventEndDateTime"),
                                 comments
