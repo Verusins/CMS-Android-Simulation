@@ -8,50 +8,50 @@ import java.util.Date;
 
 public class PlaceholderValues {
 
-    public static ArrayList<EventInfo> generateTestEventInfoList() {
-        ArrayList<EventInfo> eventInfoList = new ArrayList<>();
-
-        // Event 1
-        EventInfo event1 = new EventInfo(
-                "1",
-                "Some Admin",
-                "School Fair",
-                "Annual school fair featuring various activities.",
-                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
-                new Date(),
-                new Date(),
-                generateTestComments());
-        eventInfoList.add(event1);
-
-        EventInfo event2 = new EventInfo(
-                "2",
-                "Some Admin 2",
-                "Science Exhibition",
-                "Showcasing student projects and experiments.",
-                new ArrayList<Double>(Arrays.asList(2.0, 4.0, 3.0)),
-                new Date(),
-                new Date(),
-                generateTestComments());
-        eventInfoList.add(event2);
-
-        // Add more events as needed
-
-        return eventInfoList;
-    }
-
-    public static EventInfo generateTestEventInfoSingle() {
-        EventInfo event = new EventInfo(
-                "1",
-                "School Fair",
-                "Annual school fair featuring various activities.",
-                "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
-                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
-                new Date(),
-                new Date(),
-                generateTestComments());
-
-        return event;
-    }
+//    public static ArrayList<EventInfo> generateTestEventInfoList() {
+//        ArrayList<EventInfo> eventInfoList = new ArrayList<>();
+//
+//        // Event 1
+//        EventInfo event1 = new EventInfo(
+//                "1",
+//                "Some Admin",
+//                "School Fair",
+//                "Annual school fair featuring various activities.",
+//                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
+//                new Date(),
+//                new Date(),
+//                generateTestComments());
+//        eventInfoList.add(event1);
+//
+//        EventInfo event2 = new EventInfo(
+//                "2",
+//                "Some Admin 2",
+//                "Science Exhibition",
+//                "Showcasing student projects and experiments.",
+//                new ArrayList<Double>(Arrays.asList(2.0, 4.0, 3.0)),
+//                new Date(),
+//                new Date(),
+//                generateTestComments());
+//        eventInfoList.add(event2);
+//
+//        // Add more events as needed
+//
+//        return eventInfoList;
+//    }
+//
+//    public static EventInfo generateTestEventInfoSingle() {
+//        EventInfo event = new EventInfo(
+//                "1",
+//                "School Fair",
+//                "Annual school fair featuring various activities.",
+//                "Poo poo poo poo poo poo poo poo poo poo poo poo poo ",
+//                new ArrayList<Double>(Arrays.asList(4.0, 5.0, 1.0)),
+//                new Date(),
+//                new Date(),
+//                generateTestComments());
+//
+//        return event;
+//    }
 
 
     public static ArrayList<EventComment> generateTestComments() {

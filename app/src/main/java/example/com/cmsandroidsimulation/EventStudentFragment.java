@@ -21,6 +21,7 @@ import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
 import example.com.cmsandroidsimulation.presenters.Student;
 
 public class EventStudentFragment extends Fragment {
@@ -142,6 +143,7 @@ public class EventStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String commentContent = String.valueOf(binding.commentContentWrite.getText());
+                Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
                 // Empty input field
                 binding.commentWriteRating1.setText("☆");
                 binding.commentWriteRating2.setText("☆");

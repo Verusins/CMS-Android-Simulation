@@ -110,7 +110,7 @@ public class Admin extends User{
 
     // TODO: implement API calls
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
-                                             Date endDateTime)
+                                             Date endDateTime, int maxppl)
     {
         ArrayList<Double> rating = new ArrayList<>();
         ArrayList<EventComment> comments = new ArrayList<>();
@@ -121,6 +121,7 @@ public class Admin extends User{
         event.put("startDateTime", startDateTime);
         event.put("endDateTime", endDateTime);
         event.put("comments", comments);
+        event.put("maxppl", maxppl);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);

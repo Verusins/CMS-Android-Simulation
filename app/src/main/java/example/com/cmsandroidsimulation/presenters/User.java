@@ -51,7 +51,8 @@ public abstract class User {
                                 document.getString("details"),
                                 (Date) document.get("eventStartDateTime"),
                                 (Date) document.get("eventEndDateTime"),
-                                (ArrayList<EventComment>) document.get("comments")
+                                (ArrayList<EventComment>) document.get("comments"),
+                                document.getDouble("maxppl").intValue()
                         );
                         eventslist.add(eventinfo);
                     }

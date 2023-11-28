@@ -12,15 +12,18 @@ public class EventInfo extends UserPost{
     private final Date eventEndDateTime;
     private final String eventid;
 
+    private final int maxppl;
+
     public EventInfo(String eventid, String author, String title, String details,
                      Date eventStartDateTime, Date eventEndDateTime,
-                     ArrayList<EventComment> comments)
+                     ArrayList<EventComment> comments, int maxppl)
     {
         super(author, title, details);
         this.comments = comments;
         this.eventStartDateTime = eventStartDateTime;
         this.eventEndDateTime = eventEndDateTime;
         this.eventid = eventid;
+        this.maxppl = maxppl;
     }
 
 
@@ -35,6 +38,8 @@ public class EventInfo extends UserPost{
     public Date getEventEndDateTime() {
         return eventEndDateTime;
     }
+
+    public int getMaxppl() {return maxppl;}
 
     public Date getEventStartDateTime() {
         return eventStartDateTime;
