@@ -5,17 +5,24 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
-    public int year;
-    public int month;
-    public int day;
+    public static int year;
+    public static int month;
+    public static int day;
+
+    public TextView fragment;
 
     public int getYear() {
         return year;
@@ -29,17 +36,19 @@ public class DatePickerFragment extends DialogFragment
         return day;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public static void setYear(int year) {
+        year = year;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public static void setMonth(int month) {
+        month = month;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public static void setDay(int day) {
+        day = day;
     }
+
+    public void setFragment(TextView fragment) { this.fragment = fragment; }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -55,9 +64,8 @@ public class DatePickerFragment extends DialogFragment
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date the user picks.
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        LocalDate date = LocalDate.of(year, month + 1, day);
+        this.fragment.setText(date.toString());
         Log.i("Date", "Year: " + year + "Month: " + month + "Day" + day);
     }
 }

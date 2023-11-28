@@ -81,4 +81,8 @@
     <string name="admin_event_participants_hint">1 - 100</string>
     <string name="admin_event_location">Location: </string>
     <string name="admin_event_location_hint">AA 112</string>
+    <string name="admin_event_input_error">Please fill in all criteria</string>
+    <string name="admin_event_invalid_start_time">Event start dates must have already not passed</string>
+    <string name="admin_event_invalid_end_time">Event end dates must not precede its start date</string>
+
 </resources>

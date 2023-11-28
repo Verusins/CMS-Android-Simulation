@@ -5,32 +5,69 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding;
 
 public class AdminEventFragment extends Fragment {
     private FragmentAdminNewEventBinding binding;
 
-    public int start_year;
-    public int start_month;
-    public int start_day;
-    int start_hour;
-    int start_minute;
+    public int year;
+    public int month;
+    public int day;
+    public int hour;
+    public int minute;
 
-    public int end_year;
+    public static void setYear(int year) {
+        year = year;
+    }
+
+    public static void setMonth(int month) {
+        month = month;
+    }
+
+    public static void setDay(int day) {
+        day = day;
+    }
+
+    public static void setHour(int hour) {
+        hour = hour;
+    }
+
+    public static void setMinute(int minute) {
+        minute = minute;
+    }
+
+    private int start_year;
+    private int start_month;
+    private int start_day;
+    private int start_hour;
+    private int start_minute;
+
+    private int end_year;
     public int end_month;
-    public int end_day;
-    int end_hour;
-    int end_minute;
+    private int end_day;
+    private int end_hour;
+    private int end_minute;
 
-    LocalDateTime start;
-    LocalDateTime end;
+    private LocalDateTime start;
+    private LocalDateTime end;
+
+    private TextView start_date_text;
+    private TextView start_time_text;
+    private TextView end_date_text;
+    private TextView end_time_text;
+
+
 
     @Override
     public View onCreateView(
@@ -39,6 +76,10 @@ public class AdminEventFragment extends Fragment {
     ) {
 
         binding = FragmentAdminNewEventBinding.inflate(inflater, container, false);
+        start_date_text = binding.startPickDate;
+        start_time_text = binding.startPickTime;
+        end_date_text = binding.endPickDate;
+        end_time_text = binding.endPickTime;
         return binding.getRoot();
 
     }
@@ -52,10 +93,7 @@ public class AdminEventFragment extends Fragment {
             public void onClick(View view) {
                 DatePickerFragment dateFragment = new DatePickerFragment();
                 dateFragment.show(getParentFragmentManager(), "datePicker");
-
-                start_year = dateFragment.getYear();
-                start_month = dateFragment.getMonth();
-                start_day = dateFragment.getDay();
+                dateFragment.setFragment(start_date_text);
             }
         });
 
@@ -64,9 +102,7 @@ public class AdminEventFragment extends Fragment {
             public void onClick(View view) {
                 TimePickerFragment timeFragment = new TimePickerFragment();
                 timeFragment.show(getParentFragmentManager(), "timePicker");
-
-                start_hour = timeFragment.getHour();
-                start_minute = timeFragment.getMinute();
+                timeFragment.setFragment(start_time_text);
 
             }
         });
@@ -76,10 +112,7 @@ public class AdminEventFragment extends Fragment {
             public void onClick(View view) {
                 DatePickerFragment dateFragment = new DatePickerFragment();
                 dateFragment.show(getParentFragmentManager(), "datePicker");
-
-                end_year = dateFragment.getYear();
-                end_month = dateFragment.getMonth();
-                end_day = dateFragment.getDay();
+                dateFragment.setFragment(end_date_text);
 
             }
         });
@@ -89,9 +122,7 @@ public class AdminEventFragment extends Fragment {
             public void onClick(View view) {
                 TimePickerFragment timeFragment = new TimePickerFragment();
                 timeFragment.show(getParentFragmentManager(), "timePicker");
-
-                end_hour = timeFragment.getHour();
-                end_minute = timeFragment.getMinute();
+                timeFragment.setFragment(end_time_text);
 
             }
         });
@@ -101,7 +132,45 @@ public class AdminEventFragment extends Fragment {
             @Override
             public void onClick(View view){
                 try {
-                    start = LocalDateTime.of(start_year, start_month, start_day, start_hour, start_minute);
+
+                    if (binding.adminNewEventNameInput.getText().toString().equals("")
+                            || binding.adminNewEventDescInput.getText().toString().equals("")
+                            || binding.adminEventParticipantsInput.getText().toString().equals("")
+                            || binding.adminEventLocationInput.getText().toString().equals("")
+                            || binding.startPickDate.getText().toString().equals("")
+                            || binding.startPickTime.getText().toString().equals("")
+                            || binding.endPickDate.getText().toString().equals("")
+                            || binding.endPickTime.getText().toString().equals("")){
+
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.admin_event_input_error),
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
+                    LocalDate start_date = LocalDate.parse(start_date_text.getText());
+                    LocalTime start_time = LocalTime.parse(start_time_text.getText());
+                    start = LocalDateTime.of(start_date, start_time);
+
+                    LocalDate end_date = LocalDate.parse(end_date_text.getText());
+                    LocalTime end_time = LocalTime.parse(end_time_text.getText());
+                    end = LocalDateTime.of(end_date, end_time);
+
+                    if (start.isBefore(LocalDateTime.now())){
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.admin_event_invalid_start_time),
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
+                    if (end.isBefore((start))){
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.admin_event_invalid_end_time),
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
+                    Log.i("", start.toString() + end.toString());
                 }catch (Exception e){
                     Log.i("", "An error has occurred");
                 }

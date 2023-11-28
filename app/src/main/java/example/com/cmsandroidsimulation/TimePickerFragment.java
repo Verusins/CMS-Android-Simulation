@@ -5,15 +5,21 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.time.LocalTime;
 import java.util.Calendar;
+
+import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding;
 
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
+    public TextView fragment;
+    private FragmentAdminNewEventBinding binding;
     int hour;
     int minute;
 
@@ -25,13 +31,15 @@ public class TimePickerFragment extends DialogFragment
         return minute;
     }
 
-    public void setHour(int hour) {
+    private void setHour(int hour) {
         this.hour = hour;
     }
 
-    public void setMinute(int minute) {
+    private void setMinute(int minute) {
         this.minute = minute;
     }
+
+    public void setFragment(TextView fragment) { this.fragment = fragment; }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -47,6 +55,9 @@ public class TimePickerFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time the user picks.
-        Log.i("Time", "Hour: " + hourOfDay + "Minute: " + minute);
+        LocalTime time = LocalTime.of(hourOfDay, minute);
+        this.fragment.setText(time.toString());
+
+
     }
 }
