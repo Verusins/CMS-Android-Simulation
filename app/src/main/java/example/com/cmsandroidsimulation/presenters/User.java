@@ -11,7 +11,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -43,29 +42,19 @@ public abstract class User {
                 if (task.isSuccessful()) {
                     Log.i("MASTER APP", "Successful events query");
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        db.collection("events").document(document.getId()).get().addOnCompleteListener(
-                                new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        DocumentSnapshot doc = task.getResult();
-                                        Log.i("MASTER APP", doc.get("title") + "conrad title");
-                                        Log.i("MASTER APP", (ArrayList<EventComment>) doc.get("comments") + " conrad comments");
-                                        EventInfo eventinfo = new EventInfo(
-                                                doc.getId(),
-                                                doc.getString("author"),
-                                                doc.getString("title"),
-                                                doc.getString("details"),
-                                                (Date) doc.get("eventStartDateTime"),
-                                                (Date) doc.get("eventEndDateTime"),
-                                                (ArrayList<EventComment>) doc.get("comments"),
-                                                doc.getDouble("maxppl").intValue()
-                                        );
-                                        eventslist.add(eventinfo);
-                                    }
-                                }
+                        Log.i("MASTER APP",  document.get("comments") + " comments");
+                        EventInfo eventinfo = new EventInfo(
+                                document.getId(),
+                                document.getString("author"),
+                                document.getString("title"),
+                                document.getString("details"),
+                                (Date) document.get("eventStartDateTime"),
+                                (Date) document.get("eventEndDateTime"),
+                                (ArrayList<EventComment>) document.get("comments"),
+                                document.getDouble("maxppl").intValue()
                         );
+                        eventslist.add(eventinfo);
                     }
-                    Log.i("MASTER APP", eventslist.toString() + "conrad events");
                     asynclist.complete(eventslist);
                 } else {
                     asynclist.completeExceptionally(task.getException());
