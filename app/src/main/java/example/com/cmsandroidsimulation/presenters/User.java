@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -42,7 +44,16 @@ public abstract class User {
                 if (task.isSuccessful()) {
                     Log.i("MASTER APP", "Successful events query");
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.i("MASTER APP",  document.get("comments") + " comments");
+                        ArrayList<EventComment> eventComments = new ArrayList<EventComment>();
+                        for(HashMap<String, Object> obj : (ArrayList<HashMap<String, Object>>)document.get("comments"))
+                        {
+                            eventComments.add(new EventComment(
+                                    (String)obj.get("author"),
+                                    (String)obj.get("details"),
+                                    ((Long)obj.get("rating")).intValue(),
+                                    ((Timestamp)obj.get("date")).toDate()
+                            ));
+                        }
                         EventInfo eventinfo = new EventInfo(
                                 document.getId(),
                                 document.getString("author"),
@@ -50,7 +61,7 @@ public abstract class User {
                                 document.getString("details"),
                                 (Date) document.get("eventStartDateTime"),
                                 (Date) document.get("eventEndDateTime"),
-                                (ArrayList<EventComment>) document.get("comments"),
+                                eventComments,
                                 document.getDouble("maxppl").intValue()
                         );
                         eventslist.add(eventinfo);
