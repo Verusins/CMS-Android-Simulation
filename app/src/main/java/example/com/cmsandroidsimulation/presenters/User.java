@@ -79,7 +79,7 @@ public abstract class User {
             return PlaceholderValues.generateTestAnnouncementList();
         });
     }
-    public static CompletableFuture<Boolean> isAdmin(String email)
+    public CompletableFuture<Boolean> isAdmin(String email)
     {
         CompletableFuture<Boolean> isAdmin = new CompletableFuture<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();

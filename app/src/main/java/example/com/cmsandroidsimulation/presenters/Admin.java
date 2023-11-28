@@ -47,7 +47,7 @@ public class Admin extends User{
                     admin_email = email;
                 } else {
 
-                    Log.e("Master APP", "Login failed");
+                    Log.e("MASTER APP", "Login failed");
                     // If sign in fails, display a message to the user.
                     // throw new FailedLoginException();
                 }
@@ -79,12 +79,12 @@ public class Admin extends User{
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d("LOGIN SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Log.i("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                                 }
                             });
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.e("Master APP", "Register failed");
+                    Log.e("MASTER APP", "Register failed");
                 }
             }
         });

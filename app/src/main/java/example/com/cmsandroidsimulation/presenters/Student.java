@@ -77,7 +77,7 @@ public class Student extends User {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d("LOGIN SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                                 }
                             });
                 } else {
@@ -111,10 +111,10 @@ public class Student extends User {
                                 DocumentReference eventref = db.collection("events").document(eventid);
                                 eventref.update("comments", temp);
                             } else {
-                                Log.d("BRUH", "No such document");
+                                Log.e("MASTER APP", "No such document");
                             }
                         } else {
-                            Log.e("ERROR", "Error getting document: ", task.getException());
+                            Log.e("MASTER APP", "Error getting document: ", task.getException());
                         }
                     }
                 });
@@ -137,10 +137,10 @@ public class Student extends User {
                                 DocumentReference eventref = db.collection("events").document(eventid);
                                 eventref.update("rating", temp);
                             } else {
-                                Log.d("BRUH", "No such document");
+                                Log.d("MASTER APP", "No such document");
                             }
                         } else {
-                            Log.e("ERROR", "Error getting document: ", task.getException());
+                            Log.e("MASTER APP", "Error getting document: ", task.getException());
                         }
                     }
                 });
