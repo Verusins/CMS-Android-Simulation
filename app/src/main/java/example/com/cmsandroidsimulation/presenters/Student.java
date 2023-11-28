@@ -46,6 +46,7 @@ public class Student extends User {
                     // If sign in fails, display a message to the user.
                     throw new FailedLoginException();
                 }
+                return null;
             }
         });
 
@@ -81,6 +82,7 @@ public class Student extends User {
                     // If sign in fails, display a message to the user.
                     throw new FailedLoginException();
                 }
+                return null;
             }
         });
         return authResult;
@@ -106,6 +108,7 @@ public class Student extends User {
                         } else {
                             Log.w("NOOOO", "Error getting documents.", task.getException());
                         }
+                        return null;
                     }
                 });
         return db;

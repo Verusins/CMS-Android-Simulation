@@ -59,6 +59,7 @@ public final class LoginStudentFragment extends Fragment{
                             // show error message somewhere on the screen
                             throw new FailedLoginException();
                         }
+                        return null;
                     }
                 });
             }

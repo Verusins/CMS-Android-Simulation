@@ -1,6 +1,20 @@
 package example.com.cmsandroidsimulation.presenters;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.models.Announcement;
@@ -40,6 +54,27 @@ public abstract class User {
 
             return PlaceholderValues.generateTestAnnouncementList();
         });
+    }
+    public static CompletableFuture<Boolean> isAdmin(String email)
+    {
+        CompletableFuture<Boolean> isAdmin = new CompletableFuture<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("users").whereEqualTo("email", email).get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        isAdmin.complete(document.getBoolean("isAdmin"));
+                        return;
+                    }
+                    isAdmin.complete(false);
+                } else {
+                    isAdmin.completeExceptionally(task.getException());
+                }
+            }
+        });
+        return isAdmin;
     }
 
 }
