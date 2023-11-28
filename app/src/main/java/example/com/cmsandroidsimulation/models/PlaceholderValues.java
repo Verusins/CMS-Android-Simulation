@@ -57,11 +57,13 @@ public class PlaceholderValues {
     public static ArrayList<EventComment> generateTestComments() {
         ArrayList<EventComment> comments = new ArrayList<>();
 
-        EventComment comment1 = new EventComment("User1", "Great event!");
-        EventComment comment2 = new EventComment("User2", "Enjoyed it a lot!");
+        EventComment comment1 = new EventComment("User1", "Great event!", 3, new Date());
+        EventComment comment2 = new EventComment("User2", "Enjoyed it a lot!", 2, new Date());
+        EventComment comment3 = new EventComment("User3", "Enjoyed it a lot! :3", 5, new Date());
 
         comments.add(comment1);
         comments.add(comment2);
+        comments.add(comment3);
 
         // Add more comments as needed
 

@@ -21,6 +21,7 @@ import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public class EventStudentFragment extends Fragment {
     FragmentEventStudentBinding binding;
@@ -41,7 +42,15 @@ public class EventStudentFragment extends Fragment {
         // Load Content from db
         int eventIndex = getArguments().getInt("selectedEventIndex");
         // TODO: replace with fetch from backend/stashed event
-        EventInfo eventInfo = PlaceholderValues.generateTestEventInfoList().get(eventIndex);
+
+        Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> events) -> {
+            afterFetchEventInfo(events.get(eventIndex));
+        });
+
+
+    }
+    private void afterFetchEventInfo(EventInfo eventInfo)
+    {
         binding.eventTitle.setText(eventInfo.getTitle());
         binding.eventContent.setText(eventInfo.getDetails());
         binding.eventAuthor.setText(eventInfo.getAuthor());
@@ -154,8 +163,9 @@ public class EventStudentFragment extends Fragment {
         ArrayList<EventComment> eventComments = eventInfo.getComments();
         int index = 0;
         // TODO: Implement other event details.
-        for(EventComment eventComment: eventComments) {
-            View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout);
+        for(EventComment eventComment: PlaceholderValues.generateTestComments()) {
+            View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
+            Log.i("MASTER APP", childView.toString());
             int commentRating = eventComment.getRating();
             String[] month = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
             String day = String.valueOf(eventComment.getDate().getDay());
@@ -174,8 +184,8 @@ public class EventStudentFragment extends Fragment {
 
             ((TextView)childView.findViewById(R.id.comment_date_and_time)).setText(commentInfo);
 
+            commentsLayout.addView(childView);
+
         }
-
-
     }
 }
