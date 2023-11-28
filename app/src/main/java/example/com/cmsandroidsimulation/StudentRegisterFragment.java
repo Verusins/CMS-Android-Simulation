@@ -59,7 +59,6 @@ public class StudentRegisterFragment extends Fragment {
                             // show error message somewhere on the screen
                             throw new FailedLoginException();
                         }
-                        return null;
                     }
                 });
             }
