@@ -147,17 +147,54 @@ public class Student extends User {
         });
     }
     // TODO: implement api calls
-    public CompletableFuture<Boolean> getEventHasRSVPd(EventInfo eventInfo)
+    public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("users").whereEqualTo("email", email).get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        ArrayList<String> events = (ArrayList<String>) document.get("events");
+                        if (events.indexOf(eventInfo.getEventid()) != -1){
+                            events.remove(eventInfo.getEventid());
+                        }
+                        else{
+                            events.add(eventInfo.getEventid());
+                        }
+                        return;
+                    }
+                    Log.e("MASTER APP", "No such document");
+                } else {
+                    Log.e("MASTER APP", "Error getting document: ", task.getException());
+                }
             }
-            return false;
         });
+        Task<QuerySnapshot> eventtask = db.collection("events").get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.getId().equals(eventInfo.getEventid())){
+                            ArrayList<String> attendees = (ArrayList<String>) document.get("attendees");
+                            if (attendees.indexOf(email) != -1){
+                                attendees.remove(email);
+                            }
+                            else{
+                                attendees.add(email);
+                            }
+                            return;
+                        }
+                    }
+                    Log.e("MASTER APP", "No such document");
+                } else {
+                    Log.e("MASTER APP", "Error getting document: ", task.getException());
+                }
+            }
+        });
+        return CompletableFuture.completedFuture(null);
     }
 
     // TODO: implement api calls
