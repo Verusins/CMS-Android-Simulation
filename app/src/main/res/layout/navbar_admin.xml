@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginEnd="30dp"
-            android:text="Welcome, S"
+            android:text="Welcome, Admin"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
@@ -101,7 +101,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Create Announcment"
+                    android:text="Create Announcement"
+                    android:textSize="20dp"
+                    android:textColor="@color/gray"/>
+
+                <TextView
+                    android:id="@+id/navigation_create_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Create Event"
                     android:textSize="20dp"
                     android:textColor="@color/gray"/>
             </LinearLayout>
