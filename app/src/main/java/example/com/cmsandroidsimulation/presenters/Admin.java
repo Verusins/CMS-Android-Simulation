@@ -108,13 +108,15 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public Task<DocumentReference> postEvent(String title, String details, Date startDateTime,
+    public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
                                              Date endDateTime)
     {
         Map<String, Object> event = new HashMap<>();
+        event.put("author", author);
         event.put("title", title);
         event.put("details", details);
         event.put("startDateTime", startDateTime);
+        event.put("endDateTime", endDateTime);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);
