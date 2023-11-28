@@ -42,23 +42,7 @@ public abstract class User {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        CollectionReference commentsCollection = db.collection("events")
-                                .document(document.getId())
-                                .collection("comments");
-                        ArrayList<EventComment> comments = new ArrayList<>();
-                        commentsCollection.get().addOnCompleteListener(commentsTask -> {
-                            if (commentsTask.isSuccessful()) {
-                                for (QueryDocumentSnapshot commentDocument : commentsTask.getResult()) {
-                                    EventComment eventComment = new EventComment(
-                                            commentDocument.getString("author"),
-                                            commentDocument.getString("details")
-                                    );
-                                    comments.add(eventComment);
-                                }
-                            } else {
-                                asynclist.completeExceptionally(commentsTask.getException());
-                            }
-                        });
+
                         EventInfo eventinfo = new EventInfo(
                                 document.getId(),
                                 document.getString("author"),
@@ -67,8 +51,8 @@ public abstract class User {
                                 (ArrayList<Double>) document.get("rating"),
                                 (Date) document.get("eventStartDateTime"),
                                 (Date) document.get("eventEndDateTime"),
-                                comments
-                                );
+                                (ArrayList<EventComment>) document.get("comments")
+                        );
                         eventslist.add(eventinfo);
                         return;
                     }

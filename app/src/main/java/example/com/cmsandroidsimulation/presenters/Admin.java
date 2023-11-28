@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
 import example.com.cmsandroidsimulation.models.Complaint;
+import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
@@ -112,6 +113,7 @@ public class Admin extends User{
                                              Date endDateTime)
     {
         ArrayList<Double> rating = new ArrayList<>();
+        ArrayList<EventComment> comments = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
         event.put("author", author);
         event.put("title", title);
@@ -119,13 +121,14 @@ public class Admin extends User{
         event.put("startDateTime", startDateTime);
         event.put("rating", rating);
         event.put("endDateTime", endDateTime);
+        event.put("comments", comments);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
@@ -142,7 +145,7 @@ public class Admin extends User{
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
