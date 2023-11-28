@@ -167,9 +167,9 @@ public class EventStudentFragment extends Fragment {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
             Log.i("MASTER APP", "RENDER EVENT COMMENT");
             int commentRating = eventComment.getRating();
-            String[] month = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            String[] month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
             String day = String.valueOf(eventComment.getDate().getDay());
-            String year = String.valueOf(eventComment.getDate().getYear());
+            String year = String.valueOf(eventComment.getDate().getYear()+ 1900) ;
             String commentAuthor = String.valueOf(eventComment.getAuthor());
             String commentInfo = month[eventComment.getDate().getMonth()] + " " + day + ", " + year + " by " + commentAuthor.charAt(0);
 
