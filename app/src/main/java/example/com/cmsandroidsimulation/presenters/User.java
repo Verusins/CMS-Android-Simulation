@@ -49,7 +49,6 @@ public abstract class User {
                                 document.getString("author"),
                                 document.getString("title"),
                                 document.getString("details"),
-                                (ArrayList<Double>) document.get("rating"),
                                 (Date) document.get("eventStartDateTime"),
                                 (Date) document.get("eventEndDateTime"),
                                 (ArrayList<EventComment>) document.get("comments")

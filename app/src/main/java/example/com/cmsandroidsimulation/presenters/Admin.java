@@ -119,7 +119,6 @@ public class Admin extends User{
         event.put("title", title);
         event.put("details", details);
         event.put("startDateTime", startDateTime);
-        event.put("rating", rating);
         event.put("endDateTime", endDateTime);
         event.put("comments", comments);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
