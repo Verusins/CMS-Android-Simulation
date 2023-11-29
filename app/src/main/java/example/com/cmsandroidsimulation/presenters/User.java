@@ -64,7 +64,8 @@ public abstract class User {
                             (Date) document.get("eventEndDateTime"),
                             eventComments,
                             document.getDouble("maxppl").intValue(),
-                            (ArrayList<String>)document.get("attendees")
+                            (ArrayList<String>)document.get("attendees"),
+                                document.getString("location")
                         );
                         eventslist.add(eventinfo);
                     }
