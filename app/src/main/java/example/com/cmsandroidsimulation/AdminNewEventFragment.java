@@ -9,16 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
 
 import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding;
 
-public class AdminEventFragment extends Fragment {
+public class AdminNewEventFragment extends Fragment {
     private FragmentAdminNewEventBinding binding;
 
     private LocalDateTime start;
@@ -123,7 +123,6 @@ public class AdminEventFragment extends Fragment {
                                 Toast.LENGTH_SHORT);
                         myToast.show();
                     }
-
                     LocalDate start_date = LocalDate.parse(start_date_text.getText());
                     LocalTime start_time = LocalTime.parse(start_time_text.getText());
                     start = LocalDateTime.of(start_date, start_time);

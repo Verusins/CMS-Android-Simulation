@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_postreq"/>
 <!--    <fragment-->
 <!--        android:id="@+id/postReqFragment"-->
-<!--        android:name="example.com.cmsandroidsimulation.AdminEventFragment"-->
+<!--        android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"-->
 <!--        android:label="PostReqFragment"-->
 <!--        tools:layout="@layout/fragment_admin_new_event"/>-->
 </navigation>

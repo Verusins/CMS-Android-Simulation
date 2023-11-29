@@ -19,6 +19,7 @@ import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
 public class EventAdminFragment extends Fragment {
     FragmentEventAdminBinding binding;
@@ -39,8 +40,13 @@ public class EventAdminFragment extends Fragment {
 
         // Load Content from db
         int eventIndex = getArguments().getInt("selectedEventIndex");
-        // TODO: replace with fetch from backend/stashed event
-        EventInfo eventInfo = PlaceholderValues.generateTestEventInfoList().get(eventIndex);
+
+        Admin.getInstance().getEvents().thenAccept((eventInfos) -> {
+           afterEventFetch(eventInfos.get(eventIndex));
+        });
+    }
+    private void afterEventFetch(EventInfo eventInfo)
+    {
         binding.eventTitle.setText(eventInfo.getTitle());
         binding.eventContent.setText(eventInfo.getDetails());
         binding.eventAuthor.setText(eventInfo.getAuthor());
@@ -51,7 +57,6 @@ public class EventAdminFragment extends Fragment {
         ArrayList<EventComment> eventComments = eventInfo.getComments();
         int count = 0;
         double rating = 0;
-        // TODO: Implement other event details.
         for (EventComment eventComment : eventComments) {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
             commentsLayout.addView(childView);
@@ -83,5 +88,12 @@ public class EventAdminFragment extends Fragment {
         rating /= count;
         binding.eventRating.setText(String.format("%.1f", rating));
         binding.eventRatingCount.setText(String.valueOf(count));
+        Log.i("MASTER APP", "event max: " + eventInfo.getMaxppl());
+        Log.i("MASTER APP", "event registered: " + eventInfo.getAttendees().size());
+        Log.i("MASTER APP", "event max binding: " +  binding.eventMaxCapacity);
+        Log.i("MASTER APP", "event registered binding: " + binding.eventRegisteredNo);
+        binding.eventMaxCapacity.setText(eventInfo.getMaxppl() + "");
+        binding.eventRegisteredNo.setText(eventInfo.getAttendees().size() + "");
+        Log.i("MASTER APP", "finished event render");
     }
 }

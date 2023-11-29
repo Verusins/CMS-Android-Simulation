@@ -19,4 +19,9 @@
         android:name="example.com.cmsandroidsimulation.EventAdminFragment"
         android:label="EventAdminFragment"
         tools:layout="@layout/fragment_event_admin"/>
+    <fragment
+        android:id="@+id/adminNewEventFragment"
+        android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
+        android:label="AdminNewEventFragment"
+        tools:layout="@layout/fragment_admin_new_event"/>
 </navigation>

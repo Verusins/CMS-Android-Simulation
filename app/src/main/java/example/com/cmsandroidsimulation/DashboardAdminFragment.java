@@ -19,14 +19,13 @@ import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBind
 import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
 public class DashboardAdminFragment extends Fragment {
 
     FragmentDashboardAdminBinding binding;
     EventAdapter eventAdapter;
     AnnouncementAdapter announcementAdapter;
-    ArrayList<Announcement> announcementList = PlaceholderValues.generateTestAnnouncementList();
-    ArrayList<EventInfo> eventList = PlaceholderValues.generateTestEventInfoList();
 
     @Override
     public View onCreateView(
@@ -47,17 +46,20 @@ public class DashboardAdminFragment extends Fragment {
 //        sidebar.setVisibility(View.GONE);
 
 //        Announcement from db
-        RecyclerView recyclerViewAnnouncement = binding.RecyclerViewAnnouncement;
-        announcementAdapter = new AnnouncementAdapter(announcementList, getContext());
-        recyclerViewAnnouncement.setAdapter(announcementAdapter);
-        recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
+        ArrayList<Announcement> announcementList = PlaceholderValues.generateTestAnnouncementList();
 
-//        Event from db
-        EventAdapter.isAdmin = true;
-        RecyclerView recyclerViewEvent = binding.RecyclerViewEvent;
-        eventAdapter = new EventAdapter(eventList, getContext());
-        recyclerViewEvent.setAdapter(eventAdapter);
-        recyclerViewEvent.setLayoutManager(new LinearLayoutManager(getContext()));
+        Admin.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
+
+            RecyclerView recyclerViewAnnouncement = binding.RecyclerViewAnnouncement;
+            announcementAdapter = new AnnouncementAdapter(announcementList, getContext());
+            recyclerViewAnnouncement.setAdapter(announcementAdapter);
+            recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
+            RecyclerView recyclerViewEvent = binding.RecyclerViewEvent;
+            eventAdapter = new EventAdapter(eventList, getContext());
+            recyclerViewEvent.setAdapter(eventAdapter);
+            recyclerViewEvent.setLayoutManager(new LinearLayoutManager(getContext()));
+        });
+
 
 
     }
