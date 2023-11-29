@@ -79,6 +79,10 @@ public class EventStudentFragment extends Fragment {
                 " to " +
                 dateFormat.format(eventInfo.getEventEndDateTime()) +
                 " at " + eventInfo.getLocation());
+        final int[] registeredMembers = {eventInfo.getAttendees().size()};
+        int maxMembers = eventInfo.getMaxppl();
+        boolean full = registeredMembers[0] >= maxMembers;
+        binding.eventMembers.setText("Registered: " + registeredMembers[0] + "/" + maxMembers);
 
         // Disable the comment section / RSVP clicking
         binding.eventWriteCommentWrapper.setVisibility(View.GONE);
@@ -91,6 +95,11 @@ public class EventStudentFragment extends Fragment {
             binding.eventRSVPed.setVisibility(View.VISIBLE);
             binding.eventRSVP.setVisibility(View.GONE);
         }
+
+        if(full)
+            binding.eventRSVP.setVisibility(View.GONE);
+
+
         // RSVP
         binding.eventRSVP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +107,8 @@ public class EventStudentFragment extends Fragment {
                 binding.eventWriteCommentWrapper.setVisibility(View.VISIBLE);
                 binding.eventRSVPed.setVisibility(View.VISIBLE);
                 binding.eventRSVP.setVisibility(View.GONE);
+                registeredMembers[0]++;
+                binding.eventMembers.setText("Registered: " + registeredMembers[0] + "/" + maxMembers);
 
                 Student.getInstance().setEventHasRSVPd(eventInfo, true);
             }
@@ -109,6 +120,8 @@ public class EventStudentFragment extends Fragment {
                 binding.eventWriteCommentWrapper.setVisibility(View.GONE);
                 binding.eventRSVPed.setVisibility(View.GONE);
                 binding.eventRSVP.setVisibility(View.VISIBLE);
+                registeredMembers[0]--;
+                binding.eventMembers.setText("Registered: " + registeredMembers[0] + "/" + maxMembers);
 
                 Student.getInstance().setEventHasRSVPd(eventInfo, false);
             }
