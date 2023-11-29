@@ -52,6 +52,10 @@ public class EventStudentFragment extends Fragment {
     }
     private void afterFetchEventInfo(EventInfo eventInfo)
     {
+        Log.i("MASTER APP", "RSVP INFO");
+        Log.i("MASTER APP", eventInfo.getAttendees().toString());
+        Log.i("MASTER APP", Student.getInstance().getEmail());
+
         binding.eventTitle.setText(eventInfo.getTitle());
         binding.eventContent.setText(eventInfo.getDetails());
         binding.eventAuthor.setText(eventInfo.getAuthor());
@@ -60,6 +64,13 @@ public class EventStudentFragment extends Fragment {
         binding.eventWriteCommentWrapper.setVisibility(View.GONE);
         binding.eventRSVPed.setVisibility(View.GONE);
         binding.eventRSVP.setVisibility(View.VISIBLE);
+
+        if (eventInfo.getAttendees().contains(Student.getInstance().getEmail())){
+            Log.i("MASTER APP", "RSVPED ALREADY");
+            binding.eventWriteCommentWrapper.setVisibility(View.VISIBLE);
+            binding.eventRSVPed.setVisibility(View.VISIBLE);
+            binding.eventRSVP.setVisibility(View.GONE);
+        }
         // RSVP
         binding.eventRSVP.setOnClickListener(new View.OnClickListener() {
             @Override
