@@ -45,10 +45,25 @@
         android:id="@+id/event_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/event_author"
         android:paddingHorizontal="35dp"
         android:paddingVertical="30dp"
         android:text=""/>
+    <TextView
+        android:id="@+id/event_members"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="35dp"
+        android:paddingVertical="10dp"
+        android:text="Registered: "
+        android:textSize="12dp"/>
+    <TextView
+        android:id="@+id/event_location_and_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="35dp"
+        android:paddingVertical="10dp"
+        android:text=""
+        android:textSize="12dp"/>
 
     <LinearLayout
         android:id="@+id/event_RSVP"

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -60,11 +61,12 @@ public abstract class User {
                             document.getString("author"),
                             document.getString("title"),
                             document.getString("details"),
-                            (Date) document.get("eventStartDateTime"),
-                            (Date) document.get("eventEndDateTime"),
+                                ((Timestamp) document.get("startDateTime")).toDate(),
+                                ((Timestamp) document.get("endDateTime")).toDate(),
                             eventComments,
                             document.getDouble("maxppl").intValue(),
-                            (ArrayList<String>)document.get("attendees")
+                            (ArrayList<String>)document.get("attendees"),
+                                document.getString("location")
                         );
                         eventslist.add(eventinfo);
                     }
@@ -80,16 +82,29 @@ public abstract class User {
     // TODO: implement api calls
     public CompletableFuture<ArrayList<Announcement>> getAnnouncements()
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        CompletableFuture<ArrayList<Announcement>> asynclist = new CompletableFuture<>();
+        ArrayList<Announcement> alist = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("announcements").get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Announcement announcement = new Announcement(
+                                document.getString("author"),
+                                document.getString("title"),
+                                document.getString("details")
+                        );
+                        alist.add(announcement);
+                    }
+                    asynclist.complete(alist);
+                } else {
+                    asynclist.completeExceptionally(task.getException());
+                }
             }
-
-            return PlaceholderValues.generateTestAnnouncementList();
         });
+        return asynclist;
     }
     public CompletableFuture<Boolean> isAdmin(String email)
     {
