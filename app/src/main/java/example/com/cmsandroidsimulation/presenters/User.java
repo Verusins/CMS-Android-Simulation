@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -60,8 +61,8 @@ public abstract class User {
                             document.getString("author"),
                             document.getString("title"),
                             document.getString("details"),
-                            (Date) document.get("eventStartDateTime"),
-                            (Date) document.get("eventEndDateTime"),
+                                ((Timestamp) document.get("startDateTime")).toDate(),
+                                ((Timestamp) document.get("endDateTime")).toDate(),
                             eventComments,
                             document.getDouble("maxppl").intValue(),
                             (ArrayList<String>)document.get("attendees"),

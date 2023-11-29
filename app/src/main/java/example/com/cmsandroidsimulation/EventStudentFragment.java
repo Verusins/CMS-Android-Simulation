@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
 import example.com.cmsandroidsimulation.models.Announcement;
@@ -46,7 +49,13 @@ public class EventStudentFragment extends Fragment {
         // TODO: replace with fetch from backend/stashed event
 
         Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> events) -> {
-            afterFetchEventInfo(events.get(eventIndex));
+            try {
+                afterFetchEventInfo(events.get(eventIndex));
+            }
+            catch (Exception e)
+            {
+                Log.e("MASTER APP", e.toString());
+            }
         });
 
 
@@ -56,10 +65,20 @@ public class EventStudentFragment extends Fragment {
         Log.i("MASTER APP", "RSVP INFO");
         Log.i("MASTER APP", eventInfo.getAttendees().toString());
         Log.i("MASTER APP", Student.getInstance().getEmail());
+        Log.i("MASTER APP", "dateFormat.format(eventInfo.getEventStartDateTime())");
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm:ss", Locale.CANADA);
+        Log.i("MASTER APP", "dateFormat.format(eventInfo.getEventStartDateTime())");
+        Log.i("MASTER APP", eventInfo.getEventStartDateTime() +"");
+        Log.i("MASTER APP", dateFormat.format(eventInfo.getEventStartDateTime()));
 
         binding.eventTitle.setText(eventInfo.getTitle());
         binding.eventContent.setText(eventInfo.getDetails());
         binding.eventAuthor.setText(eventInfo.getAuthor());
+        Log.i("MASTER APP", dateFormat.format(eventInfo.getEventStartDateTime()));
+        binding.eventLocationAndTime.setText(dateFormat.format(eventInfo.getEventStartDateTime()) +
+                " to " +
+                dateFormat.format(eventInfo.getEventEndDateTime()) +
+                " at " + eventInfo.getLocation());
 
         // Disable the comment section / RSVP clicking
         binding.eventWriteCommentWrapper.setVisibility(View.GONE);
