@@ -17,8 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
+import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
@@ -95,18 +98,30 @@ public class Admin extends User{
     // TODO: implement api calls
     public CompletableFuture<ArrayList<Complaint>> getComplaints()
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        CompletableFuture<ArrayList<Complaint>> asynclist = new CompletableFuture<>();
+        ArrayList<Complaint> clist = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("complaints").get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Complaint complaint = new Complaint(
+                                document.getString("username"),
+                                document.getString("content")
+                        );
+                        clist.add(complaint);
+                    }
+                    asynclist.complete(clist);
+                } else {
+                    asynclist.completeExceptionally(task.getException());
+                }
             }
-            return PlaceholderValues.generateTestComplaintList();
         });
+        return asynclist;
     }
 
-    // TODO: implement API calls
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
                                              Date endDateTime, int maxppl, String location)
     {
@@ -133,8 +148,6 @@ public class Admin extends User{
                 });
         return task;
     }
-
-    // TODO: implement API calls
     public Task<DocumentReference> postAnnouncement(String title, String details)
     {
         Map<String, Object> announcement = new HashMap<>();

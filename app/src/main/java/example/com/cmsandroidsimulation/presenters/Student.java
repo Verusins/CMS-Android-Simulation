@@ -31,7 +31,6 @@ public class Student extends User {
     private static FirebaseUser user = null;
     private static Student instance;
 
-    // TODO: implement api calls
     public static Task<AuthResult> Login(String email, String password)
     {
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
@@ -132,7 +131,6 @@ public class Student extends User {
             return false;
         });
     }
-    // TODO: implement api calls
     public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo, boolean setTrue)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -187,17 +185,21 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public CompletableFuture<Void> postComplaint(String content)
+    public Task<DocumentReference> postComplaint(String content)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Map<String, Object> complaint = new HashMap<>();
+        complaint.put("username", getName(email));
+        complaint.put("content", content);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<DocumentReference> task = db.collection("complaints")
+                .add(complaint);
+        task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
             }
-            return null;
         });
+        return task;
     }
 
 }
