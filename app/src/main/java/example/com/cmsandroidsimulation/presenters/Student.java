@@ -185,7 +185,7 @@ public class Student extends User {
     }
 
     // TODO: implement api calls
-    public Task<DocumentReference> postComplaint(String content)
+    public CompletableFuture<Void> postComplaint(String content)
     {
         Map<String, Object> complaint = new HashMap<>();
         complaint.put("username", getName(email));
@@ -199,7 +199,7 @@ public class Student extends User {
                 Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
             }
         });
-        return task;
+        return CompletableFuture.completedFuture(null);
     }
 
 }
