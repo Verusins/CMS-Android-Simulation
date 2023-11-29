@@ -110,6 +110,14 @@ public class Admin extends User{
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
                                              Date endDateTime, int maxppl)
     {
+        Log.i("MASTER APP", "prepare post event");
+        Log.i("MASTER APP", author);
+        Log.i("MASTER APP", title);
+        Log.i("MASTER APP", details);
+        Log.i("MASTER APP", startDateTime + "");
+        Log.i("MASTER APP", endDateTime + "");
+        Log.i("MASTER APP", maxppl + "");
+
         ArrayList<String> attendees = new ArrayList<>();
         ArrayList<EventComment> comments = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
