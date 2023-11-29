@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Date;
 
@@ -29,6 +31,40 @@ public final class AdminFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.adminNavbar.menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.VISIBLE);
+            }
+        });
+        binding.adminNavbar.menuIconBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+        binding.adminNavbar.navigationHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.dashboardAdminFragment);
+
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+        binding.adminNavbar.navigationCreateEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.adminNewEventFragment);
+
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
 //        Admin.getInstance().postEvent("Author 1", "Event 1", "Details 1",
 //                new Date(123,1,2,3,4,5),
 //                new Date(123,2,3,4,5,6), 2);

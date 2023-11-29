@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
@@ -47,8 +48,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("selectedEventIndex", holder.getAdapterPosition());
-                Navigation.findNavController((View) v.getParent()).
-                        navigate(R.id.eventFragment, bundle);
+
+                if(Admin.getInstance() != null)
+                {
+                    Navigation.findNavController((View) v.getParent()).
+                            navigate(R.id.eventAdminFragment, bundle);
+                }
+                else {
+                    Navigation.findNavController((View) v.getParent()).
+                            navigate(R.id.eventFragment, bundle);
+                }
             }
         });
     }
