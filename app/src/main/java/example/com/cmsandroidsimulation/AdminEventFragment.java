@@ -21,44 +21,6 @@ import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding
 public class AdminEventFragment extends Fragment {
     private FragmentAdminNewEventBinding binding;
 
-    public int year;
-    public int month;
-    public int day;
-    public int hour;
-    public int minute;
-
-    public static void setYear(int year) {
-        year = year;
-    }
-
-    public static void setMonth(int month) {
-        month = month;
-    }
-
-    public static void setDay(int day) {
-        day = day;
-    }
-
-    public static void setHour(int hour) {
-        hour = hour;
-    }
-
-    public static void setMinute(int minute) {
-        minute = minute;
-    }
-
-    private int start_year;
-    private int start_month;
-    private int start_day;
-    private int start_hour;
-    private int start_minute;
-
-    private int end_year;
-    public int end_month;
-    private int end_day;
-    private int end_hour;
-    private int end_minute;
-
     private LocalDateTime start;
     private LocalDateTime end;
 
@@ -144,6 +106,20 @@ public class AdminEventFragment extends Fragment {
 
                         Toast myToast = Toast.makeText(getActivity(),
                                 getContext().getString(R.string.admin_event_input_error),
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
+                    if (binding.adminNewEventNameInput.getText().toString().length() > 200){
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.admin_event_invalid_event_name),
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
+                    if (binding.adminNewEventDescInput.getText().toString().length() > 200){
+                        Toast myToast = Toast.makeText(getActivity(),
+                                getContext().getString(R.string.admin_event_invalid_event_desc),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
                     }
