@@ -91,8 +91,6 @@ public class Student extends User {
     {
         return instance;
     }
-
-    // TODO: implement api calls
     public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
     {
         String eventid = eventInfo.getEventid();

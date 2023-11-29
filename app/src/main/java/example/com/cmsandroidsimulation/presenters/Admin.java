@@ -128,17 +128,18 @@ public class Admin extends User{
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
     }
 
     // TODO: implement API calls
-    public Task<DocumentReference> postAnnouncement(String details)
+    public Task<DocumentReference> postAnnouncement(String title, String details)
     {
         Map<String, Object> announcement = new HashMap<>();
         announcement.put("author", getName(email));
+        announcement.put("title", title);
         announcement.put("details", details);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("announcements")
@@ -146,7 +147,7 @@ public class Admin extends User{
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
