@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/event_main"
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Event Title"
+        android:text="Loading"
         android:textSize="20dp"
         android:paddingTop="20dp"
         android:textStyle="bold"
@@ -33,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Brian Harrington"
+        android:text="Loading"
         android:textSize="12dp"
         android:paddingTop="5dp"
         android:textColor="@color/gray"
@@ -45,24 +46,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/event_author"
-        android:paddingHorizontal="40dp"
+        android:paddingHorizontal="35dp"
         android:paddingVertical="30dp"
-        android:text="     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        android:text=""/>
 
     <LinearLayout
         android:id="@+id/event_RSVP"
-        android:layout_width="335dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_marginHorizontal="35dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded_background_colored"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_content">
+        app:layout_constraintTop_toBottomOf="@+id/event_content"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/event_RSVP_content"
@@ -77,17 +76,43 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/event_RSVPed"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_background_accepted"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/event_RSVPed_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-3dp"
+            android:paddingTop="5dp"
+            android:text="RSVPed! Click to undo"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/event_write_comment_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/event_RSVP">
+        android:layout_marginHorizontal="35dp"
+        app:layout_constraintTop_toBottomOf="@id/event_RSVPed"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/comment_write_comment"
-            android:layout_width="335dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/rounded_background"
             android:clipToPadding="false"
@@ -107,9 +132,9 @@
                 android:textSize="12sp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/comment_write_rating1"
@@ -161,17 +186,15 @@
                     android:id="@+id/comment_write_post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:includeFontPadding="false"
-                    android:gravity="right"
-                    android:text="Post"
                     android:background="@drawable/rounded_background_colored"
-                    android:layout_marginLeft="180dp"
+                    android:includeFontPadding="false"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="3dp"
-                    android:translationY="-2dp"
-                    android:textStyle="bold"
+                    android:layout_marginLeft="180dp"
+                    android:text="Post"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -185,7 +208,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/event_write_comment_wrapper"
         android:text="Comments"
-        android:paddingLeft="40dp"
+        android:paddingLeft="35dp"
         android:textSize="20dp"
         android:textColor="@color/black"
         android:paddingTop="15dp"/>
@@ -199,5 +222,5 @@
         android:orientation="vertical">
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 </ScrollView>

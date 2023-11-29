@@ -25,11 +25,11 @@ import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBind
 import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public class DashboardStudentFragment extends Fragment {
     FragmentDashboardStudentBinding binding;
     EventAdapter adapter;
-    ArrayList<EventInfo> eventList = PlaceholderValues.generateTestEventInfoList();
 
     @Override
     public View onCreateView(
@@ -102,10 +102,13 @@ public class DashboardStudentFragment extends Fragment {
 //            eventParentWrapper.addView(childView);
 //            index2 ++;
 //        }
-        RecyclerView recyclerView = binding.RecyclerView;
-        adapter = new EventAdapter(eventList, getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
+            Log.i("MASTER APP", "events: " + eventList);
+            RecyclerView recyclerView = binding.RecyclerView;
+            adapter = new EventAdapter(eventList, getContext());
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        });
 
 
     }

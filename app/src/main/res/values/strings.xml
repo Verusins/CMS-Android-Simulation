@@ -51,7 +51,7 @@
     <string name="post_quiz_placeholder">  eg. 99</string>
 
 <!--    Submit-->
-    <string name="submit">Check</string>
+    <string name="submit">Submit</string>
 
 <!--    Results-->
     <string name="post_results_title">Here Are Your Results</string>
@@ -69,5 +69,22 @@
 <!--    Incorrect Input Messages-->
     <string name="NaN_input_error">Please enter a mark for all the listed courses</string>
     <string name="mark_input_out_of_bounds">Please enter a mark between 0 and 100</string>
+    
+<!--    Strings for Admin Event Page-->
+    <string name="admin_create_event">Create Event</string>
+    <string name="admin_event_name">Event Name</string>
+    <string name="admin_event_name_hint">Event name (maximum 200 characters)</string>
+    <string name="admin_event_desc_hint">Description (maximum 1000 characters)</string>
+    <string name="admin_event_start_time">Start: </string>
+    <string name="admin_event_end_time">End: </string>
+    <string name="admin_event_participants">Participants: </string>
+    <string name="admin_event_participants_hint">eg. 100</string>
+    <string name="admin_event_location">Location: </string>
+    <string name="admin_event_location_hint">eg. AA 112</string>
+    <string name="admin_event_input_error">Please fill in all criteria</string>
+    <string name="admin_event_invalid_start_time">Event start dates must have already not passed</string>
+    <string name="admin_event_invalid_end_time">Event end dates must not precede its start date</string>
+    <string name="admin_event_invalid_event_name">Event name must be under 200 characters long</string>
+    <string name="admin_event_invalid_event_desc">Event description must be under 1000 characters long</string>
 
 </resources>

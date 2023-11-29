@@ -68,6 +68,7 @@ public final class StudentFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_student);
                 NavController navController = navHostFragment.getNavController();
+//                navController.navigate(R.id.postReqFragment);
                 navController.navigate(R.id.postReqFragment);
 
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);

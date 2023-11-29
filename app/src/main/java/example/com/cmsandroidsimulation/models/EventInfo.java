@@ -7,31 +7,32 @@ public class EventInfo extends UserPost{
 
     // Might change to builder pattern later.
 
-    private final float rating;
     private final ArrayList<EventComment> comments;
     private final Date eventStartDateTime;
     private final Date eventEndDateTime;
     private final String eventid;
 
-    public EventInfo(String eventid, String author, String title, String details, float rating,
+    private final int maxppl;
+
+    private final ArrayList<String> attendees;
+
+    public EventInfo(String eventid, String author, String title, String details,
                      Date eventStartDateTime, Date eventEndDateTime,
-                     ArrayList<EventComment> comments)
+                     ArrayList<EventComment> comments, int maxppl, ArrayList<String> attendees)
     {
         super(author, title, details);
-        this.rating = rating;
         this.comments = comments;
         this.eventStartDateTime = eventStartDateTime;
         this.eventEndDateTime = eventEndDateTime;
         this.eventid = eventid;
+        this.maxppl = maxppl;
+        this.attendees = attendees;
     }
 
+    public ArrayList<String> getAttendees(){return attendees;}
 
     public String getEventid(){
         return eventid;
-    }
-
-    public float getRating() {
-        return rating;
     }
 
     public ArrayList<EventComment> getComments() {
@@ -41,6 +42,8 @@ public class EventInfo extends UserPost{
     public Date getEventEndDateTime() {
         return eventEndDateTime;
     }
+
+    public int getMaxppl() {return maxppl;}
 
     public Date getEventStartDateTime() {
         return eventStartDateTime;

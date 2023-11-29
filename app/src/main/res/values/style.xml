@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:colorControlActivated">@color/primary</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+</resources>

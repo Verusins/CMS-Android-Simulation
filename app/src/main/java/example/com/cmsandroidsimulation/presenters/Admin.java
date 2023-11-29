@@ -20,14 +20,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
 import example.com.cmsandroidsimulation.models.Complaint;
+import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public class Admin extends User{
-    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static String udid;
-    private static String admin_username;
-    private static String admin_email;
     private static Admin instance;
     // TODO: implement api calls
 
@@ -41,12 +40,11 @@ public class Admin extends User{
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
-                    // admin_username = username; // query from database
-                    admin_email = email;
                 } else {
 
-                    Log.e("Master APP", "Login failed");
+                    Log.e("MASTER APP", "Login failed");
                     // If sign in fails, display a message to the user.
                     // throw new FailedLoginException();
                 }
@@ -65,25 +63,26 @@ public class Admin extends User{
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Admin();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
+                    ArrayList<String> events = new ArrayList<>();
                     Map<String, Object> user = new HashMap<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", true);
-                    admin_username = username;
-                    admin_email = email;
+                    user.put("events", events);
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d("LOGIN SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Log.i("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                                 }
                             });
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.e("Master APP", "Register failed");
+                    Log.e("MASTER APP", "Register failed");
                 }
             }
         });
@@ -108,20 +107,35 @@ public class Admin extends User{
     }
 
     // TODO: implement API calls
-    public Task<DocumentReference> postEvent(String title, String details, Date startDateTime,
-                                             Date endDateTime)
+    public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
+                                             Date endDateTime, int maxppl)
     {
+        Log.i("MASTER APP", "prepare post event");
+        Log.i("MASTER APP", author);
+        Log.i("MASTER APP", title);
+        Log.i("MASTER APP", details);
+        Log.i("MASTER APP", startDateTime + "");
+        Log.i("MASTER APP", endDateTime + "");
+        Log.i("MASTER APP", maxppl + "");
+
+        ArrayList<String> attendees = new ArrayList<>();
+        ArrayList<EventComment> comments = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
+        event.put("author", author);
         event.put("title", title);
         event.put("details", details);
         event.put("startDateTime", startDateTime);
+        event.put("endDateTime", endDateTime);
+        event.put("comments", comments);
+        event.put("maxppl", maxppl);
+        event.put("attendees", attendees);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
@@ -138,7 +152,7 @@ public class Admin extends User{
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("ADDED EVENT", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
