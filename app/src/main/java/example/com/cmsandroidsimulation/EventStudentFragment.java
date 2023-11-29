@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
 import example.com.cmsandroidsimulation.models.Announcement;
@@ -159,6 +160,8 @@ public class EventStudentFragment extends Fragment {
             public void onClick(View view) {
                 String commentContent = String.valueOf(binding.commentContentWrite.getText());
                 Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
+                eventInfo.getComments().add(new EventComment("Me",  binding.
+                        commentContentWrite.getText().toString(), rating[0], new Date()));
                 // Empty input field
                 binding.commentWriteRating1.setText("☆");
                 binding.commentWriteRating2.setText("☆");
@@ -170,6 +173,8 @@ public class EventStudentFragment extends Fragment {
                 // TODO: send commentContent (content) and rating[0] (rating(int)) to database
 
                 rating[0] = -1;
+                binding.comments.removeAllViews();
+                afterFetchEventInfo(eventInfo);
             }
         });
 
