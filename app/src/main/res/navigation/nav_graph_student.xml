@@ -26,14 +26,14 @@
             android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
             app:destination="@id/dashboardStudentFragment" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/postReqFragment"-->
-<!--        android:name="example.com.cmsandroidsimulation.PostReqFragment"-->
-<!--        android:label="PostReqFragment"-->
-<!--        tools:layout="@layout/fragment_postreq"/>-->
     <fragment
         android:id="@+id/postReqFragment"
-        android:name="example.com.cmsandroidsimulation.AdminEventFragment"
+        android:name="example.com.cmsandroidsimulation.PostReqFragment"
         android:label="PostReqFragment"
-        tools:layout="@layout/fragment_admin_new_event"/>
+        tools:layout="@layout/fragment_postreq"/>
+<!--    <fragment-->
+<!--        android:id="@+id/postReqFragment"-->
+<!--        android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"-->
+<!--        android:label="PostReqFragment"-->
+<!--        tools:layout="@layout/fragment_admin_new_event"/>-->
 </navigation>

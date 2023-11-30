@@ -63,9 +63,8 @@ public class LoginAdminFragment  extends Fragment {
                                         navigate(R.id.action_loginAdminFragment_to_adminFragment);
                             });
                         } else {
-                            // show error message somewhere on the screen
+                            Log.w("ERROR", "Messed up somewhere", task.getException());
                         }
-
                     }
                 });
             }

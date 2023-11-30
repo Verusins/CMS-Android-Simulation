@@ -11,25 +11,26 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
+import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 
 public class Student extends User {
     private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
-    private static String student_username;
-    private static String student_email;
     private static Student instance;
 
-    // TODO: implement api calls
     public static Task<AuthResult> Login(String email, String password)
     {
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
@@ -39,12 +40,11 @@ public class Student extends User {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Student();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
-                    // student_username = "";
-                    student_email = email;
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
@@ -61,20 +61,21 @@ public class Student extends User {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     instance = new Student();
+                    instance.email = email;
                     user = mAuth.getCurrentUser();
                     Map<String, Object> user = new HashMap<>();
+                    ArrayList<String> events = new ArrayList<>();
                     user.put("name", username);
                     user.put("email", email);
                     user.put("isAdmin", false);
-                    student_username = username;
-                    student_email = email;
+                    user.put("events", events);
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
                             .add(user)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d("LOGIN SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                                 }
                             });
                 } else {
@@ -89,39 +90,33 @@ public class Student extends User {
     {
         return instance;
     }
-
-    // TODO: implement api calls
-    public FirebaseFirestore postEventComment(EventInfo eventInfo, String content)
+    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
     {
+        String eventid = eventInfo.getEventid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("events")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("events").document(eventid).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("YESSIR", document.getId() + " => " + document.getData());
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                getName(email).thenAccept((String username) -> {
+                                    ArrayList<EventComment> temp = (ArrayList<EventComment>) document.get("comments");
+                                    EventComment eventComment = new EventComment(username, content, rating, new Date());
+                                    temp.add(eventComment);
+                                    DocumentReference eventref = db.collection("events").document(eventid);
+                                    eventref.update("comments", temp);
+                                });
+                            } else {
+                                Log.e("MASTER APP", "No such document");
                             }
                         } else {
-                            Log.w("NOOOO", "Error getting documents.", task.getException());
+                            Log.e("MASTER APP", "Error getting document: ", task.getException());
                         }
                     }
                 });
-        return db;
-    }
-    // TODO: implement api calls
-    public CompletableFuture<Void> postEventRating(EventInfo eventInfo, int rating)
-    {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        return CompletableFuture.completedFuture(null);
     }
     // TODO: implement api calls
     public CompletableFuture<Boolean> getEventHasRated(EventInfo eventInfo)
@@ -136,46 +131,75 @@ public class Student extends User {
             return false;
         });
     }
-
-    // TODO: implement api calls
-    public CompletableFuture<Void> submitEventRSVP(EventInfo eventInfo)
+    public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo, boolean setTrue)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("users").whereEqualTo("email", email).get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        ArrayList<String> events = (ArrayList<String>) document.get("events");
+                        if (!setTrue && events.indexOf(eventInfo.getEventid()) != -1){
+                            events.remove(eventInfo.getEventid());
+                        }
+                        else if (setTrue && events.indexOf(eventInfo.getEventid()) == -1){
+                            events.add(eventInfo.getEventid());
+                        }
+                        DocumentReference eventref = db.collection("users").document(document.getId());
+                        eventref.update("events", events);
+                    }
+//                    Log.e("MASTER APP", "No such document USER");
+                } else {
+                    Log.e("MASTER APP", "Error getting document: ", task.getException());
+                }
             }
-            return null;
         });
-    }
-    // TODO: implement api calls
-    public CompletableFuture<Boolean> getEventHasRSVPd(EventInfo eventInfo)
-    {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Task<QuerySnapshot> eventtask = db.collection("events").get();
+        eventtask.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> eventtask) {
+                if (eventtask.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : eventtask.getResult()) {
+                        Log.i("MASTERP APP", document.getId() + " " + eventInfo.getEventid());
+                        if (document.getId().equals(eventInfo.getEventid())){
+                            ArrayList<String> attendees = (ArrayList<String>) document.get("attendees");
+                            if (!setTrue && attendees.indexOf(email) != -1){
+                                attendees.remove(email);
+                            }
+                            else if (setTrue && attendees.indexOf(email) == -1){
+                                attendees.add(email);
+                            }
+                            DocumentReference eventref = db.collection("events").document(eventInfo.getEventid());
+                            eventref.update("attendees", attendees);
+                        }
+                    }
+//                    Log.e("MASTER APP", "No such document EVENTS");
+                } else {
+                    Log.e("MASTER APP", "Error getting document: ", eventtask.getException());
+                }
             }
-            return false;
         });
+        return CompletableFuture.completedFuture(null);
     }
 
     // TODO: implement api calls
     public CompletableFuture<Void> postComplaint(String content)
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        Map<String, Object> complaint = new HashMap<>();
+        complaint.put("username", getName(email));
+        complaint.put("content", content);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<DocumentReference> task = db.collection("complaints")
+                .add(complaint);
+        task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
             }
-            return null;
         });
+        return CompletableFuture.completedFuture(null);
     }
 
 }

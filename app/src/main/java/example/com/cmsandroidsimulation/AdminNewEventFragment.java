@@ -9,16 +9,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
-public class AdminEventFragment extends Fragment {
+public class AdminNewEventFragment extends Fragment {
     private FragmentAdminNewEventBinding binding;
 
     private LocalDateTime start;
@@ -108,6 +114,7 @@ public class AdminEventFragment extends Fragment {
                                 getContext().getString(R.string.admin_event_input_error),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
+                        return;
                     }
 
                     if (binding.adminNewEventNameInput.getText().toString().length() > 200){
@@ -115,6 +122,7 @@ public class AdminEventFragment extends Fragment {
                                 getContext().getString(R.string.admin_event_invalid_event_name),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
+                        return;
                     }
 
                     if (binding.adminNewEventDescInput.getText().toString().length() > 200){
@@ -122,8 +130,8 @@ public class AdminEventFragment extends Fragment {
                                 getContext().getString(R.string.admin_event_invalid_event_desc),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
+                        return;
                     }
-
                     LocalDate start_date = LocalDate.parse(start_date_text.getText());
                     LocalTime start_time = LocalTime.parse(start_time_text.getText());
                     start = LocalDateTime.of(start_date, start_time);
@@ -137,6 +145,7 @@ public class AdminEventFragment extends Fragment {
                                 getContext().getString(R.string.admin_event_invalid_start_time),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
+                        return;
                     }
 
                     if (end.isBefore((start))){
@@ -144,9 +153,33 @@ public class AdminEventFragment extends Fragment {
                                 getContext().getString(R.string.admin_event_invalid_end_time),
                                 Toast.LENGTH_SHORT);
                         myToast.show();
+                        return;
                     }
+                    Admin.getInstance().getName(Admin.getInstance().getEmail()).thenAccept((username) -> {
+                        Log.i("MASTER APP", binding.adminNewEventNameInput.getText().toString());
+                        Log.i("MASTER APP", binding.adminNewEventDescInput.getText().toString());
+                        Log.i("MASTER APP", Date.from(start.atZone(ZoneId.systemDefault()).toInstant())+"");
+                        Log.i("MASTER APP", Date.from(end.atZone(ZoneId.systemDefault()).toInstant()) +"");
+                        Log.i("MASTER APP", Integer.parseInt(binding.adminEventParticipantsInput.getText().toString())+"");
 
-                    Log.i("", start.toString() + end.toString());
+                        Admin.getInstance().postEvent(username,
+                                binding.adminNewEventNameInput.getText().toString(),
+                                binding.adminNewEventDescInput.getText().toString(),
+                                Date.from(start.atZone(ZoneId.systemDefault()).toInstant()),
+                                Date.from(end.atZone(ZoneId.systemDefault()).toInstant()),
+                                Integer.parseInt(binding.adminEventParticipantsInput.getText().toString()),
+                                binding.adminEventLocationInput.getText().toString()
+                                ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+
+                                requireActivity().runOnUiThread(() -> {
+                                    NavHostFragment.findNavController(AdminNewEventFragment.this).
+                                            navigate(R.id.dashboardAdminFragment);
+                                });
+                            }
+                        });
+                    });
                 }catch (Exception e){
                     Log.i("", "An error has occurred");
                 }
