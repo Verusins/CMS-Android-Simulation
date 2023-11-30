@@ -15,8 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp"
-        android:background="@drawable/border_background">
+        android:padding="10dp"
+        android:background="@drawable/rounded_background">
 
         <!-- Complaint Box -->
         <TextView
@@ -74,7 +74,9 @@
             android:layout_height="wrap_content"
             android:text="Close Complaint"
             android:layout_gravity="end"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_background_colored"
+            app:backgroundTint="@color/primary"/>
 
     </LinearLayout>
 

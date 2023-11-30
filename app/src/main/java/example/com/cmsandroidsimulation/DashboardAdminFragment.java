@@ -51,10 +51,12 @@ public class DashboardAdminFragment extends Fragment {
         Admin.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
 
             RecyclerView recyclerViewAnnouncement = binding.RecyclerViewAnnouncement;
+            recyclerViewAnnouncement.setNestedScrollingEnabled(false);
             announcementAdapter = new AnnouncementAdapter(announcementList, getContext());
             recyclerViewAnnouncement.setAdapter(announcementAdapter);
             recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
             RecyclerView recyclerViewEvent = binding.RecyclerViewEvent;
+            recyclerViewEvent.setNestedScrollingEnabled(false);
             eventAdapter = new EventAdapter(eventList, getContext());
             recyclerViewEvent.setAdapter(eventAdapter);
             recyclerViewEvent.setLayoutManager(new LinearLayoutManager(getContext()));

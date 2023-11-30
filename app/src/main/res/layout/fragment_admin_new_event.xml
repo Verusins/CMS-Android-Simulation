@@ -8,13 +8,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:id="@+id/admin_new_event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
+            android:paddingTop="20dp"
             android:text="@string/admin_create_event"
             android:textSize="30dp"
             android:textStyle="bold"

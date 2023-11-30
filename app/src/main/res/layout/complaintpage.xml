@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/background"
-        android:padding="16dp"
+        android:paddingHorizontal="35dp"
         app:layout_constraintBaseline_toBaselineOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,10 +48,11 @@
             android:id="@+id/complaintTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:text="Submit a Complaint"
-            android:textColor="@color/primary"
-            android:textSize="32sp" />
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/complaintDescriptionLayout"
@@ -64,12 +65,12 @@
                 android:id="@+id/complaintDescription"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:background="@drawable/border_background"
+                android:background="@drawable/rounded_background"
                 android:gravity="top"
                 android:hint="Enter your complaint description here"
                 android:inputType="textMultiLine"
                 android:padding="8dp"
-                android:textColor="@color/black"
+                android:textColor="@color/gray"
                 android:textColorHint="@android:color/darker_gray" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,10 +79,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/complaintDescriptionLayout"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="40dp"
             android:text="I agree to comply with the Student Code of Conduct"
-            android:textColor="@color/primary"
-            android:textSize="14sp" />
+            android:textColor="@color/black"
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/submitComplaintButton"
@@ -89,13 +90,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/codeOfConductCheckBox"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="Submit Complaint"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
+            android:background="@drawable/rounded_background_colored"
+            android:textStyle="bold"
             app:backgroundTint="@color/primary"
             app:cornerRadius="4dp"
-            tools:textSize="20sp" />
+            tools:textSize="18dp" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

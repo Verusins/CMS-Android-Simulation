@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -190,23 +191,30 @@ public class EventStudentFragment extends Fragment {
         binding.commentWritePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String commentContent = String.valueOf(binding.commentContentWrite.getText());
-                Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
-                eventInfo.getComments().add(new EventComment("Me",  binding.
-                        commentContentWrite.getText().toString(), rating[0], new Date()));
-                // Empty input field
-                binding.commentWriteRating1.setText("☆");
-                binding.commentWriteRating2.setText("☆");
-                binding.commentWriteRating3.setText("☆");
-                binding.commentWriteRating4.setText("☆");
-                binding.commentWriteRating5.setText("☆");
-                binding.commentContentWrite.setText("");
-                // Log.i("Send", commentContent);
-                // TODO: send commentContent (content) and rating[0] (rating(int)) to database
+                if(rating[0] == -1) {
+                    Toast myToast = Toast.makeText(getActivity(),
+                            "You must click a rating!",
+                            Toast.LENGTH_SHORT);
+                    myToast.show();
+                }else {
+                    String commentContent = String.valueOf(binding.commentContentWrite.getText());
+                    Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
+                    eventInfo.getComments().add(new EventComment("Me", binding.
+                            commentContentWrite.getText().toString(), rating[0], new Date()));
+                    // Empty input field
+                    binding.commentWriteRating1.setText("☆");
+                    binding.commentWriteRating2.setText("☆");
+                    binding.commentWriteRating3.setText("☆");
+                    binding.commentWriteRating4.setText("☆");
+                    binding.commentWriteRating5.setText("☆");
+                    binding.commentContentWrite.setText("");
+                    // Log.i("Send", commentContent);
+                    // TODO: send commentContent (content) and rating[0] (rating(int)) to database
 
-                rating[0] = -1;
-                binding.comments.removeAllViews();
-                afterFetchEventInfo(eventInfo);
+                    rating[0] = -1;
+                    binding.comments.removeAllViews();
+                    afterFetchEventInfo(eventInfo);
+                }
             }
         });
 
