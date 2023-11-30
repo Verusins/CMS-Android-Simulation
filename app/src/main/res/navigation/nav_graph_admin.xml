@@ -13,12 +13,20 @@
         <action
             android:id="@+id/action_dashboardAdminFragment_to_eventAdminFragment"
             app:destination="@id/eventAdminFragment" />
+        <action
+            android:id="@+id/action_dashboardStudentFragment_to_complaintAdminFragment"
+            app:destination="@id/complaintAdminFragment"/>
     </fragment>
     <fragment
         android:id="@+id/eventAdminFragment"
         android:name="example.com.cmsandroidsimulation.EventAdminFragment"
         android:label="EventAdminFragment"
         tools:layout="@layout/fragment_event_admin"/>
+    <fragment
+        android:id="@+id/complaintAdminFragment"
+        android:name="example.com.cmsandroidsimulation.ComplaintAdminFragment"
+        android:label="ComplaintAdminFragment"
+        tools:layout="@layout/complaint_admin"/>
     <fragment
         android:id="@+id/adminNewEventFragment"
         android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
