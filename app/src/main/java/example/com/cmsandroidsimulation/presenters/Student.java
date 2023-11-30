@@ -44,7 +44,7 @@ public class Student extends User {
                     user = mAuth.getCurrentUser();
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
