@@ -33,7 +33,7 @@ public class Admin extends User{
     private static Admin instance;
     // TODO: implement api calls
 
-    public static Task<AuthResult> Login(String email, String password) throws FailedLoginException
+    public static Task<AuthResult> Login(String email, String password)
     {
             // Simulate an asynchronous API call
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
