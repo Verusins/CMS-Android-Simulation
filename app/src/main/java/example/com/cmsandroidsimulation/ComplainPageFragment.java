@@ -1,6 +1,7 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 
 import example.com.cmsandroidsimulation.databinding.ComplaintPageBinding;
 import example.com.cmsandroidsimulation.presenters.Student;
@@ -36,8 +40,8 @@ public class ComplainPageFragment extends Fragment {
             public void onClick(View view) {
                 try {
 
-                    if (binding.complaintEditText.getText().toString().length() > 0
-                            || binding.complaintEditText.getText().toString().length() < 640) {
+                    if (binding.complaintEditText.getText().toString().length() == 0
+                            || binding.complaintEditText.getText().toString().length() > 640) {
                         Toast myToast = Toast.makeText(getActivity(),
                                 "Please input complaint with maximum of 640 character.",
                                 Toast.LENGTH_SHORT);
@@ -52,10 +56,22 @@ public class ComplainPageFragment extends Fragment {
                         myToast.show();
                         return;
                     }
-//                    student.getInstance().getEmail();
+                        Log.i("MASTER APP", binding.complaintEditText.getText().toString());
 
-
-                } catch (Exception e) {
+                        Student.getInstance().postComplaint(student.getInstance().getEmail(),
+                                binding.complaintEditText.getText().toString()
+                        ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast myToast = Toast.makeText(getActivity(),
+                                        "Complaint Submitted",
+                                        Toast.LENGTH_SHORT);
+                                myToast.show();
+                                binding.complaintEditText.setText("");
+                                binding.complaintCheckBox.setChecked(false);
+                             }
+                            });
+                        }catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }

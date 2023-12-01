@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_ComplainPageFragment_to_dashboardStudentFragment"
             app:destination="@id/dashboardStudentFragment" />
+        <action
+            android:id="@+id/action_ComplainPageFragment_to_ComplainPageFragment"
+            app:destination="@id/ComplaintFragment" />
     </fragment>
     <fragment
         android:id="@+id/postReqFragment"

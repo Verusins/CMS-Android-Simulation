@@ -37,22 +37,6 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/complaint_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Complaint ID :"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"/>
-
-        <TextView
-            android:id="@+id/complaintIdTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Samplenumb"
-            android:textSize="18sp" />
-
-        <TextView
             android:id="@+id/DescriptionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,8 +49,8 @@
             android:id="@+id/complaintTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="Man, i wish the courses are easier"
+            android:paddingBottom="8dp"
+            android:text="SampleDescriptionSampleDescriptionSampleDescriptionSampleDescriptionSampleDescription"
             android:textSize="18sp" />
 
         <!-- Close Complaint Button -->
@@ -76,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
             android:text="Close Complaint" />
 
     </LinearLayout>
