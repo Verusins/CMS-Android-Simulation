@@ -76,7 +76,7 @@ public final class AdminFragment extends Fragment {
              Admin.getInstance().Logout();
              Log.i("MASTER APP", "navigating back to login screen");
              NavController navController = NavHostFragment.findNavController(AdminFragment.this);
-             navController.navigate(R.id.loginAdminFragment);
+             navController.navigate(R.id.loginStudentFragment);
 
 
              // TODO: fix displaying navbar and logout student from the backend.
