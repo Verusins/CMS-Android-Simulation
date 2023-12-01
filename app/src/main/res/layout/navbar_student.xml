@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginEnd="30dp"
-            android:text="Welcome, S"
+            android:text="Welcome, Student"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>

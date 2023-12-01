@@ -86,6 +86,10 @@ public final class StudentFragment extends Fragment {
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
+        studentNavbar.sidebarMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {}
+        });
 
         binding.studentNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
             @Override
