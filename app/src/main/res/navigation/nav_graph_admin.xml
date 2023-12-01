@@ -35,6 +35,11 @@
             app:destination="@id/loginAdminFragment" />
     </fragment>
     <fragment
+        android:id="@+id/complaintAdminFragment"
+        android:name="example.com.cmsandroidsimulation.ComplaintAdminFragment"
+        android:label="ComplaintAdminFragment"
+        tools:layout="@layout/complaint_admin"/>
+    <fragment
         android:id="@+id/adminNewEventFragment"
         android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
         android:label="AdminNewEventFragment"

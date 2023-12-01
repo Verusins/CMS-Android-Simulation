@@ -8,14 +8,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import java.util.Date;
-
 import example.com.cmsandroidsimulation.databinding.FragmentAdminBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
 
 public final class AdminFragment extends Fragment {
     private FragmentAdminBinding binding;
@@ -79,6 +75,15 @@ public final class AdminFragment extends Fragment {
                 Log.i("Logout Test", "Logging out");
                 binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
                 // TODO: fix displaying navbar and logout student from the backend.
+        binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.complaintAdminFragment);
+
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
 //        Admin.getInstance().postEvent("Author 1", "Event 1", "Details 1",

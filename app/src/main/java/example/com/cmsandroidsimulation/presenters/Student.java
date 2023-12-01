@@ -184,22 +184,32 @@ public class Student extends User {
         return CompletableFuture.completedFuture(null);
     }
 
-    // TODO: implement api calls
-    public CompletableFuture<Void> postComplaint(String content)
+//     TODO: implement api calls
+    public Task<DocumentReference> postComplaint(String author, String content)
     {
+        Log.i("MASTER APP", "prepare post complaint");
+        Log.i("MASTER APP", author);
+        Log.i("MASTER APP", content);
         Map<String, Object> complaint = new HashMap<>();
-        complaint.put("username", getName(email));
-        complaint.put("content", content);
+        complaint.put("username", author);
+        complaint.put("description", content);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Task<DocumentReference> task = db.collection("complaints")
-                .add(complaint);
+        Task<DocumentReference> task =db.collection("complaint").add(complaint);
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
+                Log.d("SUCCESS", "DocumentSnapshot for complaint added with ID: " + documentReference.getId());
             }
         });
-        return CompletableFuture.completedFuture(null);
+        return task;
     }
-
+//            return CompletableFuture.supplyAsync(() -> {
+//            // Simulate an asynchronous API call
+//            try {
+//                Thread.sleep(2000); // Simulating a delay
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        });
 }
