@@ -69,12 +69,6 @@ public class EventAdminFragment extends Fragment {
             View childView = getLayoutInflater().inflate(R.layout.event_comment_item, commentsLayout, false);
             commentsLayout.addView(childView);
             int commentRating = eventComment.getRating();
-            String[] month = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-            String day = String.valueOf(eventComment.getDate().getDay());
-            String year = String.valueOf(eventComment.getDate().getYear());
-            String commentAuthor = String.valueOf(eventComment.getAuthor());
-            String commentInfo = month[eventComment.getDate().getMonth()] + " " + day + ", " + year + " by " + commentAuthor.charAt(0);
-
 
             ((TextView) childView.findViewById(R.id.comment_content)).setText(eventComment.getDetails());
 
@@ -88,8 +82,9 @@ public class EventAdminFragment extends Fragment {
                 ((TextView) childView.findViewById(R.id.comments_rating)).setText("★★★★☆");
             if (commentRating == 5)
                 ((TextView) childView.findViewById(R.id.comments_rating)).setText("★★★★★");
+            DateFormat dateFormatComment = new SimpleDateFormat("dd MMM yyyy", Locale.CANADA);
+            ((TextView)childView.findViewById(R.id.comment_date_and_time)).setText(dateFormatComment.format(eventComment.getDate()) + " by " + eventComment.getAuthor().charAt(0));
 
-            ((TextView) childView.findViewById(R.id.comment_date_and_time)).setText(commentInfo);
             count ++;
             rating += eventComment.getRating();
         }

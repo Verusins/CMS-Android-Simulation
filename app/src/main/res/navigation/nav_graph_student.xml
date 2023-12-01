@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
             app:destination="@id/dashboardStudentFragment" />
+        <action
+            android:id="@+id/action_eventFragment_self"
+            app:destination="@id/eventFragment" />
     </fragment>
     <fragment
         android:id="@+id/ComplaintFragment"

@@ -1,6 +1,7 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
 import example.com.cmsandroidsimulation.databinding.NavbarStudentBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public final class StudentFragment extends Fragment {
     FragmentStudentBinding binding;
@@ -86,5 +91,26 @@ public final class StudentFragment extends Fragment {
             public void onClick(View view) {}
         });
 
+        binding.studentNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.i("MASTER APP", "Logging out");
+                FirebaseAuth.getInstance().signOut();
+                Log.i("MASTER APP", "logged out");
+                Student.getInstance().Logout();
+                Log.i("MASTER APP", "navigating back to login screen");
+                NavController navController = NavHostFragment.findNavController(StudentFragment.this);
+                navController.navigate(R.id.loginStudentFragment);
+            }
+        });
+//        ImageView navbarIcon = binding.dashboardStudent.menuIcon;
+//
+//        navbarIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sidebar.setEnabled(true);
+//            }
+//        });
     }
 }
