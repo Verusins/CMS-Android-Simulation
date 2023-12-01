@@ -17,8 +17,9 @@
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:text="@string/admin_create_event"
-            android:textSize="30dp"
+            android:textSize="24dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -31,6 +32,7 @@
             android:text="@string/admin_event_name"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_title"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -66,6 +68,7 @@
             android:text="@string/admin_event_start_time"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_desc_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -151,6 +154,7 @@
             android:text="@string/admin_event_participants"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_end_time_layout"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -174,6 +178,7 @@
             android:text="@string/admin_event_location"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_participants_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 
