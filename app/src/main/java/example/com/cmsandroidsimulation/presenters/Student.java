@@ -96,11 +96,11 @@ public class Student extends User {
     {
         return instance;
     }
-    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
+    public Task<DocumentSnapshot> postEventComment(EventInfo eventInfo, String content, int rating)
     {
         String eventid = eventInfo.getEventid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("events").document(eventid).get()
+        Task<DocumentSnapshot> task = db.collection("events").document(eventid).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -122,7 +122,7 @@ public class Student extends User {
                         }
                     }
                 });
-        return CompletableFuture.completedFuture(null);
+        return task;
     }
     // TODO: implement api calls
     public CompletableFuture<Boolean> getEventHasRated(EventInfo eventInfo)

@@ -13,7 +13,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -197,23 +204,29 @@ public class EventStudentFragment extends Fragment {
                             Toast.LENGTH_SHORT);
                     myToast.show();
                 }else {
-                    String commentContent = String.valueOf(binding.commentContentWrite.getText());
-                    Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
-                    eventInfo.getComments().add(new EventComment("Me", binding.
-                            commentContentWrite.getText().toString(), rating[0], new Date()));
-                    // Empty input field
-                    binding.commentWriteRating1.setText("☆");
-                    binding.commentWriteRating2.setText("☆");
-                    binding.commentWriteRating3.setText("☆");
-                    binding.commentWriteRating4.setText("☆");
-                    binding.commentWriteRating5.setText("☆");
-                    binding.commentContentWrite.setText("");
-                    // Log.i("Send", commentContent);
-                    // TODO: send commentContent (content) and rating[0] (rating(int)) to database
+                    Task<DocumentSnapshot> task = Student.getInstance().postEventComment(eventInfo, binding.commentContentWrite.getText().toString(), rating[0]);
+                    task.addOnSuccessListener(
+                            new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                    rating[0] = -1;
-                    binding.comments.removeAllViews();
-                    afterFetchEventInfo(eventInfo);
+                                    requireActivity().runOnUiThread(() -> {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt("selectedEventIndex", getArguments().getInt("selectedEventIndex"));
+                                        NavHostFragment.findNavController(EventStudentFragment.this).navigate(R.id.eventFragment, bundle);
+                                        // TODO: add toast
+                                    });
+                                }
+                            }
+                    );
+                    task.addOnFailureListener(
+                            new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // TODO: add toast
+                                }
+                            }
+                    );
                 }
             }
         });
