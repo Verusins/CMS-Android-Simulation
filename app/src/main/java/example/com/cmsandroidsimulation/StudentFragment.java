@@ -1,6 +1,7 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
 import example.com.cmsandroidsimulation.databinding.NavbarStudentBinding;
@@ -79,6 +82,20 @@ public final class StudentFragment extends Fragment {
                 navController.navigate(R.id.ComplaintFragment);
 
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+
+        binding.studentNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.i("MASTER APP", "Logging out");
+                FirebaseAuth.getInstance().signOut();
+                Log.i("MASTER APP", "logged out");
+
+                Log.i("MASTER APP", "navigating back to login screen");
+                NavController navController = NavHostFragment.findNavController(StudentFragment.this);
+                navController.navigate(R.id.loginStudentFragment);
             }
         });
 //        ImageView navbarIcon = binding.dashboardStudent.menuIcon;
