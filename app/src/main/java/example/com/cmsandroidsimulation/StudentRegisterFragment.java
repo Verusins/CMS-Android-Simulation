@@ -62,7 +62,7 @@ public class StudentRegisterFragment extends Fragment {
                 String username = binding.usernameEditText.getText().toString();
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
-                CheckBox checkbox = binding.termsCheckBox;
+                // CheckBox checkbox = binding.termsCheckBox;
 
 
                 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
@@ -74,7 +74,7 @@ public class StudentRegisterFragment extends Fragment {
                     myToast.show();
                     return;
                 }
-                if (username.equals("") || !checkbox.isChecked()
+                if (username.equals("") /*|| !checkbox.isChecked()*/
                         || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
