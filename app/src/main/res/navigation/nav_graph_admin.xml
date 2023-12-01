@@ -13,15 +13,39 @@
         <action
             android:id="@+id/action_dashboardAdminFragment_to_eventAdminFragment"
             app:destination="@id/eventAdminFragment" />
+        <action
+            android:id="@+id/action_dashboardAdminFragment_to_loginAdminFragment"
+            app:destination="@id/loginAdminFragment" />
+        <action
+            android:id="@+id/action_dashboardAdminFragment_to_adminNewEventFragment"
+            app:destination="@id/adminNewEventFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginAdminFragment"
+        android:name="example.com.cmsandroidsimulation.LoginAdminFragment"
+        android:label="EventAdminFragment"
+        tools:layout="@layout/fragment_login_admin"/>
     <fragment
         android:id="@+id/eventAdminFragment"
         android:name="example.com.cmsandroidsimulation.EventAdminFragment"
         android:label="EventAdminFragment"
-        tools:layout="@layout/fragment_event_admin"/>
+        tools:layout="@layout/fragment_event_admin">
+        <action
+            android:id="@+id/action_eventAdminFragment_to_loginAdminFragment"
+            app:destination="@id/loginAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complaintAdminFragment"
+        android:name="example.com.cmsandroidsimulation.ComplaintAdminFragment"
+        android:label="ComplaintAdminFragment"
+        tools:layout="@layout/complaint_admin"/>
     <fragment
         android:id="@+id/adminNewEventFragment"
         android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
         android:label="AdminNewEventFragment"
-        tools:layout="@layout/fragment_admin_new_event"/>
+        tools:layout="@layout/fragment_admin_new_event">
+        <action
+            android:id="@+id/action_adminNewEventFragment_to_loginAdminFragment"
+            app:destination="@id/loginAdminFragment" />
+    </fragment>
 </navigation>
