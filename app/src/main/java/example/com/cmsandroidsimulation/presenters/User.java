@@ -7,9 +7,14 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.checkerframework.checker.units.qual.C;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -23,9 +28,48 @@ import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 
 public abstract class User {
+    protected static FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    protected static FirebaseUser user = null;
     protected String email;
+    protected static User instance;
 
     // TODO: implement api calls
+    public static CompletableFuture<User> Login(String email, String password)
+    {
+        CompletableFuture<User> completableFuture = new CompletableFuture<User>();
+
+        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
+        authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+//                    instance = new Student();
+//                    instance.email = email;
+                    user = mAuth.getCurrentUser();
+                    CompletableFuture<Boolean> cf = isAdmin(email);
+                    cf.thenAccept(
+                            (admin) -> {
+                                if(admin)
+                                    instance = new Admin();
+                                else
+                                    instance = new Student();
+                                instance.email = email;
+                                completableFuture.complete(instance);
+                            }
+                    );
+                    cf.exceptionally((e) -> {
+                        completableFuture.completeExceptionally(e);
+                        return null;
+                    });
+                } else {
+                    completableFuture.completeExceptionally(task.getException());
+                }
+            }
+        });
+
+        return completableFuture;
+    }
     public CompletableFuture<ArrayList<EventInfo>> getEvents()
     {
         CompletableFuture<ArrayList<EventInfo>> asynclist = new CompletableFuture<>();
@@ -98,7 +142,7 @@ public abstract class User {
         });
         return asynclist;
     }
-    public CompletableFuture<Boolean> isAdmin(String email)
+    public static CompletableFuture<Boolean> isAdmin(String email)
     {
         CompletableFuture<Boolean> isAdmin = new CompletableFuture<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
