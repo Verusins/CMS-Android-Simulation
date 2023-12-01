@@ -22,19 +22,19 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import example.com.cmsandroidsimulation.databinding.FragmentLoginStudentBinding;
+import example.com.cmsandroidsimulation.databinding.FragmentLoginBinding;
 import example.com.cmsandroidsimulation.presenters.Admin;
 import example.com.cmsandroidsimulation.presenters.Student;
 
-public final class LoginStudentFragment extends Fragment {
-    FragmentLoginStudentBinding binding;
+public final class LoginFragment extends Fragment {
+    FragmentLoginBinding binding;
 
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentLoginStudentBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -44,7 +44,7 @@ public final class LoginStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 requireActivity().runOnUiThread(() -> {
-                    NavHostFragment.findNavController(LoginStudentFragment.this).
+                    NavHostFragment.findNavController(LoginFragment.this).
                             navigate(R.id.action_loginStudentFragment_to_studentRegisterFragment);
                 });
             }
@@ -88,7 +88,7 @@ public final class LoginStudentFragment extends Fragment {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             requireActivity().runOnUiThread(() -> {
-                                                NavHostFragment.findNavController(LoginStudentFragment.this).
+                                                NavHostFragment.findNavController(LoginFragment.this).
                                                         navigate(R.id.action_loginStudentFragment_to_AdminFragment);
                                             });
                                         } else {
@@ -103,7 +103,7 @@ public final class LoginStudentFragment extends Fragment {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             requireActivity().runOnUiThread(() -> {
-                                                NavHostFragment.findNavController(LoginStudentFragment.this).
+                                                NavHostFragment.findNavController(LoginFragment.this).
                                                         navigate(R.id.action_loginStudentFragment_to_studentFragment);
                                             });
                                         } else {

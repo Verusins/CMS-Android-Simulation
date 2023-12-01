@@ -7,9 +7,9 @@
     >
     <fragment
         android:id="@+id/loginStudentFragment"
-        android:name="example.com.cmsandroidsimulation.LoginStudentFragment"
+        android:name="example.com.cmsandroidsimulation.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login_student" >
+        tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginStudentFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
