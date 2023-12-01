@@ -71,12 +71,12 @@ public final class AdminFragment extends Fragment {
             @Override
              public void onClick(View view) {
 
-                 Log.i("MASTER APP", "Logging out");
-                 Log.i("MASTER APP", "logged out");
-                 Admin.getInstance().Logout();
-                 Log.i("MASTER APP", "navigating back to login screen");
-                 NavController navController = NavHostFragment.findNavController(AdminFragment.this);
-                 navController.navigate(R.id.loginAdminFragment);
+            Log.i("MASTER APP", "Logging out");
+            Log.i("MASTER APP", "logged out");
+            Admin.getInstance().Logout();
+            Log.i("MASTER APP", "navigating back to login screen");
+            NavController navController = NavHostFragment.findNavController(AdminFragment.this);
+            navController.navigate(R.id.loginAdminFragment);
 
 
                  // TODO: fix displaying navbar and logout student from the backend.

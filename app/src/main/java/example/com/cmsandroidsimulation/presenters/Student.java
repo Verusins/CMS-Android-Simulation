@@ -27,9 +27,6 @@ import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.EventInfo;
 
 public class Student extends User {
-    private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private static FirebaseUser user = null;
-    private static Student instance;
     public void Logout(){
 
         FirebaseAuth.getInstance().signOut();
@@ -37,26 +34,6 @@ public class Student extends User {
     }
 
 
-    public static Task<AuthResult> Login(String email, String password)
-    {
-        Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
-        authResult.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    // Sign in success, update UI with the signed-in user's information
-                    instance = new Student();
-                    instance.email = email;
-                    user = mAuth.getCurrentUser();
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.e("MASTER APP", "Login failed");
-                }
-            }
-        });
-
-        return authResult;
-    }
     public static Task<AuthResult> Register(String username, String email, String password) throws FailedLoginException
     {
         // Simulate an asynchronous API call
@@ -94,7 +71,7 @@ public class Student extends User {
     }
     public static Student getInstance()
     {
-        return instance;
+        return (Student) instance;
     }
     public Task<DocumentSnapshot> postEventComment(EventInfo eventInfo, String content, int rating)
     {

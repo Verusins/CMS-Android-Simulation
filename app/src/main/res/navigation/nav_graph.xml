@@ -7,39 +7,24 @@
     >
     <fragment
         android:id="@+id/loginStudentFragment"
-        android:name="example.com.cmsandroidsimulation.LoginStudentFragment"
+        android:name="example.com.cmsandroidsimulation.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login_student" >
+        tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginStudentFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
         <action
-            android:id="@+id/action_loginStudentFragment_to_loginAdminFragment"
-            app:destination="@id/loginAdminFragment" />
-        <action
             android:id="@+id/action_loginStudentFragment_to_studentRegisterFragment"
             app:destination="@id/studentRegisterFragment" />
+        <action
+            android:id="@+id/action_loginStudentFragment_to_AdminFragment"
+            app:destination="@id/adminFragment"/>
     </fragment>
     <fragment
         android:id="@+id/studentFragment"
         android:name="example.com.cmsandroidsimulation.StudentFragment"
         android:label="fragment_student"
         tools:layout="@layout/fragment_student" />
-    <fragment
-        android:id="@+id/loginAdminFragment"
-        android:name="example.com.cmsandroidsimulation.LoginAdminFragment"
-        android:label="LoginAdminFragment"
-        tools:layout="@layout/fragment_login_admin">
-        <action
-            android:id="@+id/action_loginAdminFragment_to_adminFragment"
-            app:destination="@id/adminFragment" />
-        <action
-            android:id="@+id/action_loginAdminFragment_to_loginStudentFragment"
-            app:destination="@id/loginStudentFragment" />
-        <action
-            android:id="@+id/action_loginAdminFragment_to_studentRegisterFragment"
-            app:destination="@id/studentRegisterFragment" />
-    </fragment>
     <fragment
         android:id="@+id/adminFragment"
         android:name="example.com.cmsandroidsimulation.AdminFragment"
@@ -56,5 +41,24 @@
         <action
             android:id="@+id/action_studentRegisterFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
+        <action
+            android:id="@+id/action_studentRegisterFragment_to_adminRegisterFragment"
+            app:destination="@id/adminRegisterFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/adminRegisterFragment"
+        android:label="admin_register"
+        android:name="example.com.cmsandroidsimulation.AdminRegisterFragment"
+        tools:layout="@layout/fragment_register_admin">
+        <action
+            android:id="@+id/action_adminRegisterFragment_to_loginStudentFragment"
+            app:destination="@id/loginStudentFragment" />
+        <action
+            android:id="@+id/action_adminRegisterFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_adminRegisterFragment_to_studentRegisterFragment"
+            app:destination="@id/studentRegisterFragment" />
     </fragment>
 </navigation>

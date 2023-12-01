@@ -21,17 +21,17 @@ import com.google.firebase.firestore.Query;
 
 import java.util.regex.Pattern;
 
-import example.com.cmsandroidsimulation.databinding.FragmentRegisterStudentBinding;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.databinding.FragmentRegisterAdminBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
-public class StudentRegisterFragment extends Fragment {
-    FragmentRegisterStudentBinding binding;
+public class AdminRegisterFragment extends Fragment {
+    FragmentRegisterAdminBinding binding;
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentRegisterStudentBinding.inflate(inflater, container, false);
+        binding = FragmentRegisterAdminBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -42,17 +42,17 @@ public class StudentRegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 requireActivity().runOnUiThread(() -> {
-                    NavHostFragment.findNavController(StudentRegisterFragment.this).
-                            navigate(R.id.action_studentRegisterFragment_to_loginStudentFragment);
+                    NavHostFragment.findNavController(AdminRegisterFragment.this).
+                            navigate(R.id.action_adminRegisterFragment_to_loginStudentFragment);
                 });
             }
         });
-        binding.AdminRegister.setOnClickListener(new View.OnClickListener() {
+        binding.StudentRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 requireActivity().runOnUiThread(() -> {
-                    NavHostFragment.findNavController(StudentRegisterFragment.this).
-                            navigate(R.id.action_studentRegisterFragment_to_adminRegisterFragment);
+                    NavHostFragment.findNavController(AdminRegisterFragment.this).
+                            navigate(R.id.action_adminRegisterFragment_to_studentRegisterFragment);
                 });
             }
         });
@@ -62,8 +62,7 @@ public class StudentRegisterFragment extends Fragment {
                 String username = binding.usernameEditText.getText().toString();
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
-                // CheckBox checkbox = binding.termsCheckBox;
-
+                CheckBox checkbox = binding.termsCheckBox;
 
                 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
                 Pattern pattern = Pattern.compile(emailRegex);
@@ -74,7 +73,7 @@ public class StudentRegisterFragment extends Fragment {
                     myToast.show();
                     return;
                 }
-                if (username.equals("") /*|| !checkbox.isChecked()*/
+                if (username.equals("") || !checkbox.isChecked()
                         || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
@@ -83,20 +82,22 @@ public class StudentRegisterFragment extends Fragment {
                     return;
                 }
 
-                Student.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                  @Override
-                  public void onComplete(@NonNull Task<AuthResult> task) {
-                      requireActivity().runOnUiThread(() -> {
-                        if (task.isSuccessful()) {
-                            NavHostFragment.findNavController(StudentRegisterFragment.this).navigate(R.id.action_studentRegisterFragment_to_studentFragment);
-                        }else {
-                            Toast myToast = Toast.makeText(getActivity(),
-                                    task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT);
-                            myToast.show();
-                        }
-                      });
-              }});
+
+                Admin.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        requireActivity().runOnUiThread(() -> {
+                            if (task.isSuccessful()) {
+                                NavHostFragment.findNavController(AdminRegisterFragment.this).navigate(R.id.adminFragment);
+                            }else {
+                                Toast myToast = Toast.makeText(getActivity(),
+                                        task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT);
+                                myToast.show();
+                            }
+                        });
+                    }});
+
             }
         });
     }
