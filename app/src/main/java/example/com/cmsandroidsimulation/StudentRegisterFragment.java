@@ -83,39 +83,20 @@ public class StudentRegisterFragment extends Fragment {
                     return;
                 }
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                CollectionReference dataCollection = db.collection("users");
-                Query query = dataCollection.whereEqualTo("email", email); // if this is not empty i want to make toast
-                query.get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if (!task.getResult().isEmpty()) {
+                Student.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                  @Override
+                  public void onComplete(@NonNull Task<AuthResult> task) {
+                      requireActivity().runOnUiThread(() -> {
+                        if (task.isSuccessful()) {
+                            NavHostFragment.findNavController(StudentRegisterFragment.this).navigate(R.id.action_studentRegisterFragment_to_studentFragment);
+                        }else {
                             Toast myToast = Toast.makeText(getActivity(),
-                                    "Email already Exist",
+                                    task.getException().getMessage(),
                                     Toast.LENGTH_SHORT);
                             myToast.show();
-                            return;
-                        } else {
-                            Student.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        requireActivity().runOnUiThread(() -> {
-                                            NavHostFragment.findNavController(StudentRegisterFragment.this).
-                                                    navigate(R.id.action_studentRegisterFragment_to_studentFragment);
-                                        });
-                                    } else {
-                                        // show error message somewhere on the screen
-                                        throw new FailedLoginException();
-                                    }
-                                }
-                            });
                         }
-                    } else {
-                        // Handle errors
-                        Log.e("MASTER APP", "Error getting documents: ", task.getException());
-                    }
-                });
-
+                      });
+              }});
             }
         });
     }
