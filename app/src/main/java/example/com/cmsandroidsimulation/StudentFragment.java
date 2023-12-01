@@ -81,13 +81,10 @@ public final class StudentFragment extends Fragment {
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
-//        ImageView navbarIcon = binding.dashboardStudent.menuIcon;
-//
-//        navbarIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                sidebar.setEnabled(true);
-//            }
-//        });
+        studentNavbar.sidebarMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {}
+        });
+
     }
 }
