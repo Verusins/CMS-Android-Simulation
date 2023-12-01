@@ -57,13 +57,13 @@
         tools:textSize="20sp" />
 
     <TextView
-        android:id="@+id/AlreadyHaveAccountButton"
+        android:id="@+id/AdminRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signupButton"
         android:layout_centerHorizontal="true"
         android:padding="14dp"
-        android:text="Already have an account? Sign in"
+        android:text="Are you an Admin? Register Here"
         android:textColor="@color/primary"
         android:textSize="16sp" />
 
@@ -74,7 +74,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:text="Welcome, New User!"
+        android:text="Welcome, New Student!"
         android:textSize="32sp" />
 
     <TextView
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/signupPasswordEditText"
         android:layout_marginTop="8dp"
-        android:text="*You cannot change the name, Utorid, and password after signup"
+        android:text="*You cannot change the name, Email, and password after signup"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
@@ -97,5 +97,21 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/AlreadyHaveAccountButton"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdminRegister"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/my_button_bg"
+        android:text="Log in"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="30dp"
+        app:strokeColor="@color/primary"
+        app:strokeWidth="3dp" />
 
 </RelativeLayout>

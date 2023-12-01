@@ -35,7 +35,7 @@
         android:layout_height="48dp"
         android:layout_below="@+id/Welcome"
         android:layout_marginTop="160dp"
-        android:hint="UTORid"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="8dp"
         android:textColor="@color/primary"
@@ -55,25 +55,13 @@
         android:textColorHint="@color/black" />
 
     <TextView
-        android:id="@+id/ToAdminButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:padding="14dp"
-        android:text="Are you an admin?"
-        android:textColor="@color/primary"
-        android:textSize="16sp" />
-
-    <TextView
         android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:text="Welcome, Student!"
+        android:text="Welcome!"
         android:textSize="32sp" />
 
     <Button
@@ -81,8 +69,8 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ToAdminButton"
-        android:layout_marginTop="16dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="48dp"
         android:background="@drawable/my_button_bg"
         android:text="Create Account"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
