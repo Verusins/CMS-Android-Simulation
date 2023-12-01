@@ -40,7 +40,7 @@
         android:hint="UTORid"
         android:inputType="textEmailAddress"
         android:padding="8dp"
-        android:textColor="@color/primary"
+        android:textColor="@color/black"
         android:textColorHint="@color/black" />
     <!-- change layout below with pic if want -->
 
