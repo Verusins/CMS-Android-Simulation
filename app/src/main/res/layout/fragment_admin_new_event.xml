@@ -51,12 +51,12 @@
         <EditText
             android:id="@+id/admin_new_event_desc_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:layout_marginVertical="20dp"
-            android:paddingVertical="40dp"
             android:background="@drawable/admin_event_rounded_border"
             android:hint="@string/admin_event_desc_hint"
             android:textSize="14dp"
+            android:gravity="start"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_name_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 

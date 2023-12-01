@@ -42,6 +42,7 @@
             android:paddingVertical="10dp"
             android:paddingHorizontal="15dp"
             android:translationY="20dp"
+            android:textSize="16dp"
             android:textColor="@android:color/black" />
 
         <CheckBox
@@ -50,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/complaint_edit_text"
             android:layout_marginTop="40dp"
-            android:buttonTint="@color/primary"
+            android:buttonTint="@color/gray"
             android:text="I agree to comply with the Student Code of Conduct"
-            android:textColor="@color/black"
+            android:textColor="@color/gray"
             android:translationX="-5dp"
             android:textSize="13sp" />
 
