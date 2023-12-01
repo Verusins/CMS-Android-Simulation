@@ -53,8 +53,6 @@
     <string name="submit">Submit</string>
 
 <!--    Results-->
-    <string name="post_results_title">Here Are Your Results!</string>
-    <!--    Results-->
     <string name="post_results_title">Here Are Your Results</string>
     <string name="post_results_banner">placeholder</string>
     <string name="post_results">placeholder</string>
