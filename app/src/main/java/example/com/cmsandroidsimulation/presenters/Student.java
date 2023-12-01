@@ -30,6 +30,12 @@ public class Student extends User {
     private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static Student instance;
+    public void Logout(){
+
+        FirebaseAuth.getInstance().signOut();
+        instance = null;
+    }
+
 
     public static Task<AuthResult> Login(String email, String password)
     {
