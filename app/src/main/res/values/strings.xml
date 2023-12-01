@@ -14,9 +14,9 @@
 
     <!--    Strings for Post Requirement Page-->
     <string name="post_title">What is POSt?</string>
-    <string name="post_desc">If you meet the grade requirements specific to your category, you’ll be allowed to enter your program of study in second year. We call that entering POSt (Program of Study).
-        \n\nIf you make POSt, you will officially be in your desired program and will be allowed to continue until you graduate or elect to change programs.
-        \n\nIf you do not meet minimum requirements in your first year, you will not be allowed to make POSt and will have to select a different program to switch to in your second year.</string>
+    <string name="post_desc"> - If you meet the grade requirements specific to your category, you’ll be allowed to enter your program of study in second year. We call that entering POSt (Program of Study).
+        \n\n - If you make POSt, you will officially be in your desired program and will be allowed to continue until you graduate or elect to change programs.
+        \n\n - If you do not meet minimum requirements in your first year, you will not be allowed to make POSt and will have to select a different program to switch to in your second year.</string>
 
     <!--    POSt Requirement Quiz-->
     <string name="post_quiz_title">Are You Eligible For POSt?</string>
@@ -47,12 +47,12 @@
     <string name="post_quiz_q3_mata37">MATA37 - Calculus II for Mathematical Sciences</string>
     <string name="post_quiz_q3_csca48">CSCA48 - Introduction to Computer Science II</string>
     <string name="post_quiz_q3_csca08">CSCA08 - Introduction to Computer Science I</string>
-    <string name="post_quiz_placeholder">  eg. 99</string>
+    <string name="post_quiz_placeholder">  eg. 70</string>
 
     <!--    Submit-->
     <string name="submit">Submit</string>
 
-    <!--    Results-->
+<!--    Results-->
     <string name="post_results_title">Here Are Your Results</string>
     <string name="post_results_banner">placeholder</string>
     <string name="post_results">placeholder</string>

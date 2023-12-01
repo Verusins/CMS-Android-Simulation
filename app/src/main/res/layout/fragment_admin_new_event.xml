@@ -8,16 +8,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="35dp">
 
         <TextView
             android:id="@+id/admin_new_event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
+            android:paddingTop="20dp"
             android:text="@string/admin_create_event"
-            android:textSize="30dp"
+            android:textSize="24dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -26,10 +28,11 @@
             android:id="@+id/admin_new_event_name_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="20dp"
             android:text="@string/admin_event_name"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_title"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -37,25 +40,23 @@
             android:id="@+id/admin_new_event_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/admin_event_rounded_border"
             android:hint="@string/admin_event_name_hint"
             android:textSize="14dp"
-            android:elevation="8dp"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_name_text"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <EditText
             android:id="@+id/admin_new_event_desc_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:paddingTop="50dp"
-            android:paddingBottom="50dp"
+            android:layout_height="120dp"
+            android:layout_marginVertical="20dp"
             android:background="@drawable/admin_event_rounded_border"
             android:hint="@string/admin_event_desc_hint"
             android:textSize="14dp"
-            android:elevation="8dp"
+            android:gravity="start"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_name_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -63,10 +64,11 @@
             android:id="@+id/admin_event_start_time_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/admin_event_start_time"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_new_event_desc_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -74,6 +76,7 @@
             android:id="@+id/admin_event_start_time_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:gravity="center"
             android:weightSum="2"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_start_time_text"
@@ -84,9 +87,8 @@
                 android:id="@+id/start_pick_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/admin_event_rounded_border"
-                android:elevation="8dp"
                 android:layout_weight="1"
                 android:hint="Pick date"
                 android:drawableRight="@drawable/calendar"/>
@@ -95,9 +97,7 @@
                 android:id="@+id/start_pick_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
                 android:background="@drawable/admin_event_rounded_border"
-                android:elevation="8dp"
                 android:layout_weight="1"
                 android:hint="Pick time"
                 android:drawableRight="@drawable/clock"/>
@@ -108,7 +108,7 @@
             android:id="@+id/admin_event_end_time_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/admin_event_end_time"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -121,6 +121,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:weightSum="2"
+            android:layout_marginVertical="10dp"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_end_time_text"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -129,9 +130,8 @@
                 android:id="@+id/end_pick_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/admin_event_rounded_border"
-                android:elevation="8dp"
                 android:layout_weight="1"
                 android:hint="Pick date"
                 android:drawableRight="@drawable/calendar"/>
@@ -140,22 +140,21 @@
                 android:id="@+id/end_pick_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/admin_event_rounded_border"
-                android:drawableRight="@drawable/clock"
-                android:elevation="8dp"
-                android:hint="Pick time" />
+                android:layout_weight="1"
+                android:hint="Pick time"
+                android:drawableRight="@drawable/clock" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/admin_event_participants_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/admin_event_participants"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_end_time_layout"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -163,12 +162,11 @@
             android:id="@+id/admin_event_participants_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/admin_event_rounded_border"
             android:hint="@string/admin_event_participants_hint"
             android:textSize="14dp"
             android:inputType="number"
-            android:elevation="8dp"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_participants_text"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -176,10 +174,11 @@
             android:id="@+id/admin_event_location_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/admin_event_location"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_participants_input"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -187,11 +186,10 @@
             android:id="@+id/admin_event_location_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/admin_event_rounded_border"
             android:hint="@string/admin_event_location_hint"
             android:textSize="14dp"
-            android:elevation="8dp"
             app:layout_constraintTop_toBottomOf="@+id/admin_event_location_text"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -207,12 +205,12 @@
                 android:id="@+id/admin_events_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
                 app:cornerRadius="8dp"
                 android:backgroundTint="@color/primary"
-                android:text= "@string/submit"/>
+                android:text="@string/submit"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

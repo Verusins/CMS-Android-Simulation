@@ -118,6 +118,8 @@ public final class LoginStudentFragment extends Fragment {
                                     "Please Register your Email",
                                     Toast.LENGTH_SHORT);
                             myToast.show();
+                            // show error message somewhere on the screen
+                            Log.w("MASTER APP", "Student login failed", task.getException());
                         }
                     } else {
                         // Handle errors

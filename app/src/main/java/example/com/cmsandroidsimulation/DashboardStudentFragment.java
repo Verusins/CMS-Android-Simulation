@@ -105,6 +105,7 @@ public class DashboardStudentFragment extends Fragment {
         Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
             Log.i("MASTER APP", "events: " + eventList);
             RecyclerView recyclerView = binding.RecyclerView;
+            recyclerView.setNestedScrollingEnabled(false);
             adapter = new EventAdapter(eventList, getContext());
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

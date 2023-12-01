@@ -58,19 +58,23 @@ public class ComplainPageFragment extends Fragment {
                     }
                         Log.i("MASTER APP", binding.complaintEditText.getText().toString());
 
-                        Student.getInstance().postComplaint(student.getInstance().getEmail(),
-                                binding.complaintEditText.getText().toString()
-                        ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast myToast = Toast.makeText(getActivity(),
-                                        "Complaint Submitted",
-                                        Toast.LENGTH_SHORT);
-                                myToast.show();
-                                binding.complaintEditText.setText("");
-                                binding.complaintCheckBox.setChecked(false);
-                             }
-                            });
+                        Student.getInstance().getName(student.getInstance().getEmail()).thenAccept(
+                                (String name) -> {
+                                    Student.getInstance().postComplaint(name,
+                                            binding.complaintEditText.getText().toString()
+                                    ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Toast myToast = Toast.makeText(getActivity(),
+                                                    "Complaint Submitted",
+                                                    Toast.LENGTH_SHORT);
+                                            myToast.show();
+                                            binding.complaintEditText.setText("");
+                                            binding.complaintCheckBox.setChecked(false);
+                                        }
+                                    });
+                                }
+                        );
                         }catch (Exception e) {
                     throw new RuntimeException(e);
                 }

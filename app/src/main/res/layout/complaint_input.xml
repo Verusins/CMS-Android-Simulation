@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginVertical="15dp" >
 
     <LinearLayout
         android:id="@+id/complaintLinearLayout"
@@ -16,34 +16,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp"
-        android:background="@drawable/border_background">
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="25dp"
+        android:background="@drawable/rounded_background">
 
         <!-- Complaint Box -->
         <TextView
             android:id="@+id/UTORidTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UTORid :"
-            android:textSize="22sp"
+            android:text="UTORid:"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/primary"/>
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/UTORid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SampleUtorID"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/DescriptionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description :"
-            android:textSize="22sp"
+            android:layout_marginTop="10dp"
+            android:text="Description:"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/primary"/>
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/complaintTextView"
@@ -51,16 +53,19 @@
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:text="SampleDescriptionSampleDescriptionSampleDescriptionSampleDescriptionSampleDescription"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <!-- Close Complaint Button -->
         <Button
             android:id="@+id/closeComplaintButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:text="Close Complaint" />
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_background_colored"
+            android:layout_marginTop="15dp"
+            app:backgroundTint="@color/primary"
+            android:text="Close Complaint"
+            android:textSize="16dp"/>
 
     </LinearLayout>
 

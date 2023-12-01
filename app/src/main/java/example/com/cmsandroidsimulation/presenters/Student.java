@@ -30,8 +30,13 @@ public class Student extends User {
     private static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static FirebaseUser user = null;
     private static Student instance;
+    public void Logout(){
 
-    // TODO: implement api calls
+        FirebaseAuth.getInstance().signOut();
+        instance = null;
+    }
+
+
     public static Task<AuthResult> Login(String email, String password)
     {
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
@@ -45,7 +50,7 @@ public class Student extends User {
                     user = mAuth.getCurrentUser();
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
@@ -81,7 +86,7 @@ public class Student extends User {
                             });
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
@@ -91,13 +96,11 @@ public class Student extends User {
     {
         return instance;
     }
-
-    // TODO: implement api calls
-    public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
+    public Task<DocumentSnapshot> postEventComment(EventInfo eventInfo, String content, int rating)
     {
         String eventid = eventInfo.getEventid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("events").document(eventid).get()
+        Task<DocumentSnapshot> task = db.collection("events").document(eventid).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -119,7 +122,7 @@ public class Student extends User {
                         }
                     }
                 });
-        return CompletableFuture.completedFuture(null);
+        return task;
     }
     // TODO: implement api calls
     public CompletableFuture<Boolean> getEventHasRated(EventInfo eventInfo)
@@ -134,21 +137,6 @@ public class Student extends User {
             return false;
         });
     }
-
-    // TODO: implement api calls
-    public CompletableFuture<Void> submitEventRSVP(EventInfo eventInfo)
-    {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
-    }
-    // TODO: implement api calls
     public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo, boolean setTrue)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

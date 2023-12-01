@@ -14,11 +14,13 @@ public class EventInfo extends UserPost{
 
     private final int maxppl;
 
+    private final String location;
+
     private final ArrayList<String> attendees;
 
     public EventInfo(String eventid, String author, String title, String details,
                      Date eventStartDateTime, Date eventEndDateTime,
-                     ArrayList<EventComment> comments, int maxppl, ArrayList<String> attendees)
+                     ArrayList<EventComment> comments, int maxppl, ArrayList<String> attendees, String location)
     {
         super(author, title, details);
         this.comments = comments;
@@ -27,8 +29,10 @@ public class EventInfo extends UserPost{
         this.eventid = eventid;
         this.maxppl = maxppl;
         this.attendees = attendees;
+        this.location = location;
     }
 
+    public String getLocation() {return location;}
     public ArrayList<String> getAttendees(){return attendees;}
 
     public String getEventid(){
