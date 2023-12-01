@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/AnnouncementDescription"
                 android:layout_marginTop="20dp"
-                android:text="Submit Complaint"
+                android:text="Submit Announcement"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_background_colored"

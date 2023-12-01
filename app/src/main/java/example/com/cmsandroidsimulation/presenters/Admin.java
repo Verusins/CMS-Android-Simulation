@@ -153,7 +153,7 @@ public class Admin extends User{
                 });
         return task;
     }
-    public CompletableFuture<Void> postAnnouncement(String title, String details)
+    public Task<DocumentReference> postAnnouncement(String title, String details)
     {
         Map<String, Object> announcement = new HashMap<>();
         announcement.put("author", getName(email));
@@ -168,7 +168,7 @@ public class Admin extends User{
                         Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
-        return CompletableFuture.completedFuture(null);
+        return task;
     }
 
     public CompletableFuture<ArrayList<Complaint>> getComplaint()
