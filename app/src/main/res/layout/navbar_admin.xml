@@ -85,7 +85,7 @@
                 android:id="@+id/sidebar_items"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="80dp"
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
@@ -103,16 +103,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Create Announcement"
+                    android:text="New Announcement"
                     android:textColor="@color/gray"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/navigation_create_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Create Event"
+                    android:text="New Event"
                     android:textColor="@color/gray"
                     android:textSize="20dp" />
 
@@ -123,7 +123,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Student Complaint"
                     android:textColor="@color/gray"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
 
             </LinearLayout>
 

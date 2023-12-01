@@ -119,5 +119,9 @@ public final class AdminFragment extends Fragment {
 //        Admin.getInstance().postEvent("Author 4", "Event 4", "Details 1",
 //                new Date(126,4,2,3,4,5),
 //                new Date(126,5,6,4,5,6), 16);
+        binding.adminNavbar.sidebarMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {}
+        });
     }
 }
