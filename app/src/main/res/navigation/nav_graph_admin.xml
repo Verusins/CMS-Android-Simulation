@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_dashboardAdminFragment_to_adminNewEventFragment"
             app:destination="@id/adminNewEventFragment" />
+        <action
+            android:id="@+id/action_dashboardAdminFragment_to_createAnnouncementFragment"
+            app:destination="@id/adminCreateAnnouncementFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginAdminFragment"
@@ -48,4 +51,9 @@
             android:id="@+id/action_adminNewEventFragment_to_loginAdminFragment"
             app:destination="@id/loginAdminFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/adminCreateAnnouncementFragment"
+        android:name="example.com.cmsandroidsimulation.CreateAnnouncementFragment"
+        android:label="CreateAnnouncementFragment"
+        tools:layout="@layout/create_announcement"/>
 </navigation>

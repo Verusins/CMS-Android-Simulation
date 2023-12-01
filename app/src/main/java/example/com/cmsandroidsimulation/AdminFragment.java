@@ -68,20 +68,20 @@ public final class AdminFragment extends Fragment {
 
         // Logout
         binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
+            @Override
+             public void onClick(View view) {
 
-             Log.i("MASTER APP", "Logging out");
-             Log.i("MASTER APP", "logged out");
-             Admin.getInstance().Logout();
-             Log.i("MASTER APP", "navigating back to login screen");
-             NavController navController = NavHostFragment.findNavController(AdminFragment.this);
-             navController.navigate(R.id.loginAdminFragment);
+                 Log.i("MASTER APP", "Logging out");
+                 Log.i("MASTER APP", "logged out");
+                 Admin.getInstance().Logout();
+                 Log.i("MASTER APP", "navigating back to login screen");
+                 NavController navController = NavHostFragment.findNavController(AdminFragment.this);
+                 navController.navigate(R.id.loginAdminFragment);
 
 
-             // TODO: fix displaying navbar and logout student from the backend.
-         }
-     });
+                 // TODO: fix displaying navbar and logout student from the backend.
+             }
+         });
         binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +93,20 @@ public final class AdminFragment extends Fragment {
                 binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
+
+        binding.adminNavbar.navigationCreateAnnouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.adminCreateAnnouncementFragment);
+
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+
+
 //        Admin.getInstance().postEvent("Author 1", "Event 1", "Details 1",
 //                new Date(123,1,2,3,4,5),
 //                new Date(123,2,3,4,5,6), 2, );

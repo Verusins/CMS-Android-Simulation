@@ -47,24 +47,24 @@ public class CreateAnnouncementFragment extends Fragment {
                                 Toast.LENGTH_SHORT);
                         myToast.show();
                         return;
-                    }
-
-                    if (binding.AnnouncementDescription.getText().toString().length() == 0
+                    }else if (binding.AnnouncementDescription.getText().toString().length() == 0
                             || binding.AnnouncementDescription.getText().toString().length() > 200) {
                         Toast myToast = Toast.makeText(getActivity(),
                                 "Please input announcement description with maximum of 200 character.",
                                 Toast.LENGTH_SHORT);
                         myToast.show();
                         return;
+                    }else{
+                        // TODO: link it to the backend
+                        Toast myToast = Toast.makeText(getActivity(),
+                                "Announcement Submitted",
+                                Toast.LENGTH_SHORT);
+                        myToast.show();
+                        binding.announcementTitleInput.setText("");
+                        binding.AnnouncementDescription.setText("");
                     }
 
-                    // TODO: link it to the backend
-                    Toast myToast = Toast.makeText(getActivity(),
-                                    "Announcement Submitted",
-                                    Toast.LENGTH_SHORT);
-                            myToast.show();
-                            binding.announcementTitleInput.setText("");
-                            binding.AnnouncementDescription.setText("");
+
 //                    Student.getInstance().postComplaint(student.getInstance().getEmail(),
 //                            binding.announcementTitleInput.getText().toString()
 //                    ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
