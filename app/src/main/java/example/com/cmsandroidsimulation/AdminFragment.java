@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import example.com.cmsandroidsimulation.databinding.FragmentAdminBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
 
 public final class AdminFragment extends Fragment {
     private FragmentAdminBinding binding;
@@ -71,9 +72,8 @@ public final class AdminFragment extends Fragment {
          public void onClick(View view) {
 
              Log.i("MASTER APP", "Logging out");
-             FirebaseAuth.getInstance().signOut();
              Log.i("MASTER APP", "logged out");
-
+             Admin.getInstance().Logout();
              Log.i("MASTER APP", "navigating back to login screen");
              NavController navController = NavHostFragment.findNavController(AdminFragment.this);
              navController.navigate(R.id.loginAdminFragment);

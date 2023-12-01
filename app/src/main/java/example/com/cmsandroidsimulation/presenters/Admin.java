@@ -33,6 +33,11 @@ public class Admin extends User{
     private static Admin instance;
     // TODO: implement api calls
 
+    public void Logout(){
+
+        FirebaseAuth.getInstance().signOut();
+        instance = null;
+    }
     public static Task<AuthResult> Login(String email, String password)
     {
             // Simulate an asynchronous API call

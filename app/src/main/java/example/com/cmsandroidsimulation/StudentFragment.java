@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
 import example.com.cmsandroidsimulation.databinding.NavbarStudentBinding;
+import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public final class StudentFragment extends Fragment {
     FragmentStudentBinding binding;
@@ -92,7 +94,7 @@ public final class StudentFragment extends Fragment {
                 Log.i("MASTER APP", "Logging out");
                 FirebaseAuth.getInstance().signOut();
                 Log.i("MASTER APP", "logged out");
-
+                Student.getInstance().Logout();
                 Log.i("MASTER APP", "navigating back to login screen");
                 NavController navController = NavHostFragment.findNavController(StudentFragment.this);
                 navController.navigate(R.id.loginStudentFragment);
