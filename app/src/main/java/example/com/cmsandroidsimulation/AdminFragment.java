@@ -64,19 +64,19 @@ public final class AdminFragment extends Fragment {
         });
 
         // Logout
-        binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-
-             NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
-             NavController navController = navHostFragment.getNavController();
-             navController.navigate(R.id.loginAdminFragment);
-
-             Log.i("Logout Test", "Logging out");
-             binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
-             // TODO: fix displaying navbar and logout student from the backend.
-         }
-     });
+//        binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
+//         @Override
+//         public void onClick(View view) {
+//
+//             NavHostFragment navHostFragment = (NavHostFragment) view.getRootView().findFragmentById(R.id.nav_host_fragment_content_main);
+//             NavController navController = navHostFragment.getNavController();
+//             navController.navigate(R.id.loginAdminFragment);
+//
+//             Log.i("Logout Test", "Logging out");
+//             binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+//             // TODO: fix displaying navbar and logout student from the backend.
+//         }
+//     });
         binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
