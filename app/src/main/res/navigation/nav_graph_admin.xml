@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_dashboardAdminFragment_to_adminNewEventFragment"
             app:destination="@id/adminNewEventFragment" />
+        <action
+            android:id="@+id/action_dashboardAdminFragment_to_createAnnouncementFragment"
+            app:destination="@id/adminCreateAnnouncementFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventAdminFragment"
@@ -31,5 +34,11 @@
         android:id="@+id/adminNewEventFragment"
         android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
         android:label="AdminNewEventFragment"
-        tools:layout="@layout/fragment_admin_new_event"/>
+        tools:layout="@layout/fragment_admin_new_event">
+    </fragment>
+    <fragment
+        android:id="@+id/adminCreateAnnouncementFragment"
+        android:name="example.com.cmsandroidsimulation.CreateAnnouncementFragment"
+        android:label="CreateAnnouncementFragment"
+        tools:layout="@layout/create_announcement"/>
 </navigation>

@@ -68,20 +68,20 @@ public final class AdminFragment extends Fragment {
 
         // Logout
         binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
+            @Override
+             public void onClick(View view) {
 
-             Log.i("MASTER APP", "Logging out");
-             Log.i("MASTER APP", "logged out");
-             Admin.getInstance().Logout();
-             Log.i("MASTER APP", "navigating back to login screen");
-             NavController navController = NavHostFragment.findNavController(AdminFragment.this);
-             navController.navigate(R.id.loginStudentFragment);
+            Log.i("MASTER APP", "Logging out");
+            Log.i("MASTER APP", "logged out");
+            Admin.getInstance().Logout();
+            Log.i("MASTER APP", "navigating back to login screen");
+            NavController navController = NavHostFragment.findNavController(AdminFragment.this);
+            navController.navigate(R.id.loginStudentFragment);
 
 
-             // TODO: fix displaying navbar and logout student from the backend.
-         }
-     });
+                 // TODO: fix displaying navbar and logout student from the backend.
+             }
+         });
         binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +93,32 @@ public final class AdminFragment extends Fragment {
                 binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
+
+        binding.adminNavbar.navigationCreateAnnouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_admin);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.adminCreateAnnouncementFragment);
+
+                binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
+
+
+//        Admin.getInstance().postEvent("Author 1", "Event 1", "Details 1",
+//                new Date(123,1,2,3,4,5),
+//                new Date(123,2,3,4,5,6), 2, );
+//        Admin.getInstance().postEvent("Author 2", "Event 2", "Details 1",
+//                new Date(124,2,2,3,4,5),
+//                new Date(124,3,4,4,5,6), 4);
+//        Admin.getInstance().postEvent("Author 3", "Event 3", "Details 1",
+//                new Date(125,3,2,3,4,5),
+//                new Date(125,4,5,4,5,6), 8);
+//        Admin.getInstance().postEvent("Author 4", "Event 4", "Details 1",
+//                new Date(126,4,2,3,4,5),
+//                new Date(126,5,6,4,5,6), 16);
         binding.adminNavbar.sidebarMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {}
