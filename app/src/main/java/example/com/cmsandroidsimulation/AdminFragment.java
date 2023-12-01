@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import example.com.cmsandroidsimulation.databinding.FragmentAdminBinding;
 
 public final class AdminFragment extends Fragment {
@@ -64,19 +66,22 @@ public final class AdminFragment extends Fragment {
         });
 
         // Logout
-//        binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
-//         @Override
-//         public void onClick(View view) {
-//
-//             NavHostFragment navHostFragment = (NavHostFragment) view.getRootView().findFragmentById(R.id.nav_host_fragment_content_main);
-//             NavController navController = navHostFragment.getNavController();
-//             navController.navigate(R.id.loginAdminFragment);
-//
-//             Log.i("Logout Test", "Logging out");
-//             binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
-//             // TODO: fix displaying navbar and logout student from the backend.
-//         }
-//     });
+        binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+
+             Log.i("MASTER APP", "Logging out");
+             FirebaseAuth.getInstance().signOut();
+             Log.i("MASTER APP", "logged out");
+
+             Log.i("MASTER APP", "navigating back to login screen");
+             NavController navController = NavHostFragment.findNavController(AdminFragment.this);
+             navController.navigate(R.id.loginAdminFragment);
+
+
+             // TODO: fix displaying navbar and logout student from the backend.
+         }
+     });
         binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
