@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/background"
-        android:padding="16dp"
+        android:paddingHorizontal="35dp"
         app:layout_constraintBaseline_toBaselineOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,28 +20,28 @@
 
         <TextView
             android:id="@+id/complaint_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
             android:text="Submit a Complaint"
-            android:textColor="@color/primary"
-            android:textSize="32sp" />
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/complaint_edit_text"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_below="@+id/complaint_title"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/admin_event_rounded_border"
-            android:elevation="12dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/rounded_background"
             android:gravity="top"
             android:hint="Enter your complaint description here (Maximum of 640 Character)"
             android:inputType="textMultiLine"
-            android:padding="8dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:translationY="20dp"
             android:textColor="@android:color/black" />
 
         <CheckBox
@@ -49,10 +49,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/complaint_edit_text"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="40dp"
+            android:buttonTint="@color/primary"
             android:text="I agree to comply with the Student Code of Conduct"
-            android:textColor="@color/primary"
-            android:textSize="14sp" />
+            android:textColor="@color/black"
+            android:translationX="-5dp"
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/complaint_submit_button"
@@ -60,13 +62,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/complaint_check_box"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="Submit Complaint"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
+            android:background="@drawable/rounded_background_colored"
+            android:textStyle="bold"
             app:backgroundTint="@color/primary"
             app:cornerRadius="4dp"
-            tools:textSize="20sp"
+            tools:textSize="18dp"
             />
 
     </RelativeLayout>
