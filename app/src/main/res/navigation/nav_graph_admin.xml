@@ -35,9 +35,6 @@
         android:name="example.com.cmsandroidsimulation.AdminNewEventFragment"
         android:label="AdminNewEventFragment"
         tools:layout="@layout/fragment_admin_new_event">
-        <action
-            android:id="@+id/action_adminNewEventFragment_to_loginAdminFragment"
-            app:destination="@id/loginAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminCreateAnnouncementFragment"
