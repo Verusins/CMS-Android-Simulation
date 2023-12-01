@@ -167,7 +167,8 @@ public class AdminNewEventFragment extends Fragment {
                                 binding.adminNewEventDescInput.getText().toString(),
                                 Date.from(start.atZone(ZoneId.systemDefault()).toInstant()),
                                 Date.from(end.atZone(ZoneId.systemDefault()).toInstant()),
-                                Integer.parseInt(binding.adminEventParticipantsInput.getText().toString())
+                                Integer.parseInt(binding.adminEventParticipantsInput.getText().toString()),
+                                binding.adminEventLocationInput.getText().toString()
                                 ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {

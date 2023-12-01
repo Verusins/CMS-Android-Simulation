@@ -63,7 +63,7 @@ public class LoginAdminFragment  extends Fragment {
                                         navigate(R.id.action_loginAdminFragment_to_adminFragment);
                             });
                         } else {
-                            Log.w("ERROR", "Messed up somewhere", task.getException());
+                            Log.w("MASTER APP", "Admin login failed", task.getException());
                         }
                     }
                 });

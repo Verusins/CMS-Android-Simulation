@@ -74,7 +74,7 @@ public final class AdminFragment extends Fragment {
         });
 //        Admin.getInstance().postEvent("Author 1", "Event 1", "Details 1",
 //                new Date(123,1,2,3,4,5),
-//                new Date(123,2,3,4,5,6), 2);
+//                new Date(123,2,3,4,5,6), 2, );
 //        Admin.getInstance().postEvent("Author 2", "Event 2", "Details 1",
 //                new Date(124,2,2,3,4,5),
 //                new Date(124,3,4,4,5,6), 4);

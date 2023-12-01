@@ -31,7 +31,6 @@ public class Student extends User {
     private static FirebaseUser user = null;
     private static Student instance;
 
-    // TODO: implement api calls
     public static Task<AuthResult> Login(String email, String password)
     {
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
@@ -45,7 +44,7 @@ public class Student extends User {
                     user = mAuth.getCurrentUser();
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
@@ -81,7 +80,7 @@ public class Student extends User {
                             });
                 } else {
                     // If sign in fails, display a message to the user.
-                    throw new FailedLoginException();
+                    Log.e("MASTER APP", "Login failed");
                 }
             }
         });
@@ -91,8 +90,6 @@ public class Student extends User {
     {
         return instance;
     }
-
-    // TODO: implement api calls
     public CompletableFuture<Void> postEventComment(EventInfo eventInfo, String content, int rating)
     {
         String eventid = eventInfo.getEventid();
@@ -134,21 +131,6 @@ public class Student extends User {
             return false;
         });
     }
-
-    // TODO: implement api calls
-    public CompletableFuture<Void> submitEventRSVP(EventInfo eventInfo)
-    {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
-    }
-    // TODO: implement api calls
     public CompletableFuture<Void> setEventHasRSVPd(EventInfo eventInfo, boolean setTrue)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

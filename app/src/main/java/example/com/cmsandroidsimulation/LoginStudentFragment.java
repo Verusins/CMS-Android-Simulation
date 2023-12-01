@@ -57,7 +57,7 @@ public final class LoginStudentFragment extends Fragment{
                             });
                         } else {
                             // show error message somewhere on the screen
-                            throw new FailedLoginException();
+                            Log.w("MASTER APP", "Student login failed", task.getException());
                         }
                     }
                 });

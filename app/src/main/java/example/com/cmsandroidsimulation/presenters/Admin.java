@@ -14,7 +14,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,6 +21,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
+import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.Complaint;
 import example.com.cmsandroidsimulation.models.EventComment;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
@@ -33,7 +33,7 @@ public class Admin extends User{
     private static Admin instance;
     // TODO: implement api calls
 
-    public static Task<AuthResult> Login(String email, String password) throws FailedLoginException
+    public static Task<AuthResult> Login(String email, String password)
     {
             // Simulate an asynchronous API call
         Task<AuthResult> authResult = mAuth.signInWithEmailAndPassword(email, password);
@@ -98,29 +98,33 @@ public class Admin extends User{
     // TODO: implement api calls
     public CompletableFuture<ArrayList<Complaint>> getComplaints()
     {
-        return CompletableFuture.supplyAsync(() -> {
-            // Simulate an asynchronous API call
-            try {
-                Thread.sleep(2000); // Simulating a delay
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        CompletableFuture<ArrayList<Complaint>> asynclist = new CompletableFuture<>();
+        ArrayList<Complaint> clist = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Task<QuerySnapshot> task = db.collection("complaints").get();
+        task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Complaint complaint = new Complaint(
+                                document.getString("username"),
+                                document.getString("content")
+                        );
+                        clist.add(complaint);
+                    }
+                    asynclist.complete(clist);
+                } else {
+                    asynclist.completeExceptionally(task.getException());
+                }
             }
-            return PlaceholderValues.generateTestComplaintList();
         });
+        return asynclist;
     }
 
-    // TODO: implement API calls
     public Task<DocumentReference> postEvent(String author, String title, String details, Date startDateTime,
-                                             Date endDateTime, int maxppl)
+                                             Date endDateTime, int maxppl, String location)
     {
-        Log.i("MASTER APP", "prepare post event");
-        Log.i("MASTER APP", author);
-        Log.i("MASTER APP", title);
-        Log.i("MASTER APP", details);
-        Log.i("MASTER APP", startDateTime + "");
-        Log.i("MASTER APP", endDateTime + "");
-        Log.i("MASTER APP", maxppl + "");
-
         ArrayList<String> attendees = new ArrayList<>();
         ArrayList<EventComment> comments = new ArrayList<>();
         Map<String, Object> event = new HashMap<>();
@@ -132,22 +136,23 @@ public class Admin extends User{
         event.put("comments", comments);
         event.put("maxppl", maxppl);
         event.put("attendees", attendees);
+        event.put("location", location);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("events")
                 .add(event);
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
         return task;
     }
-
-    // TODO: implement API calls
-    public Task<DocumentReference> postAnnouncement(String details)
+    public CompletableFuture<Void> postAnnouncement(String title, String details)
     {
         Map<String, Object> announcement = new HashMap<>();
+        announcement.put("author", getName(email));
+        announcement.put("title", title);
         announcement.put("details", details);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Task<DocumentReference> task = db.collection("announcements")
@@ -155,10 +160,10 @@ public class Admin extends User{
         task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 });
-        return task;
+        return CompletableFuture.completedFuture(null);
     }
 
     public CompletableFuture<ArrayList<Complaint>> getComplaint()

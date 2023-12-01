@@ -12,7 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventAdminBinding;
 import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
@@ -50,6 +53,11 @@ public class EventAdminFragment extends Fragment {
         binding.eventTitle.setText(eventInfo.getTitle());
         binding.eventContent.setText(eventInfo.getDetails());
         binding.eventAuthor.setText(eventInfo.getAuthor());
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm:ss", Locale.CANADA);
+        binding.eventLocationAndTime.setText(dateFormat.format(eventInfo.getEventStartDateTime()) +
+                " to " +
+                dateFormat.format(eventInfo.getEventEndDateTime()) +
+                " at " + eventInfo.getLocation());
 
 
         // Comments loading
