@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:padding="16dp">
+    android:paddingHorizontal="35dp">
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@+id/Welcome"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:hint="Username"
         android:inputType="text"
         android:padding="8dp"
@@ -50,8 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/termsCheckBox"
         android:text="Sign Up"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/white"
+        android:background="@drawable/rounded_background_colored"
         app:backgroundTint="@color/primary"
         app:cornerRadius="4dp"
         tools:textSize="20sp" />
@@ -87,14 +89,14 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp" />
 
-    <CheckBox
+    <TextView
         android:id="@+id/termsCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/changeInfoNotice"
-        android:layout_marginTop="32dp"
-        android:text="I accept the terms and conditions"
-        android:textColor="@color/black"
+        android:layout_marginVertical="20dp"
+        android:text="*By signing up, you are meant to accept the terms and conditions"
+        android:textColor="@color/gray"
         android:textSize="14sp"
         android:textStyle="bold" />
 

@@ -9,10 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
-        android:layout_marginBottom="10sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="35dp"
         android:paddingBottom="30dp">
 
 
@@ -22,11 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="20sp"
+            android:paddingVertical="15sp"
             android:text="@string/post_title"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:background="@color/primary"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,11 +49,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
             android:gravity="center"
-            android:paddingTop="20sp"
+            android:paddingVertical="15sp"
             android:text="@string/post_quiz_title"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:background="@color/primary"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/post_desc" />
 
@@ -91,7 +91,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_cs_specialist"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_cs_specialist" />
 
@@ -99,7 +99,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_cs_major"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_cs_major" />
 
@@ -107,7 +107,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_cs_minor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_cs_minor" />
 
@@ -115,7 +115,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_stats_specialist"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_stats_specialist" />
 
@@ -123,7 +123,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_stats_major"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_stats_major" />
 
@@ -131,7 +131,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_stats_minor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_stats_minor" />
 
@@ -139,7 +139,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_math_specialist"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_math_specialist" />
 
@@ -147,7 +147,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q1_math_major"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q1_math_major" />
 
@@ -186,7 +186,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q2_cs"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q2_cs" />
 
@@ -194,7 +194,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q2_stats"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q2_stats" />
 
@@ -202,7 +202,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q2_math"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q2_math" />
 
@@ -210,7 +210,7 @@
                 <RadioButton
                     android:id="@+id/post_quiz_q2_other"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     app:buttonTint="@color/primary"
                     android:text="@string/post_quiz_q2_other" />
 
@@ -251,7 +251,7 @@
                     android:id="@+id/post_quiz_q3_mata31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_mata31"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -261,10 +261,11 @@
                     android:id="@+id/post_quiz_q3_mata31_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:gravity="center"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"
                     android:layout_weight="2"/>
@@ -284,7 +285,7 @@
                     android:id="@+id/post_quiz_q3_mata67"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_mata67"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -296,9 +297,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"/>
             </LinearLayout>
@@ -318,7 +320,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_mata22"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -329,9 +331,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"/>
             </LinearLayout>
@@ -351,7 +354,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_mata37"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -362,9 +365,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"/>
             </LinearLayout>
@@ -384,7 +388,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_csca08"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -396,9 +400,10 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"/>
             </LinearLayout>
@@ -418,7 +423,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="20sp"
+                    android:paddingVertical="10sp"
                     android:text="@string/post_quiz_q3_csca48"
                     android:textColor="@color/black"
                     android:textSize="18sp"/>
@@ -429,9 +434,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:background="@drawable/border"
+                    android:background="@drawable/rounded_background"
                     android:inputType="number"
                     android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:autofillHints="0"
                     android:hint="@string/post_quiz_placeholder"/>
             </LinearLayout>
@@ -450,11 +456,13 @@
 
             <Button
                 android:id="@+id/post_quiz_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/primary"
+                android:background="@drawable/rounded_background_colored"
                 android:text="@string/submit"
-                app:cornerRadius="8dp" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/primary" />
         </LinearLayout>
 
 <!--        POSt Quiz Results-->
@@ -471,13 +479,13 @@
                 android:id="@+id/post_quiz_results_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="20sp"
                 android:gravity="center"
-                android:paddingTop="20sp"
+                android:paddingVertical="10sp"
                 android:text="@string/post_results_title"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="30sp"
-                android:background="@color/primary"></TextView>
+                android:textStyle="bold"></TextView>
 
 <!--            Pass/Conditional Pass/Fail POSt-->
             <TextView
@@ -509,8 +517,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:cornerRadius="8dp"
-                android:backgroundTint="@color/primary"
+                app:cornerRadius="16dp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_background_colored"
+                app:backgroundTint="@color/primary"
                 android:text="@string/retake_post_quiz" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

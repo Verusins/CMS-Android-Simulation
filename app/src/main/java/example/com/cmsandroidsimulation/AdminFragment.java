@@ -1,6 +1,7 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,21 @@ public final class AdminFragment extends Fragment {
                 binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
+
+        // Logout
+//        binding.adminNavbar.sidebarLogout.setOnClickListener(new View.OnClickListener() {
+//         @Override
+//         public void onClick(View view) {
+//
+//             NavHostFragment navHostFragment = (NavHostFragment) view.getRootView().findFragmentById(R.id.nav_host_fragment_content_main);
+//             NavController navController = navHostFragment.getNavController();
+//             navController.navigate(R.id.loginAdminFragment);
+//
+//             Log.i("Logout Test", "Logging out");
+//             binding.adminNavbar.sidebarWrapper.setVisibility(View.GONE);
+//             // TODO: fix displaying navbar and logout student from the backend.
+//         }
+//     });
         binding.adminNavbar.navigationStudentComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
