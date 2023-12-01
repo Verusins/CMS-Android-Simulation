@@ -82,37 +82,21 @@ public class AdminRegisterFragment extends Fragment {
                     return;
                 }
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                CollectionReference dataCollection = db.collection("users");
-                Query query = dataCollection.whereEqualTo("email", email); // if this is not empty i want to make toast
-                query.get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if (!task.getResult().isEmpty()) {
-                            Toast myToast = Toast.makeText(getActivity(),
-                                    "Email already Exist",
-                                    Toast.LENGTH_SHORT);
-                            myToast.show();
-                        } else {
-                            Admin.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        requireActivity().runOnUiThread(() -> {
-                                            NavHostFragment.findNavController(AdminRegisterFragment.this).
-                                                    navigate(R.id.action_adminRegisterFragment_to_adminFragment);
-                                        });
-                                    } else {
-                                        // show error message somewhere on the screen
-                                        throw new FailedLoginException();
-                                    }
-                                }
-                            });
-                        }
-                    } else {
-                        // Handle errors
-                        Log.e("MASTER APP", "Error getting documents: ", task.getException());
-                    }
-                });
+
+                Admin.Register(username, email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        requireActivity().runOnUiThread(() -> {
+                            if (task.isSuccessful()) {
+                                NavHostFragment.findNavController(AdminRegisterFragment.this).navigate(R.id.adminFragment);
+                            }else {
+                                Toast myToast = Toast.makeText(getActivity(),
+                                        task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT);
+                                myToast.show();
+                            }
+                        });
+                    }});
 
             }
         });
