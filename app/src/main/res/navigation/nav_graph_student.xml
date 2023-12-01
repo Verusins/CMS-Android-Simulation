@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_dashboardStudentFragment_to_postReqFragment"
             app:destination="@id/postReqFragment" />
+        <action
+            android:id="@+id/action_dashboardStudentFragment_to_ComplainPageFragment"
+            app:destination="@id/ComplaintFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
@@ -25,6 +28,18 @@
         <action
             android:id="@+id/action_eventFragment_to_dashboardStudentFragment"
             app:destination="@id/dashboardStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ComplaintFragment"
+        android:name="example.com.cmsandroidsimulation.ComplainPageFragment"
+        android:label="ComplainPageFragment"
+        tools:layout="@layout/complaint_page">
+        <action
+            android:id="@+id/action_ComplainPageFragment_to_dashboardStudentFragment"
+            app:destination="@id/dashboardStudentFragment" />
+        <action
+            android:id="@+id/action_ComplainPageFragment_to_ComplainPageFragment"
+            app:destination="@id/ComplaintFragment" />
     </fragment>
     <fragment
         android:id="@+id/postReqFragment"

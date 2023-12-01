@@ -1,17 +1,13 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
@@ -74,7 +70,17 @@ public final class StudentFragment extends Fragment {
                 studentNavbar.sidebarWrapper.setVisibility(View.GONE);
             }
         });
+        studentNavbar.navigationComplaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.navhost_fragment_student);
+                NavController navController = navHostFragment.getNavController();
+//                navController.navigate(R.id.postReqFragment);
+                navController.navigate(R.id.ComplaintFragment);
 
+                studentNavbar.sidebarWrapper.setVisibility(View.GONE);
+            }
+        });
 //        ImageView navbarIcon = binding.dashboardStudent.menuIcon;
 //
 //        navbarIcon.setOnClickListener(new View.OnClickListener() {
