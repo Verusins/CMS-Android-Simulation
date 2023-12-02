@@ -16,7 +16,7 @@
         android:hint="Username"
         android:inputType="text"
         android:padding="8dp"
-        android:textColor="@color/primary"
+        android:textColor="@color/black"
         android:textColorHint="@color/black" />
 
     <EditText
@@ -28,7 +28,7 @@
         android:hint="Email"
         android:inputType="text"
         android:padding="8dp"
-        android:textColor="@color/primary"
+        android:textColor="@color/black"
         android:textColorHint="@color/black" />
 
     <EditText
