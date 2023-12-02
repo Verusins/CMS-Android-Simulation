@@ -42,6 +42,7 @@ public final class LoginFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // navigation directing
         binding.CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,12 +52,12 @@ public final class LoginFragment extends Fragment {
                 });
             }
         });
+        // login logics
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.passwordEditText.getText().toString();
-
                 if (email.equals("") || password.equals("")) {
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
