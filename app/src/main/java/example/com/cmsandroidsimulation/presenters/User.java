@@ -115,6 +115,11 @@ public abstract class User {
         return asynclist;
     }
 
+    public static boolean IsAdminInstant()
+    {
+        return instance instanceof Admin;
+    }
+
     // TODO: implement api calls
     public CompletableFuture<ArrayList<Announcement>> getAnnouncements()
     {
