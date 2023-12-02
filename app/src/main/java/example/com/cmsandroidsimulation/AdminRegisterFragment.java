@@ -19,6 +19,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import org.w3c.dom.Text;
+
 import java.util.regex.Pattern;
 
 import example.com.cmsandroidsimulation.databinding.FragmentRegisterAdminBinding;
@@ -62,7 +64,6 @@ public class AdminRegisterFragment extends Fragment {
                 String username = binding.usernameEditText.getText().toString();
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
-                CheckBox checkbox = binding.termsCheckBox;
 
                 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
                 Pattern pattern = Pattern.compile(emailRegex);
@@ -73,8 +74,7 @@ public class AdminRegisterFragment extends Fragment {
                     myToast.show();
                     return;
                 }
-                if (username.equals("") || !checkbox.isChecked()
-                        || email.equals("") || password.equals("")){
+                if (username.equals("") || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
                             Toast.LENGTH_SHORT);
