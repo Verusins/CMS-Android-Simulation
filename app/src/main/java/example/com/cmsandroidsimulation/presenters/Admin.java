@@ -126,22 +126,44 @@ public class Admin extends User{
                 });
         return task;
     }
-    public Task<DocumentReference> postAnnouncement(String title, String details)
+    public CompletableFuture<Void> postAnnouncement(String title, String details)
     {
+        CompletableFuture<Void> completableFuture = new CompletableFuture<Void>();
         Map<String, Object> announcement = new HashMap<>();
-        announcement.put("author", getName(email));
-        announcement.put("title", title);
-        announcement.put("details", details);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Task<DocumentReference> task = db.collection("announcements")
-                .add(announcement);
-        task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+        CompletableFuture<String> getNameFuture = getName(email);
+        getNameFuture.thenAccept(username -> {
+            announcement.put("author", username);
+            announcement.put("title", title);
+            announcement.put("details", details);
+            Log.i("MASTER APP", "get username");
+            try {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Task<DocumentReference> task = db.collection("announcements")
+                        .add(announcement);
+                Log.i("MASTER APP", "trying to add announcement");
+                task.addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("MASTER APP", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        completableFuture.complete(null);
                     }
                 });
-        return task;
+                task.addOnFailureListener(e -> {
+                    completableFuture.completeExceptionally(e);
+                });
+            }
+            catch (Exception e){
+                Log.e("MASTER APP", e.getMessage());
+            }
+        });
+        getNameFuture.exceptionally(e -> {
+            completableFuture.completeExceptionally(e);
+            return null;
+        });
+
+
+        return completableFuture;
     }
 
     public CompletableFuture<ArrayList<Complaint>> getComplaint()

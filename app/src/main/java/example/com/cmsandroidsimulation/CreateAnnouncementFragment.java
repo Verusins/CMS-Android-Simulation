@@ -43,8 +43,6 @@ public class CreateAnnouncementFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                try {
-
                     if (binding.announcementTitleInput.getText().toString().length() == 0
                             || binding.announcementTitleInput.getText().toString().length() > 40) {
                         Toast myToast = Toast.makeText(getActivity(),
@@ -69,29 +67,18 @@ public class CreateAnnouncementFragment extends Fragment {
 
                         Admin.getInstance().postAnnouncement(binding.announcementTitleInput.getText().toString(),
                                 binding.AnnouncementDescription.getText().toString()
-                        ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
+                        ).thenAccept((v) ->{
+                            Toast myToast = Toast.makeText(getActivity(),
+                                    "Announcement Submitted",
+                                    Toast.LENGTH_SHORT);
+                            myToast.show();
 
-//                                requireActivity().runOnUiThread(() -> {
-//                                    NavHostFragment.findNavController(CreateAnnouncementFragment.this).
-//                                            navigate(R.id.dashboardAdminFragment);
-//                                });
-                                // TODO: link it to the backend
-                                Toast myToast = Toast.makeText(getActivity(),
-                                        "Announcement Submitted",
-                                        Toast.LENGTH_SHORT);
-                                myToast.show();
-
-                                binding.announcementTitleInput.setText("");
-                                binding.AnnouncementDescription.setText("");
+                            binding.announcementTitleInput.setText("");
+                            binding.AnnouncementDescription.setText("");
                             }
-                        });
+                        );
 //                    });
 
-                }catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
             }
         });
     }
