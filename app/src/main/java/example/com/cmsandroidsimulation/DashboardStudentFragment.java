@@ -25,6 +25,7 @@ import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBind
 import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.presenters.Admin;
 import example.com.cmsandroidsimulation.presenters.Student;
 
 public class DashboardStudentFragment extends Fragment {
@@ -51,31 +52,28 @@ public class DashboardStudentFragment extends Fragment {
 
 //        List Announcements from database
         final RelativeLayout announcementParentWrapper = binding.announcements;
-        ArrayList<Announcement> announcementsSource = PlaceholderValues.generateTestAnnouncementList();
-        int index = 0;
-        for(Announcement announcement: announcementsSource) {
-            View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
-            String title = announcement.getTitle(), content = announcement.getDetails();
-//            LinearLayout .LayoutParams layoutParams = (LinearLayout.LayoutParams) childView.getLayoutParams();
+        Student.getInstance().getAnnouncements().thenAccept((ArrayList<Announcement> announcements) -> {
+            for(Announcement announcement: announcements) {
+                View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
+                String title = announcement.getTitle(), content = announcement.getDetails();
 
-            TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
-            TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
+                TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
+                TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
 
-            titleTextView.setText(title);
-            contentTextView.setText(content);
+                titleTextView.setText(title);
+                contentTextView.setText(content);
 
-//            Log.i("test", layoutParams.toString());
+                childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        childView.setVisibility(View.GONE);
+                    }
+                });
 
-            childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    childView.setVisibility(View.GONE);
-                }
-            });
+                announcementParentWrapper.addView(childView);
+            }
+        });
 
-            announcementParentWrapper.addView(childView);
-            index ++;
-        }
 
 //        Event from db
         //        List Events from database
@@ -110,7 +108,6 @@ public class DashboardStudentFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         });
-
 
     }
 }

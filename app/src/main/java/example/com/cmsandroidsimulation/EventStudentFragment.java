@@ -54,7 +54,6 @@ public class EventStudentFragment extends Fragment {
 
         // Load Content from db
         int eventIndex = getArguments().getInt("selectedEventIndex");
-        // TODO: replace with fetch from backend/stashed event
 
         Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> events) -> {
             try {
