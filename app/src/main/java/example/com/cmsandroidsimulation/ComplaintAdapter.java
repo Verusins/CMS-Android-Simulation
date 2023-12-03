@@ -15,7 +15,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-import example.com.cmsandroidsimulation.models.Complaint;
+import example.com.cmsandroidsimulation.datastructures.Complaint;
 
 public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.ComplaintViewHolder>{
     private ArrayList<Complaint> complist;

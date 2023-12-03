@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 
 import example.com.cmsandroidsimulation.databinding.ComplaintPageBinding;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public class ComplainPageFragment extends Fragment {
 

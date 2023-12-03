@@ -2,13 +2,9 @@ package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,15 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.events.Event;
-
 import java.util.ArrayList;
 
 import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBinding;
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.datastructures.Announcement;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
+import example.com.cmsandroidsimulation.datastructures.PlaceholderValues;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public class DashboardStudentFragment extends Fragment {
     FragmentDashboardStudentBinding binding;

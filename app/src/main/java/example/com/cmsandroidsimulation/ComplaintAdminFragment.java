@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import example.com.cmsandroidsimulation.databinding.ComplaintAdminBinding;
-import example.com.cmsandroidsimulation.models.Complaint;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.datastructures.Complaint;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public class ComplaintAdminFragment extends Fragment {
     private ComplaintAdminBinding binding;

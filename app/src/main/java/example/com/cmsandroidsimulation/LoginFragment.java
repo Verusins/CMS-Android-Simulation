@@ -13,24 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import example.com.cmsandroidsimulation.databinding.FragmentLoginBinding;
-import example.com.cmsandroidsimulation.models.LoginModel;
-import example.com.cmsandroidsimulation.presenters.Admin;
-import example.com.cmsandroidsimulation.presenters.LoginPresenter;
-import example.com.cmsandroidsimulation.presenters.Student;
-import example.com.cmsandroidsimulation.presenters.User;
-import example.com.cmsandroidsimulation.views.LoginView;
+import example.com.cmsandroidsimulation.mvplogin.LoginModel;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
+import example.com.cmsandroidsimulation.mvplogin.LoginPresenter;
+import example.com.cmsandroidsimulation.apiwrapper.User;
+import example.com.cmsandroidsimulation.mvplogin.LoginView;
 
 public class LoginFragment extends Fragment implements LoginView {
     FragmentLoginBinding binding;

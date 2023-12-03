@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import example.com.cmsandroidsimulation.databinding.FragmentDashboardAdminBinding;
-import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBinding;
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.datastructures.Announcement;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
+import example.com.cmsandroidsimulation.datastructures.PlaceholderValues;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public class DashboardAdminFragment extends Fragment {
 
