@@ -15,8 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import example.com.cmsandroidsimulation.databinding.FragmentStudentBinding;
 import example.com.cmsandroidsimulation.databinding.NavbarStudentBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public final class StudentFragment extends Fragment {
     FragmentStudentBinding binding;

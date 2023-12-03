@@ -1,9 +1,7 @@
-package example.com.cmsandroidsimulation.models;
+package example.com.cmsandroidsimulation.datastructures;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 
 public class PlaceholderValues {

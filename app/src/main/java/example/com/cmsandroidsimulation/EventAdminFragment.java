@@ -18,11 +18,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventAdminBinding;
-import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
-import example.com.cmsandroidsimulation.models.EventComment;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.datastructures.EventComment;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public class EventAdminFragment extends Fragment {
     FragmentEventAdminBinding binding;

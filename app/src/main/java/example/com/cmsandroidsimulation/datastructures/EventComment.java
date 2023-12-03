@@ -1,8 +1,6 @@
-package example.com.cmsandroidsimulation.models;
+package example.com.cmsandroidsimulation.datastructures;
 
 import java.util.Date;
-
-import example.com.cmsandroidsimulation.presenters.User;
 
 public class EventComment extends UserPost {
     private final int rating;

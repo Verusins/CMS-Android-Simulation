@@ -1,7 +1,6 @@
-package example.com.cmsandroidsimulation.presenters;
+package example.com.cmsandroidsimulation.mvplogin;
 
-import example.com.cmsandroidsimulation.models.LoginModel;
-import example.com.cmsandroidsimulation.views.LoginView;
+import example.com.cmsandroidsimulation.apiwrapper.User;
 
 public class LoginPresenter {
     private LoginView loginView;
