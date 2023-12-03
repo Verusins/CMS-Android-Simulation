@@ -11,10 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import example.com.cmsandroidsimulation.databinding.FragmentAdminBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public final class AdminFragment extends Fragment {
     private FragmentAdminBinding binding;

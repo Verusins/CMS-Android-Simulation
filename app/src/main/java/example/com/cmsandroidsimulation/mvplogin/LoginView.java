@@ -1,6 +1,6 @@
-package example.com.cmsandroidsimulation.views;
+package example.com.cmsandroidsimulation.mvplogin;
 
-import example.com.cmsandroidsimulation.presenters.User;
+import example.com.cmsandroidsimulation.apiwrapper.User;
 
 public interface LoginView {
     void showUsernameError();
