@@ -3,8 +3,8 @@ package example.com.cmsandroidsimulation.mvplogin;
 import example.com.cmsandroidsimulation.apiwrapper.User;
 
 public class LoginPresenter {
-    private LoginView loginView;
-    private LoginModel loginModel;
+    public LoginView loginView;
+    public LoginModel loginModel;
 
     public LoginPresenter(LoginView loginView, LoginModel loginModel) {
         this.loginView = loginView;
@@ -13,6 +13,12 @@ public class LoginPresenter {
 
     public void validateCredentials(String email, String password) {
         loginModel.login(email, password, new LoginModel.OnLoginFinishedListener() {
+
+            public void usernameEmpty(){
+                if (email.equals("")){
+                    loginView.showUsernameError();
+                }
+            }
             @Override
             public void onUsernameError() {
                 if (loginView != null) {
