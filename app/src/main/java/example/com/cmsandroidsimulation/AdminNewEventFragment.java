@@ -22,7 +22,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import example.com.cmsandroidsimulation.databinding.FragmentAdminNewEventBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public class AdminNewEventFragment extends Fragment {
     private FragmentAdminNewEventBinding binding;

@@ -1,10 +1,10 @@
-package example.com.cmsandroidsimulation.models;
+package example.com.cmsandroidsimulation.mvplogin;
 
 import android.text.TextUtils;
 
 import java.util.concurrent.CompletableFuture;
 
-import example.com.cmsandroidsimulation.presenters.User;
+import example.com.cmsandroidsimulation.apiwrapper.User;
 
 public class LoginModel {
     public interface OnLoginFinishedListener {

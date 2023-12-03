@@ -7,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,16 +22,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
 import example.com.cmsandroidsimulation.databinding.FragmentEventStudentBinding;
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.EventComment;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
-import example.com.cmsandroidsimulation.presenters.Admin;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.datastructures.EventComment;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public class EventStudentFragment extends Fragment {
     FragmentEventStudentBinding binding;
