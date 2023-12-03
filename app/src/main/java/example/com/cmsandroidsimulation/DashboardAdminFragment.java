@@ -20,6 +20,7 @@ import example.com.cmsandroidsimulation.models.Announcement;
 import example.com.cmsandroidsimulation.models.EventInfo;
 import example.com.cmsandroidsimulation.models.PlaceholderValues;
 import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.presenters.Student;
 
 public class DashboardAdminFragment extends Fragment {
 
@@ -46,15 +47,16 @@ public class DashboardAdminFragment extends Fragment {
 //        sidebar.setVisibility(View.GONE);
 
 //        Announcement from db
-        ArrayList<Announcement> announcementList = PlaceholderValues.generateTestAnnouncementList();
 
-        Admin.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
-
+        Admin.getInstance().getAnnouncements().thenAccept((ArrayList<Announcement> announcements) -> {
             RecyclerView recyclerViewAnnouncement = binding.RecyclerViewAnnouncement;
             recyclerViewAnnouncement.setNestedScrollingEnabled(false);
-            announcementAdapter = new AnnouncementAdapter(announcementList, getContext());
+            announcementAdapter = new AnnouncementAdapter(announcements, getContext());
             recyclerViewAnnouncement.setAdapter(announcementAdapter);
             recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
+        });
+
+        Admin.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
             RecyclerView recyclerViewEvent = binding.RecyclerViewEvent;
             recyclerViewEvent.setNestedScrollingEnabled(false);
             eventAdapter = new EventAdapter(eventList, getContext());

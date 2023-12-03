@@ -21,8 +21,8 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     private ArrayList<Announcement> announcementsList;
     private Context context;
 
-    public AnnouncementAdapter(ArrayList<Announcement> eventList, Context context) {
-        this.announcementsList = PlaceholderValues.generateTestAnnouncementList();
+    public AnnouncementAdapter(ArrayList<Announcement> announcementsList, Context context) {
+        this.announcementsList = announcementsList;
         this.context = context;
     }
 
