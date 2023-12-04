@@ -57,18 +57,7 @@ public class StudentRegisterFragment extends Fragment {
                 String username = binding.usernameEditText.getText().toString();
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
-                // CheckBox checkbox = binding.termsCheckBox;
 
-
-                String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
-                Pattern pattern = Pattern.compile(emailRegex);
-                if (!pattern.matcher(email).matches()){
-                    Toast myToast = Toast.makeText(getActivity(),
-                            "Please input valid Email",
-                            Toast.LENGTH_SHORT);
-                    myToast.show();
-                    return;
-                }
                 if (username.equals("") /*|| !checkbox.isChecked()*/
                         || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),

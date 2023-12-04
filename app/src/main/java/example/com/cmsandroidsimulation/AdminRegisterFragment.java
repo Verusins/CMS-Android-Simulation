@@ -58,15 +58,7 @@ public class AdminRegisterFragment extends Fragment {
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
 
-                String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
-                Pattern pattern = Pattern.compile(emailRegex);
-                if (!pattern.matcher(email).matches()){
-                    Toast myToast = Toast.makeText(getActivity(),
-                            "Please input valid Email",
-                            Toast.LENGTH_SHORT);
-                    myToast.show();
-                    return;
-                }
+                
                 if (username.equals("") || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
