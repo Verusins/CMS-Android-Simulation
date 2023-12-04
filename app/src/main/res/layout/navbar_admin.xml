@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:text="Home"
                     android:textColor="@color/gray"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/navigation_create_announcement"
@@ -114,7 +114,7 @@
                     android:layout_marginTop="20dp"
                     android:text="New Event"
                     android:textColor="@color/gray"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/navigation_student_complaint"
@@ -123,7 +123,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Student Complaint"
                     android:textColor="@color/gray"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
