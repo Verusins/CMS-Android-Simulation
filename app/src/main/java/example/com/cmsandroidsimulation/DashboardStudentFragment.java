@@ -2,13 +2,9 @@ package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,15 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.events.Event;
-
 import java.util.ArrayList;
 
 import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBinding;
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.datastructures.Announcement;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public class DashboardStudentFragment extends Fragment {
     FragmentDashboardStudentBinding binding;
@@ -51,31 +44,28 @@ public class DashboardStudentFragment extends Fragment {
 
 //        List Announcements from database
         final RelativeLayout announcementParentWrapper = binding.announcements;
-        ArrayList<Announcement> announcementsSource = PlaceholderValues.generateTestAnnouncementList();
-        int index = 0;
-        for(Announcement announcement: announcementsSource) {
-            View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
-            String title = announcement.getTitle(), content = announcement.getDetails();
-//            LinearLayout .LayoutParams layoutParams = (LinearLayout.LayoutParams) childView.getLayoutParams();
+        Student.getInstance().getAnnouncements().thenAccept((ArrayList<Announcement> announcements) -> {
+            for(Announcement announcement: announcements) {
+                View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
+                String title = announcement.getTitle(), content = announcement.getDetails();
 
-            TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
-            TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
+                TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
+                TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
 
-            titleTextView.setText(title);
-            contentTextView.setText(content);
+                titleTextView.setText(title);
+                contentTextView.setText(content);
 
-//            Log.i("test", layoutParams.toString());
+                childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        childView.setVisibility(View.GONE);
+                    }
+                });
 
-            childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    childView.setVisibility(View.GONE);
-                }
-            });
+                announcementParentWrapper.addView(childView);
+            }
+        });
 
-            announcementParentWrapper.addView(childView);
-            index ++;
-        }
 
 //        Event from db
         //        List Events from database
@@ -110,7 +100,6 @@ public class DashboardStudentFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         });
-
 
     }
 }

@@ -9,17 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 
-import java.time.ZoneId;
-import java.util.Date;
-
 import example.com.cmsandroidsimulation.databinding.CreateAnnouncementBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
-import example.com.cmsandroidsimulation.presenters.Student;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
+import example.com.cmsandroidsimulation.apiwrapper.Student;
 
 public class CreateAnnouncementFragment extends Fragment {
 

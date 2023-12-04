@@ -1,11 +1,9 @@
 package example.com.cmsandroidsimulation;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,14 +13,11 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 
 import java.util.regex.Pattern;
 
 import example.com.cmsandroidsimulation.databinding.FragmentRegisterAdminBinding;
-import example.com.cmsandroidsimulation.presenters.Admin;
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 
 public class AdminRegisterFragment extends Fragment {
     FragmentRegisterAdminBinding binding;
@@ -62,7 +57,6 @@ public class AdminRegisterFragment extends Fragment {
                 String username = binding.usernameEditText.getText().toString();
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
-                CheckBox checkbox = binding.termsCheckBox;
 
                 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
                 Pattern pattern = Pattern.compile(emailRegex);
@@ -73,8 +67,7 @@ public class AdminRegisterFragment extends Fragment {
                     myToast.show();
                     return;
                 }
-                if (username.equals("") || !checkbox.isChecked()
-                        || email.equals("") || password.equals("")){
+                if (username.equals("") || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
                             Toast.LENGTH_SHORT);

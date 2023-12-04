@@ -1,4 +1,4 @@
-package example.com.cmsandroidsimulation.presenters;
+package example.com.cmsandroidsimulation.apiwrapper;
 
 import android.util.Log;
 
@@ -9,7 +9,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -21,10 +20,8 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import example.com.cmsandroidsimulation.FailedLoginException;
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.Complaint;
-import example.com.cmsandroidsimulation.models.EventComment;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.datastructures.Complaint;
+import example.com.cmsandroidsimulation.datastructures.EventComment;
 
 public class Admin extends User{
     // TODO: implement api calls

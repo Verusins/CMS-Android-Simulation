@@ -1,4 +1,4 @@
-package example.com.cmsandroidsimulation.models;
+package example.com.cmsandroidsimulation.datastructures;
 
 import java.util.ArrayList;
 import java.util.Date;

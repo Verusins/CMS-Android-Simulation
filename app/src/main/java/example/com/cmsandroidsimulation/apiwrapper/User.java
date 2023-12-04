@@ -1,4 +1,4 @@
-package example.com.cmsandroidsimulation.presenters;
+package example.com.cmsandroidsimulation.apiwrapper;
 
 import android.util.Log;
 
@@ -14,18 +14,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.checkerframework.checker.units.qual.C;
-
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
-import example.com.cmsandroidsimulation.models.Announcement;
-import example.com.cmsandroidsimulation.models.EventComment;
-import example.com.cmsandroidsimulation.models.EventInfo;
-import example.com.cmsandroidsimulation.models.PlaceholderValues;
+import example.com.cmsandroidsimulation.datastructures.Announcement;
+import example.com.cmsandroidsimulation.datastructures.EventComment;
+import example.com.cmsandroidsimulation.datastructures.EventInfo;
 
 public abstract class User {
     protected static FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -113,6 +108,11 @@ public abstract class User {
             }
         });
         return asynclist;
+    }
+
+    public static boolean IsAdminInstant()
+    {
+        return instance instanceof Admin;
     }
 
     // TODO: implement api calls

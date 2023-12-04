@@ -25,7 +25,7 @@
             android:id="@+id/UTORidTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UTORid:"
+            android:text="Student Email:"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
@@ -34,7 +34,7 @@
             android:id="@+id/UTORid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SampleUtorID"
+            android:text="SampleEmail"
             android:textSize="16sp"/>
 
         <TextView
