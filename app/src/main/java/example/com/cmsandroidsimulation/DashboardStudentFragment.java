@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import example.com.cmsandroidsimulation.apiwrapper.Admin;
 import example.com.cmsandroidsimulation.databinding.FragmentDashboardStudentBinding;
 import example.com.cmsandroidsimulation.datastructures.Announcement;
 import example.com.cmsandroidsimulation.datastructures.EventInfo;
@@ -23,6 +24,7 @@ import example.com.cmsandroidsimulation.apiwrapper.Student;
 public class DashboardStudentFragment extends Fragment {
     FragmentDashboardStudentBinding binding;
     EventAdapter adapter;
+    AnnouncementAdapter announcementAdapter;
 
     @Override
     public View onCreateView(
@@ -43,55 +45,22 @@ public class DashboardStudentFragment extends Fragment {
 //        sidebar.setVisibility(View.GONE);
 
 //        List Announcements from database
-        final RelativeLayout announcementParentWrapper = binding.announcements;
+
+        Log.i("test0", "test0");
         Student.getInstance().getAnnouncements().thenAccept((ArrayList<Announcement> announcements) -> {
-            for(Announcement announcement: announcements) {
-                View childView = getLayoutInflater().inflate(R.layout.announcement_item, null);
-                String title = announcement.getTitle(), content = announcement.getDetails();
+            Log.i("test1", "test1");
+            RecyclerView recyclerViewAnnouncement = binding.RecyclerViewAnnouncement;
+            Log.i("test2", "test2");
+            recyclerViewAnnouncement.setNestedScrollingEnabled(false);
+            announcementAdapter = new AnnouncementAdapter(announcements, getContext());
 
-                TextView titleTextView = childView.findViewById(R.id.announcement_title_text);
-                TextView contentTextView = childView.findViewById(R.id.announcement_content_text);
-
-                titleTextView.setText(title);
-                contentTextView.setText(content);
-
-                childView.findViewById(R.id.close_announcement).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        childView.setVisibility(View.GONE);
-                    }
-                });
-
-                announcementParentWrapper.addView(childView);
-            }
+            Log.i("test3", "test3");
+            recyclerViewAnnouncement.setAdapter(announcementAdapter);
+            recyclerViewAnnouncement.setLayoutManager(new LinearLayoutManager(getContext()));
         });
 
 
 //        Event from db
-        //        List Events from database
-//        final RelativeLayout eventParentWrapper = binding.events;
-//        ArrayList<EventInfo> eventsSource = PlaceholderValues.generateTestEventInfoList();
-//        int index2 = 0;
-//        for(EventInfo event: eventsSource) {
-//            View childView = getLayoutInflater().inflate(R.layout.event_item, null);
-//            String title = event.getTitle(), content = event.getDetails();
-//            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) childView.getLayoutParams();
-//
-//            TextView titleTextView = childView.findViewById(R.id.event_title);
-//            TextView contentTextView = childView.findViewById(R.id.event_content);
-//
-//            titleTextView.setText(title);
-//            contentTextView.setText(content);
-//
-//            if(layoutParams != null) {
-//                layoutParams.topMargin = 200*index2 + 20;
-//            }else{
-//                Log.i("test", "bruh");
-//            }
-//
-//            eventParentWrapper.addView(childView);
-//            index2 ++;
-//        }
         Student.getInstance().getEvents().thenAccept((ArrayList<EventInfo> eventList) -> {
             Log.i("MASTER APP", "events: " + eventList);
             RecyclerView recyclerView = binding.RecyclerView;
