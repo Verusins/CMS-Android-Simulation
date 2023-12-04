@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "example.com.cmsandroidsimulation"
     compileSdk = 33
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 
     defaultConfig {
         applicationId = "example.com.cmsandroidsimulation"

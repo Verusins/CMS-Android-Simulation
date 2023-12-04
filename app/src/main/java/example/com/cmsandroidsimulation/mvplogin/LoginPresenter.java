@@ -3,8 +3,8 @@ package example.com.cmsandroidsimulation.mvplogin;
 import example.com.cmsandroidsimulation.apiwrapper.User;
 
 public class LoginPresenter {
-    public LoginView loginView;
-    public LoginModel loginModel;
+    private final LoginView loginView;
+    private final LoginModel loginModel;
 
     public LoginPresenter(LoginView loginView, LoginModel loginModel) {
         this.loginView = loginView;
@@ -12,40 +12,24 @@ public class LoginPresenter {
     }
 
     public void validateCredentials(String email, String password) {
-        loginModel.login(email, password, new LoginModel.OnLoginFinishedListener() {
+        if (email == null || email.equals("")) {
+            loginView.showUsernameError();
+            return;
+        }
 
-            public void usernameEmpty(){
-                if (email.equals("")){
-                    loginView.showUsernameError();
-                }
-            }
-            @Override
-            public void onUsernameError() {
-                if (loginView != null) {
-                    loginView.showUsernameError();
-                }
-            }
+        if (password == null || password.equals("")) {
+            loginView.showPasswordError();
+            return;
+        }
 
-            @Override
-            public void onPasswordError() {
-                if (loginView != null) {
-                    loginView.showPasswordError();
-                }
-            }
-
-            @Override
-            public void onLoginSuccess(User user) {
-                if (loginView != null) {
-                    loginView.showLoginSuccess(user);
-                }
-            }
-
-            @Override
-            public void onLoginFailed(String errorMessage) {
-                if (loginView != null) {
-                    loginView.showLoginFailed(errorMessage);
-                }
-            }
-        });
+        loginModel.login(this, email, password);
+    }
+    public void onLoginFailed(String loginFailed)
+    {
+        loginView.showLoginFailed(loginFailed);
+    }
+    public void onLoginSuccess(User user)
+    {
+        loginView.showLoginSuccess(user);
     }
 }
