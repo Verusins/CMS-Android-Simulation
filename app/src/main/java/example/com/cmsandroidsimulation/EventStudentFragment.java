@@ -2,6 +2,7 @@ package example.com.cmsandroidsimulation;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -201,13 +202,18 @@ public class EventStudentFragment extends Fragment {
                             new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                                    requireActivity().runOnUiThread(() -> {
-                                        Bundle bundle = new Bundle();
-                                        bundle.putInt("selectedEventIndex", getArguments().getInt("selectedEventIndex"));
-                                        NavHostFragment.findNavController(EventStudentFragment.this).navigate(R.id.eventFragment, bundle);
-                                        // TODO: add toast
-                                    });
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            requireActivity().runOnUiThread(() -> {
+                                                Bundle bundle = new Bundle();
+                                                bundle.putInt("selectedEventIndex", getArguments().getInt("selectedEventIndex"));
+                                                NavHostFragment.findNavController(EventStudentFragment.this).navigate(R.id.eventFragment, bundle);
+                                                // TODO: add toast
+                                            });
+                                        }
+                                    }, 1000);
                                 }
                             }
                     );

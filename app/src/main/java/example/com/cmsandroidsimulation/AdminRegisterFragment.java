@@ -58,7 +58,7 @@ public class AdminRegisterFragment extends Fragment {
                 String email = binding.emailEditText.getText().toString();
                 String password = binding.signupPasswordEditText.getText().toString();
 
-                
+
                 if (username.equals("") || email.equals("") || password.equals("")){
                     Toast myToast = Toast.makeText(getActivity(),
                             "Please fill all the box",
